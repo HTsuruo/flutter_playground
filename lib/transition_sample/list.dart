@@ -8,8 +8,15 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return MaterialApp(
+      theme: ThemeData.light().copyWith(
+        splashFactory: InkRipple.splashFactory,
+//        pageTransitionsTheme: const PageTransitionsTheme(
+        // 空にすると全プラットフォームでFadeUpwardsPageTransitionsBuilderが使われる
+//          builders: <TargetPlatform, PageTransitionsBuilder>{},
+//        ),
+      ),
+      home: const HomePage(),
     );
   }
 }
@@ -33,9 +40,25 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
+            ListTile(
+              title: const Text('ディレイ画面遷移'),
+              trailing: const Icon(Icons.navigate_next),
+              onTap: () => Navigator.of(context).delayedPush(
+                MaterialPageRoute<PageRoute>(
+                  builder: (context) => const Detail(),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
+  }
+}
+
+extension NavigatorStateEx on NavigatorState {
+  Future<T> delayedPush<T extends Object>(Route<T> route) async {
+    await Future<void>.delayed(const Duration(milliseconds: 150));
+    return push(route);
   }
 }
