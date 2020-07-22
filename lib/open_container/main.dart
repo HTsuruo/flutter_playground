@@ -31,19 +31,47 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: OpenContainer(
-          openBuilder: (context, _) {
-            return const Detail();
-          },
-          transitionType: ContainerTransitionType.fadeThrough,
-          transitionDuration: const Duration(milliseconds: 1000),
-          closedBuilder: (context, _) {
-            return const Card(
-              child: Text('カードです'),
-            );
-          },
-        ),
+        child: _openContainers(),
       ),
+    );
+  }
+
+  Widget _openContainers() {
+    return ListView(
+      children: [
+        _openContainerWrapper(),
+        _openContainerWrapper(),
+        _openContainerWrapper(),
+      ],
+    );
+  }
+
+  OpenContainer _openContainerWrapper() {
+    return OpenContainer(
+      openBuilder: (context, _) {
+        return const Detail();
+      },
+      closedElevation: 0,
+      transitionType: ContainerTransitionType.fadeThrough,
+      transitionDuration: const Duration(milliseconds: 800),
+      closedBuilder: (context, _) {
+        return _listTileWithDivider();
+      },
+    );
+  }
+
+  Widget _listTileWithDivider() {
+    return Column(
+      children: const [
+        ListTile(
+          title: Hero(
+            tag: 'hero',
+            child: Text('タイトル'),
+          ),
+          subtitle: Text('サブタイトル'),
+        ),
+        Divider(),
+      ],
     );
   }
 }

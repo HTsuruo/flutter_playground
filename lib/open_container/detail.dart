@@ -6,7 +6,12 @@ class Detail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('カードです')),
+      appBar: AppBar(
+        title: const Hero(
+          tag: 'hero',
+          child: Text('タイトル'),
+        ),
+      ),
       body: Container(),
     );
   }
