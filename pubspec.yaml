@@ -31,6 +31,9 @@ dependencies:
   url_launcher:
   webview_flutter:
   animations:
+  hooks_riverpod:
+  flutter_hooks:
+  state_notifier:
 
 dev_dependencies:
   flutter_test:
