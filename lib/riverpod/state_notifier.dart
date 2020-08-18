@@ -3,17 +3,18 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-final sampleStateNotifierProvider = StateNotifierProvider.autoDispose(
-  (ref) {
-    final controller = SampleController();
-    return controller;
-  },
+final sampleStateNotifierProvider =
+    StateNotifierProvider.family.autoDispose<SampleController, int>(
+  (ref, value) => SampleController(value: value),
 );
 
 class SampleController extends StateNotifier<int> {
-  SampleController() : super(0) {
+  SampleController({this.value}) : super(0) {
     _init();
   }
+
+  final int value;
+
   void increment() {
     print('increment');
     state++;
@@ -21,6 +22,7 @@ class SampleController extends StateNotifier<int> {
 
   void _init() {
     print('init');
+    print('value is $value');
   }
 
   @override
@@ -48,8 +50,8 @@ class StateNotifierPage extends HookWidget {
           child: Text('state notifier sample'),
         ),
       ),
-      floatingActionButton: const _FabUserProviderPattern(),
-//      floatingActionButton: const _FabContextPattern(),
+//      floatingActionButton: const _FabUserProviderPattern(),
+      floatingActionButton: const _FabContextPattern(),
     );
   }
 }
@@ -60,7 +62,7 @@ class _FabUserProviderPattern extends HookWidget {
   const _FabUserProviderPattern({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final controller = useProvider(sampleStateNotifierProvider);
+    final controller = useProvider(sampleStateNotifierProvider(4));
     return FloatingActionButton(
       onPressed: controller.increment,
     );
@@ -74,7 +76,7 @@ class _FabContextPattern extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => context.read(sampleStateNotifierProvider).increment(),
+      onPressed: () => context.read(sampleStateNotifierProvider(5)).increment(),
     );
   }
 }
