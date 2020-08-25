@@ -50,8 +50,8 @@ class StateNotifierPage extends HookWidget {
           child: Text('state notifier sample'),
         ),
       ),
-//      floatingActionButton: const _FabUserProviderPattern(),
-      floatingActionButton: const _FabContextPattern(),
+      floatingActionButton: const _FabUserProviderPattern(),
+//      floatingActionButton: const _FabContextPattern(),
     );
   }
 }
