@@ -34,6 +34,9 @@ dependencies:
   hooks_riverpod:
   flutter_hooks:
   state_notifier:
+  material_segmented_control:
+  gap:
+
 
 dev_dependencies:
   flutter_test:
