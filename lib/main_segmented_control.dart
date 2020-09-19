@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-void main() => runApp(const App());
+void main() => runApp(
+      const ProviderScope(
+        child: const App(),
+      ),
+    );
 
 class App extends StatelessWidget {
   const App({Key key}) : super(key: key);
@@ -70,26 +76,28 @@ class _ToggleButtonState extends State<_ToggleButton> {
   }
 }
 
-class _CustomizedToggleButton extends StatefulWidget {
+final _changeNotifierProvider = ChangeNotifierProvider(
+  (ref) => ToggleController(),
+);
+
+class ToggleController extends ChangeNotifier {
+  List<bool> _isSelected = [true, false];
+  List<bool> get isSelected => _isSelected;
+
+  void selected(int index) {
+    _isSelected = [false, false];
+    _isSelected[index] = true;
+    notifyListeners();
+  }
+}
+
+class _CustomizedToggleButton extends HookWidget {
   const _CustomizedToggleButton({Key key}) : super(key: key);
 
   @override
-  _CustomizedToggleButtonState createState() => _CustomizedToggleButtonState();
-}
-
-class _CustomizedToggleButtonState extends State<_CustomizedToggleButton> {
-  List<bool> isSelected = [true, false];
-  List<bool> get reset => isSelected.map((e) => false).toList();
-
-  void _selected(int index) {
-    setState(() {
-      isSelected = reset;
-      isSelected[index] = true;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final controller = useProvider(_changeNotifierProvider);
+
     return LayoutBuilder(
       builder: (context, constraints) => ToggleButtons(
         color: Colors.amber,
@@ -105,8 +113,8 @@ class _CustomizedToggleButtonState extends State<_CustomizedToggleButton> {
           Text('絞り込み'),
           Text('すべて'),
         ],
-        onPressed: _selected,
-        isSelected: isSelected,
+        onPressed: controller.selected,
+        isSelected: controller.isSelected,
       ),
     );
   }
