@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -21,6 +22,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: const [
           Gap(16),
           _ToggleButton(),
@@ -58,9 +60,9 @@ class _ToggleButtonState extends State<_ToggleButton> {
   Widget build(BuildContext context) {
     return ToggleButtons(
       children: const [
-        Text('日足'),
-        Text('週足'),
-        Text('月足'),
+        Text('日'),
+        Text('週'),
+        Text('月'),
       ],
       onPressed: _selected,
       isSelected: isSelected,
@@ -110,10 +112,44 @@ class _CustomizedToggleButtonState extends State<_CustomizedToggleButton> {
   }
 }
 
-class _CupertinoSegmentedControl extends StatelessWidget {
+class _CupertinoSegmentedControl extends StatefulWidget {
   const _CupertinoSegmentedControl({Key key}) : super(key: key);
+
+  @override
+  _CupertinoSegmentedControlState createState() =>
+      _CupertinoSegmentedControlState();
+}
+
+class _CupertinoSegmentedControlState
+    extends State<_CupertinoSegmentedControl> {
+  int groupValue = 0;
+
+  void _selected(int index) {
+    setState(() {
+      groupValue = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    const map = <int, Widget>{
+      0: Text('日'),
+      1: Text('週'),
+      2: Text('月'),
+    };
+
+    return LayoutBuilder(
+      builder: (context, constraints) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Container(
+          width: constraints.maxWidth,
+          child: CupertinoSlidingSegmentedControl<int>(
+            children: map,
+            onValueChanged: _selected,
+            groupValue: groupValue,
+          ),
+        ),
+      ),
+    );
   }
 }
