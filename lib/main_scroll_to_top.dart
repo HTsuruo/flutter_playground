@@ -125,6 +125,7 @@ class HomePage extends HookWidget {
   }
 }
 
+/// SliverAppBarとの組み合わせ
 class NotificationPage extends HookWidget {
   const NotificationPage({Key key}) : super(key: key);
 
@@ -134,24 +135,29 @@ class NotificationPage extends HookWidget {
   Widget build(BuildContext context) {
     final controller = useProvider(scrollController);
     return Scaffold(
-      key: const PageStorageKey(routeName),
-      appBar: AppBar(
-        title: const Text('お知らせ'),
-      ),
-      body: ListView.builder(
-        controller: controller,
-        itemCount: 50,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              ListTile(
-                title: Text('お知らせ${index + 1}'),
+        key: const PageStorageKey(routeName),
+        body: CustomScrollView(
+          controller: controller,
+          slivers: [
+            const SliverAppBar(
+              title: Text('お知らせ'),
+              expandedHeight: 200,
+              floating: true,
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) => Column(
+                  children: [
+                    ListTile(
+                      title: Text('${index + 1}'),
+                    ),
+                    const Divider(),
+                  ],
+                ),
+                childCount: 30,
               ),
-              const Divider(),
-            ],
-          );
-        },
-      ),
-    );
+            ),
+          ],
+        ));
   }
 }
