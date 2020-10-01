@@ -4,8 +4,8 @@ import 'package:sliding_sheet/sliding_sheet.dart';
 
 // sliding_sheet 0.4.0
 // https://pub.dev/packages/sliding_sheet
-class SlidingSheetSamplePage extends StatelessWidget {
-  const SlidingSheetSamplePage({Key key}) : super(key: key);
+class SlidingSheetWidgetPage extends StatelessWidget {
+  const SlidingSheetWidgetPage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +19,7 @@ class SlidingSheetSamplePage extends StatelessWidget {
           positioning: SnapPositioning.relativeToAvailableSpace,
         ),
         builder: (context, state) => Container(
-          height: 200, // 高さの指定がやりにくい
+          height: 600, // 高さの指定がやりにくい
           child: const Padding(
             padding: EdgeInsets.only(bottom: 56),
 
