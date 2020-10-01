@@ -36,6 +36,9 @@ dependencies:
   state_notifier:
   material_segmented_control:
   gap:
+  sliding_sheet:
+  snapping_sheet:
+  modal_bottom_sheet:
 
 
 dev_dependencies:
