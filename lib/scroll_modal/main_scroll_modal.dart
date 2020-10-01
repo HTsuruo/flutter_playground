@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/scroll_modal/component/list_view_content.dart';
 import 'package:flutter_playground/scroll_modal/sliding_sheet_widget_page.dart';
+import 'package:flutter_playground/scroll_modal/snapping_sheet_page.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 void main() => runApp(const App());
@@ -85,22 +86,11 @@ class HomePage extends StatelessWidget {
                         positioning: SnapPositioning.relativeToAvailableSpace,
                       ),
                       builder: (context, state) {
-                        return Container(
-                          height: 1000,
-                          child: Center(
-                            child: Material(
-                              child: InkWell(
-                                onTap: () => Navigator.pop(
-                                    context, 'This is the result.'),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16),
-                                  child: Text(
-                                    'This is the content of the sheet',
-                                    style: Theme.of(context).textTheme.body1,
-                                  ),
-                                ),
-                              ),
-                            ),
+                        return Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Text(
+                            'ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ',
+                            style: Theme.of(context).textTheme.headline4,
                           ),
                         );
                       });
@@ -109,8 +99,10 @@ class HomePage extends StatelessWidget {
               }),
           const Divider(),
           ListTile(
-            title: Text('snapping_sheet'),
-            onTap: () {},
+            title: const Text('snapping_sheet'),
+            onTap: () => Navigator.of(context).push<void>(MaterialPageRoute(
+              builder: (context) => const SnappingSheetSample(),
+            )),
           ),
           const Divider(),
           ListTile(
@@ -120,16 +112,6 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-// snapping_sheet 2.0.1
-// https://pub.dev/packages/snapping_sheet
-class _SnappingSheetSample extends StatelessWidget {
-  const _SnappingSheetSample({Key key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
 
