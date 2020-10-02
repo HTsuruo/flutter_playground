@@ -108,6 +108,8 @@ class HomePage extends StatelessWidget {
           const Divider(),
           ListTile(
             title: const Text('modal_bottom_sheet'),
+
+            /// showBarModalBottomSheetを使うとbarがつくがもっと簡単にかける
             onTap: () => showMaterialModalBottomSheet<void>(
               shape: RoundedRectangleBorder(
                   borderRadius:
