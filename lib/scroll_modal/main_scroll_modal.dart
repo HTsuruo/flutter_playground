@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/scroll_modal/component/list_view_content.dart';
 import 'package:flutter_playground/scroll_modal/sliding_sheet_widget_page.dart';
-import 'package:flutter_playground/scroll_modal/snapping_sheet_page.dart';
+import 'package:flutter_playground/scroll_modal/snapping_sheet_sample_page.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 void main() => runApp(const App());
@@ -101,26 +102,25 @@ class HomePage extends StatelessWidget {
           ListTile(
             title: const Text('snapping_sheet'),
             onTap: () => Navigator.of(context).push<void>(MaterialPageRoute(
-              builder: (context) => const SnappingSheetSample(),
+              builder: (context) => const SnappingSheetSamplePage(),
             )),
           ),
           const Divider(),
           ListTile(
-            title: Text('modal_bottom_sheet'),
-            onTap: () {},
+            title: const Text('modal_bottom_sheet'),
+            onTap: () => showMaterialModalBottomSheet<void>(
+              shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(22))),
+              context: context,
+              builder: (context, scrollController) => Container(
+                height: MediaQuery.of(context).size.height - 80,
+                child: ListViewContent(),
+              ),
+            ),
           ),
         ],
       ),
     );
-  }
-}
-
-// modal_bottom_sheet 0.2.2
-// https://pub.dev/packages/modal_bottom_sheet
-class _ModalBottomSheetSample extends StatelessWidget {
-  const _ModalBottomSheetSample({Key key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

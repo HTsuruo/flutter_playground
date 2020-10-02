@@ -4,8 +4,8 @@ import 'package:snapping_sheet/snapping_sheet.dart';
 
 // snapping_sheet 2.0.1
 // https://pub.dev/packages/snapping_sheet
-class SnappingSheetSample extends StatelessWidget {
-  const SnappingSheetSample({Key key}) : super(key: key);
+class SnappingSheetSamplePage extends StatelessWidget {
+  const SnappingSheetSamplePage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
