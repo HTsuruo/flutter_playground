@@ -39,6 +39,7 @@ dependencies:
   sliding_sheet:
   snapping_sheet:
   modal_bottom_sheet:
+  dartx:
 
 
 dev_dependencies:
