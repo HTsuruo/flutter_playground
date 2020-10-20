@@ -29,13 +29,19 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children: [
           Gap(16),
           _ToggleButton(),
           Gap(16),
           _CustomizedToggleButton(),
           Gap(16),
           _CupertinoSegmentedControl(),
+          Gap(16),
+          Container(
+            height: 100,
+            color: Colors.blueAccent,
+            child: CupertinoSegmentedControlCustomColor(),
+          ),
         ],
       ),
     );
@@ -154,6 +160,49 @@ class _CupertinoSegmentedControlState
           child: CupertinoSlidingSegmentedControl<int>(
             children: map,
             onValueChanged: _selected,
+            groupValue: groupValue,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CupertinoSegmentedControlCustomColor extends StatefulWidget {
+  const CupertinoSegmentedControlCustomColor({Key key}) : super(key: key);
+  @override
+  _CupertinoSegmentedControlCustomColorState createState() =>
+      _CupertinoSegmentedControlCustomColorState();
+}
+
+class _CupertinoSegmentedControlCustomColorState
+    extends State<CupertinoSegmentedControlCustomColor> {
+  int groupValue = 0;
+
+  void _selected(int index) {
+    setState(() {
+      groupValue = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    const map = <int, Widget>{
+      0: Text('日'),
+      1: Text('月'),
+      2: Text('年'),
+    };
+
+    return LayoutBuilder(
+      builder: (context, constraints) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        child: Container(
+          width: constraints.maxWidth / 2,
+          child: CupertinoSlidingSegmentedControl<int>(
+            backgroundColor: Colors.white24,
+            children: map,
+            onValueChanged: _selected,
+            thumbColor: Colors.white,
             groupValue: groupValue,
           ),
         ),
