@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/scroll_modal/component/list_view_content.dart';
+import 'package:flutter_playground/scroll_modal/cupertino_page.dart';
 import 'package:flutter_playground/scroll_modal/sliding_sheet_widget_page.dart';
 import 'package:flutter_playground/scroll_modal/snapping_sheet_sample_page.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -118,6 +119,15 @@ class HomePage extends StatelessWidget {
               builder: (context, scrollController) => Container(
                 height: MediaQuery.of(context).size.height - 80,
                 child: ListViewContent(),
+              ),
+            ),
+          ),
+          const Divider(),
+          ListTile(
+            title: const Text('modal_bottom_sheet（Cupertino）'),
+            onTap: () => Navigator.of(context).push(
+              MaterialWithModalsPageRoute<void>(
+                builder: (_) => const CupertinoPage(),
               ),
             ),
           ),

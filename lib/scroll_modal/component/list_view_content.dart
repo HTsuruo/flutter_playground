@@ -14,6 +14,7 @@ class ListViewContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       controller: controller,
+      shrinkWrap: true,
       physics: physics,
       itemCount: 50,
       itemBuilder: (context, index) => Column(
