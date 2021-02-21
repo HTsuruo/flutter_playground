@@ -14,30 +14,28 @@ class ScrollingTabBarPage extends HookWidget {
     return Scaffold(
       body: DefaultTabController(
         length: tabs.length,
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              title: const Text(routeName),
-              bottom: TabBar(
-                tabs: tabs.map((t) => t.tab).toList(),
+        // ref. https://api.flutter.dev/flutter/widgets/NestedScrollView-class.html
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverOverlapAbsorber(
+                handle:
+                    NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                sliver: SliverAppBar(
+                  title: const Text(routeName),
+                  bottom: TabBar(
+                    tabs: tabs.map((t) => t.tab).toList(),
+                  ),
+                  floating: true,
+                  snap: true,
+                  forceElevated: innerBoxIsScrolled,
+                ),
               ),
-            ),
-            // Containerだと[SliverAppBar]が隠れるのが確認できる
-            // SliverFillRemaining(
-            //   child: TabBarView(
-            //     children: containerTabs.map((t) => t.pageView).toList(),
-            //   ),
-            // ),
-            // TODO(tsuruoka): [pageView]がListViewなので[SliverToBoxAdapter]の
-            //  childに持たせる形を考えていたがうまく表示できず。
-            // また、[CustomScrollView]のスクロールと[ListView]のスクロールが競合する気がしていて
-            // その辺りの解決策も知りたい
-            SliverToBoxAdapter(
-              child: TabBarView(
-                children: tabs.map((t) => t.pageView).toList(),
-              ),
-            ),
-          ],
+            ];
+          },
+          body: TabBarView(
+            children: tabs.map((t) => t.pageView).toList(),
+          ),
         ),
       ),
     );
