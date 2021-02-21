@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/tab_bar/default_tab_controller_page.dart';
+import 'package:flutter_playground/tab_bar/scrolling_tab_bar_page.dart';
 import 'package:flutter_playground/tab_bar/tab_controller_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
@@ -34,6 +35,7 @@ class App extends StatelessWidget {
         TabControllerPage.routeName: (context) => const TabControllerPage(),
         DefaultTabControllerPage.routeName: (context) =>
             const DefaultTabControllerPage(),
+        ScrollingTabBarPage.routeName: (context) => const ScrollingTabBarPage(),
       },
     );
   }
@@ -57,6 +59,12 @@ class _ListPage extends StatelessWidget {
           title: const Text(TabControllerPage.routeName),
           onTap: () =>
               Navigator.of(context).pushNamed(TabControllerPage.routeName),
+        ),
+        // Sliver系Widgetと組み合わせた応用編
+        ListTile(
+          title: const Text(ScrollingTabBarPage.routeName),
+          onTap: () =>
+              Navigator.of(context).pushNamed(ScrollingTabBarPage.routeName),
         ),
       ];
     }

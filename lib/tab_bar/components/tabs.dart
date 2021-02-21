@@ -19,3 +19,19 @@ class Tabs {
   final Tab tab;
   final Widget pageView;
 }
+
+// ListViewではない形（Container）ではSliver系でも理想の動きになるのか検証用
+final containerTabs = {
+  Tabs(
+    const Tab(text: 'First'),
+    Container(
+      color: Colors.blue,
+    ),
+  ),
+  Tabs(
+    const Tab(text: 'Second'),
+    Container(
+      color: Colors.redAccent,
+    ),
+  ),
+};
