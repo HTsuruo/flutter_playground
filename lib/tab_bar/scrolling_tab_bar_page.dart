@@ -33,9 +33,16 @@ class ScrollingTabBarPage extends HookWidget {
               ),
             ];
           },
+          // [CustomScrollView]を中身に持つTabBarViewの場合
           body: TabBarView(
-            children: tabs.map((t) => t.pageView).toList(),
+            // TabBarViewの中身をCustomScrollViewにしてSliverで構築することも可能
+            children: tabsIncludingSliver.map((t) => t.pageView).toList(),
           ),
+          // [ListView]を中身に持つTabBarViewの場合
+          // body: TabBarView(
+          //   // TabBarViewの中身をCustomScrollViewにしてSliverで構築することも可能
+          //   children: tabs.map((t) => t.pageView).toList(),
+          // ),
         ),
       ),
     );

@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/tab_bar/components/tab_bar_sliver_list_view.dart';
 
 import 'components.dart';
 
 final tabs = {
   const Tabs(
     Tab(text: 'First'),
-    const TabBarFirstView(),
+    const TabBarListView(color: Colors.blueAccent, pageName: 'First'),
   ),
   const Tabs(
     Tab(text: 'Second'),
-    const TabBarSecondView(),
+    const TabBarListView(color: Colors.orange, pageName: 'Second'),
+  ),
+};
+
+final tabsIncludingSliver = {
+  const Tabs(
+    Tab(text: 'First'),
+    const TabBarSliverListView(color: Colors.blueAccent, pageName: 'First'),
+  ),
+  const Tabs(
+    Tab(text: 'Second'),
+    TabBarSliverListView(color: Colors.orange, pageName: 'Second'),
   ),
 };
 
