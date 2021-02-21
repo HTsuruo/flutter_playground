@@ -20,12 +20,12 @@ class DefaultTabControllerPage extends HookWidget {
         appBar: AppBar(
           title: const Text(routeName),
           bottom: TabBar(
-            tabs: tabs.entries.map((t) => t.key).toList(),
+            tabs: tabs.map((t) => t.tab).toList(),
             onTap: (value) => logger.fine('Tapped index is: $value'),
           ),
         ),
         body: TabBarView(
-          children: tabs.entries.map((e) => e.value).toList(),
+          children: tabs.map((t) => t.pageView).toList(),
         ),
       ),
     );

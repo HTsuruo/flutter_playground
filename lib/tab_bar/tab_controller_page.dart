@@ -53,12 +53,12 @@ class _TabControllerPageState extends State<TabControllerPage>
         title: const Text(TabControllerPage.routeName),
         bottom: TabBar(
           controller: _tabController,
-          tabs: tabs.entries.map((e) => e.key).toList(),
+          tabs: tabs.map((t) => t.tab).toList(),
         ),
       ),
       body: TabBarView(
         controller: _tabController,
-        children: tabs.entries.map((e) => e.value).toList(),
+        children: tabs.map((t) => t.pageView).toList(),
       ),
     );
   }
