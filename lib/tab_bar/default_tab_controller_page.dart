@@ -5,6 +5,8 @@ import 'package:flutter_playground/logger.dart';
 import 'components/components.dart';
 
 ///　[DefaultTabController]を使ったパターン
+/// [TabBar]と[TabBarView]のcontextの祖先となるように包むだけ
+/// [TabBar]と[TabBarView]のcontrollerはそれぞれ内部的にDefaultController.ofで参照している
 class DefaultTabControllerPage extends HookWidget {
   const DefaultTabControllerPage({Key key}) : super(key: key);
 
