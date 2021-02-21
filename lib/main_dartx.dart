@@ -24,25 +24,6 @@ class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    const a = [
-      {
-        'key1': 1,
-        'value': [1, 2, 3]
-      },
-      {
-        'key2': 2,
-        'value': [2, 3, 4]
-      },
-      {
-        'key3': 3,
-        'value': [3, 4, 5]
-      },
-      {
-        'key4': 4,
-        'value': [4, 5, 6]
-      },
-    ];
-
     final list = [
       Hoge('1', 1),
       Hoge('1', 1),

@@ -25,22 +25,19 @@ class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    const gap = Gap(16);
     return Scaffold(
       appBar: AppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Gap(16),
-          _ToggleButton(),
-          Gap(16),
-          _CustomizedToggleButton(),
-          Gap(16),
-          _CupertinoSegmentedControl(),
-          Gap(16),
+          const _ToggleButton(),
+          const _CustomizedToggleButton(),
+          const _CupertinoSegmentedControl(),
           Container(
             height: 100,
             color: Colors.blueAccent,
-            child: CupertinoSegmentedControlCustomColor(),
+            child: const CupertinoSegmentedControlCustomColor(),
           ),
         ],
       ),
@@ -155,7 +152,7 @@ class _CupertinoSegmentedControlState
     return LayoutBuilder(
       builder: (context, constraints) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: Container(
+        child: SizedBox(
           width: constraints.maxWidth,
           child: CupertinoSlidingSegmentedControl<int>(
             children: map,
@@ -196,7 +193,7 @@ class _CupertinoSegmentedControlCustomColorState
     return LayoutBuilder(
       builder: (context, constraints) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 40),
-        child: Container(
+        child: SizedBox(
           width: constraints.maxWidth / 2,
           child: CupertinoSlidingSegmentedControl<int>(
             backgroundColor: Colors.white24,

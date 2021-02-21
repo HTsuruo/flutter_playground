@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
+            SizedBox(
               height: 100,
               width: MediaQuery.of(context).size.width / 2,
               child: Card(
@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: 100,
               width: MediaQuery.of(context).size.width / 2,
               child: Card(
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: 80,
               width: MediaQuery.of(context).size.width / 2,
               child: Card(
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: 80,
               width: MediaQuery.of(context).size.width / 2,
               child: Card(

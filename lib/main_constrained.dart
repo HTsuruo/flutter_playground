@@ -22,48 +22,47 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 320.0, minHeight: 64.0),
+            constraints: const BoxConstraints(minWidth: 320, minHeight: 64),
             child: Container(
               color: Colors.red,
             ),
           ),
           ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 160.0, minHeight: 64.0),
+            constraints: const BoxConstraints(maxWidth: 160, minHeight: 64),
             child: Container(
               color: Colors.red,
             ),
           ),
           ConstrainedBox(
-            constraints: const BoxConstraints.expand(height: 64.0),
+            constraints: const BoxConstraints.expand(height: 64),
             child: Container(color: Colors.green),
           ),
           ConstrainedBox(
-            constraints:
-                const BoxConstraints.expand(width: 320.0, height: 64.0),
+            constraints: const BoxConstraints.expand(width: 320, height: 64),
             child: Container(
               color: Colors.blue,
             ),
           ),
           ConstrainedBox(
-            constraints: BoxConstraints.loose(Size(640.0, 64.0)),
+            constraints: BoxConstraints.loose(const Size(640, 64)),
             child: Container(
               color: Colors.grey,
             ),
           ),
           ConstrainedBox(
-            constraints: BoxConstraints.tight(Size(320.0, 64.0)),
+            constraints: BoxConstraints.tight(const Size(320, 64)),
             child: Container(
               color: Colors.red,
             ),
           ),
           ConstrainedBox(
-            constraints: const BoxConstraints.tightFor(height: 64.0),
+            constraints: const BoxConstraints.tightFor(height: 64),
             child: Container(
               color: Colors.green,
             ),
           ),
           ConstrainedBox(
-            constraints: const BoxConstraints(minWidth: 320.0, minHeight: 64.0),
+            constraints: const BoxConstraints(minWidth: 320, minHeight: 64),
             child: Container(
               color: Colors.blue,
               child: const Text('おまけ'),

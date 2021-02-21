@@ -115,7 +115,7 @@ class _SizedBoxTextForm3 extends StatelessWidget {
 
         /// フォントサイズを大きくしたりOS設定で変更になると
         /// height指定はそれに適応できない
-        style: TextStyle(fontSize: 44),
+        style: const TextStyle(fontSize: 44),
       ),
     );
   }
@@ -143,9 +143,9 @@ class _DenseTextForm extends StatelessWidget {
 
 /// contentPaddingを使ったパターン
 /// isDenseより調整がきく
-/// If `isOutline` property of [border] is true then `contentPaddding` is
-/// `EdgeInsets.fromLTRB(12, 20, 12, 12)` when [isDense] is true
-/// and `EdgeInsets.fromLTRB(12, 24, 12, 16)` when [isDense] is false.
+/// If `isOutline` property of border is true then `contentPadding` is
+/// `EdgeInsets.fromLTRB(12, 20, 12, 12)` when isDense is true
+/// and `EdgeInsets.fromLTRB(12, 24, 12, 16)` when isDense is false.
 /// 上記のisDenseを指定するパターンだと内部的にcontentPaddingを(12, 20, 12, 12)に指定している
 class _DenseTextForm2 extends StatelessWidget {
   const _DenseTextForm2({Key key}) : super(key: key);

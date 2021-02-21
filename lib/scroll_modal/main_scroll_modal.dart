@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
-            title: Text('DraggableScrollableSheet'),
+            title: const Text('DraggableScrollableSheet'),
             onTap: () {
               SizedBox.expand(
                 child: DraggableScrollableSheet(
@@ -91,7 +91,16 @@ class HomePage extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text(
-                            'ああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ',
+                            'あああああああああああああああああああああああああ'
+                            'あああああああああああああああああああああああああ'
+                            'あああああああああああああああああああああああああ'
+                            'あああああああああああああああああああああああああ'
+                            'あああああああああああああああああああああああああ'
+                            'あああああああああああああああああああああああああ'
+                            'あああああああああああああああああああああああああ'
+                            'あああああああああああああああああああああああああ'
+                            'あああああああああああああああああああああああああ'
+                            'あああああああああああああああああああああああああ',
                             style: Theme.of(context).textTheme.headline4,
                           ),
                         );
@@ -112,13 +121,15 @@ class HomePage extends StatelessWidget {
 
             /// showBarModalBottomSheetを使うとbarがつくがもっと簡単にかける
             onTap: () => showMaterialModalBottomSheet<void>(
-              shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(22))),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(22),
+                ),
+              ),
               context: context,
-              builder: (context) => Container(
+              builder: (context) => SizedBox(
                 height: MediaQuery.of(context).size.height - 80,
-                child: ListViewContent(),
+                child: const ListViewContent(),
               ),
             ),
           ),

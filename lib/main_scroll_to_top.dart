@@ -64,9 +64,8 @@ class RootPage extends HookWidget {
     final controller = useProvider(changeNotifierProvider);
 
     const barItems = [
-      BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('ホーム')),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.notifications), title: Text('お知らせ')),
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
+      BottomNavigationBarItem(icon: Icon(Icons.notifications), label: 'お知らせ'),
     ];
 
     const pages = [

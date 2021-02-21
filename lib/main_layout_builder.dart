@@ -25,14 +25,14 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               ListTile(
-                title: Text('maxHeight'),
-                subtitle: Text('これはScaffoldのconstraints'),
+                title: const Text('maxHeight'),
+                subtitle: const Text('これはScaffoldのconstraints'),
                 trailing: Text('${constraints.maxHeight}'),
               ),
               LayoutBuilder(
                 builder: (context, constraints) => ListTile(
-                  title: Text('maxHeight'),
-                  subtitle: Text('これはColumnのconstraints'),
+                  title: const Text('maxHeight'),
+                  subtitle: const Text('これはColumnのconstraints'),
                   trailing: Text('${constraints.maxHeight}'),
                 ),
               ),

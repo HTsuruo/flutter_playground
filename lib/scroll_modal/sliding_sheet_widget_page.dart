@@ -18,9 +18,9 @@ class SlidingSheetWidgetPage extends StatelessWidget {
           snappings: [0.2, 1.0],
           positioning: SnapPositioning.relativeToAvailableSpace,
         ),
-        builder: (context, state) => Container(
+        builder: (context, state) => const SizedBox(
           height: 600, // 高さの指定がやりにくい
-          child: const Padding(
+          child: Padding(
             padding: EdgeInsets.only(bottom: 56),
 
             /// SlidingSheetのScrollControllerを使うので
