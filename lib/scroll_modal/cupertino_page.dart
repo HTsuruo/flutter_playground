@@ -17,7 +17,7 @@ class CupertinoPage extends HookWidget {
           child: const Text('show modal'),
           onPressed: () => showCupertinoModalBottomSheet<void>(
             context: context,
-            builder: (context, scrollController) => Container(),
+            builder: (context) => Container(),
           ),
         ),
       ),

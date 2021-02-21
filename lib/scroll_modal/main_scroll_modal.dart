@@ -116,7 +116,7 @@ class HomePage extends StatelessWidget {
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(22))),
               context: context,
-              builder: (context, scrollController) => Container(
+              builder: (context) => Container(
                 height: MediaQuery.of(context).size.height - 80,
                 child: ListViewContent(),
               ),
