@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/nested_scroll_view/sample_1.dart';
-import 'package:flutter_playground/nested_scroll_view/sample_2.dart';
-import 'package:flutter_playground/nested_scroll_view/sample_3.dart';
+import 'package:flutter_playground/framework_practice//stateful_sample_page.dart';
+import 'package:flutter_playground/framework_practice/stateless_sample_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
 
@@ -29,9 +28,8 @@ class App extends StatelessWidget {
       ),
       home: const _ListPage(),
       routes: {
-        Sample1.routeName: (context) => const Sample1(),
-        Sample2.routeName: (context) => const Sample2(),
-        Sample3.routeName: (context) => const Sample3(),
+        StatelessSamplePage.routeName: (context) => const StatelessSamplePage(),
+        StatefulSamplePage.routeName: (context) => const StatefulSamplePage(),
       },
     );
   }
@@ -44,23 +42,21 @@ class _ListPage extends StatelessWidget {
     List<ListTile> _tiles() {
       return [
         ListTile(
-          title: const Text(Sample1.routeName),
-          onTap: () => Navigator.of(context).pushNamed(Sample1.routeName),
+          title: const Text(StatelessSamplePage.routeName),
+          onTap: () =>
+              Navigator.of(context).pushNamed(StatelessSamplePage.routeName),
         ),
         ListTile(
-          title: const Text(Sample2.routeName),
-          onTap: () => Navigator.of(context).pushNamed(Sample2.routeName),
-        ),
-        ListTile(
-          title: const Text(Sample3.routeName),
-          onTap: () => Navigator.of(context).pushNamed(Sample3.routeName),
+          title: const Text(StatefulSamplePage.routeName),
+          onTap: () =>
+              Navigator.of(context).pushNamed(StatefulSamplePage.routeName),
         ),
       ];
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NestedScrollView Sampler'),
+        title: const Text('Key Practice'),
       ),
       body: ListView.separated(
         itemBuilder: (context, index) => _tiles()[index],
