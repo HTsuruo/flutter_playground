@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/framework_practice//stateful_sample_page.dart';
-import 'package:flutter_playground/framework_practice/stateless_sample_page.dart';
 import 'package:flutter_playground/tiles.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
 
-import '../logger.dart';
+import 'logger.dart';
 
 void main() {
   logger.setLevel(Level.FINEST, includeCallerInfo: true);
@@ -17,10 +15,9 @@ void main() {
 }
 
 // Change this for any sample pages.
-String _title = 'Key Practice';
+String _title = 'Stream Sample Page';
 Map<String, WidgetBuilder> _routes = {
-  StatelessSamplePage.routeName: (context) => const StatelessSamplePage(),
-  StatefulSamplePage.routeName: (context) => const StatefulSamplePage(),
+  // routeName: (context) => Page Class
 };
 
 class App extends StatelessWidget {
@@ -34,6 +31,9 @@ class App extends StatelessWidget {
       ).copyWith(
         dividerTheme: const DividerThemeData(space: 0),
       ),
+      // 下記エラー回避のためBuilderで包んだ
+      // Navigator operation requested with
+      // a context that does not include a Navigator.
       home: Builder(
         builder: (context) => Tiles(
           title: _title,
