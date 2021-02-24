@@ -1,4 +1,6 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 void main() => runApp(const App());
 
@@ -22,8 +24,19 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: const Center(
-        child: Text('tsuruoka'),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: const [
+            Text('text_bullet_list_24_regular'),
+            Gap(16),
+            Icon(FluentIcons.text_bullet_list_24_regular),
+            Gap(40),
+            Text('text_bullet_list_ltr_24_regular'),
+            Gap(16),
+            Icon(FluentIcons.text_bullet_list_ltr_24_regular),
+          ],
+        ),
       ),
     );
   }

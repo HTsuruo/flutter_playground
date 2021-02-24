@@ -41,6 +41,7 @@ dependencies:
   dartx:
   modal_progress_hud:
   simple_logger:
+  fluentui_system_icons:
 
 dev_dependencies:
   flutter_test:
