@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/stream/state_provider_sample/state_provider_next_page.dart';
+import 'package:flutter_playground/stream/state_provider_sample/state_provider_page.dart';
 import 'package:flutter_playground/stream/stream_sample_page.dart';
 import 'package:flutter_playground/tiles.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -19,6 +21,8 @@ void main() {
 String _title = 'Stream Sample Page';
 Map<String, WidgetBuilder> _routes = {
   StreamSamplePage.routeName: (context) => const StreamSamplePage(),
+  StateProviderPage.routeName: (context) => const StateProviderPage(),
+  StateProviderNextPage.routeName: (context) => const StateProviderNextPage(),
 };
 
 class App extends StatelessWidget {
