@@ -80,6 +80,8 @@ class StreamSamplePageController extends ChangeNotifier {
   // 複数の購読者に向けたStreamのコントローラ
   final _broadcastController = StreamController<String>.broadcast();
 
+  Stream<String> get data => _broadcastController.stream;
+
   // データ加工も色々できる
   StreamTransformer<String, String> _transform() {
     return StreamTransformer.fromHandlers(

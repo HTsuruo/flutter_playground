@@ -17,8 +17,19 @@ class StreamSamplePage extends HookWidget {
       appBar: AppBar(
         title: Text(runtimeType.toString()),
       ),
-      body: const Center(
-        child: Text('Streamの勉強'),
+      body: Center(
+        // `_StreamBuilderBaseState<T, S>`のinitStateで実際にlistenしていることから分かる通り、
+        // streamデータを用意するだけで良い感じにハンドリングして描画することができるWidgetということが分かる
+        child: StreamBuilder<String>(
+          stream: useProvider(streamSamplePageController).data,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData) {
+              return const Text('Not Found');
+            }
+            final data = snapshot.data;
+            return Text(data);
+          },
+        ),
       ),
     );
   }
