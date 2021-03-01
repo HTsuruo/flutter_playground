@@ -45,6 +45,7 @@ class HomePage extends StatelessWidget {
 }
 
 /// 最も簡単なExpandableの指定方法だが、Widgetのカスタマイズ性は低く制限が多い
+/// 特にアイコンがHeaderの右横に配置されるのは固定ぽい
 /// →Expandable, ExpandableNotifier, and ExpandableButtonを利用してカスタマイズできる
 class _ExpandablePanel extends StatelessWidget {
   const _ExpandablePanel({Key key}) : super(key: key);
