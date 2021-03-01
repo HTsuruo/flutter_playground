@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:simple_logger/simple_logger.dart';
 
-void main() => runApp(const App());
+import 'logger.dart';
+
+void main() {
+  logger.setLevel(Level.FINEST, includeCallerInfo: true);
+  runApp(
+    const App(),
+  );
+}
 
 class App extends StatelessWidget {
   const App({Key key}) : super(key: key);

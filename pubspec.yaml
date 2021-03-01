@@ -43,6 +43,7 @@ dependencies:
   simple_logger:
   fluentui_system_icons:
   rxdart:
+  expandable:
 
 dev_dependencies:
   flutter_test:
