@@ -35,23 +35,45 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            final res = await showRadioSelector<SampleType>(
-              context: context,
-              initialValue: SampleType.hoge,
-              data: SampleType.values
-                  .map(
-                    (e) => RadioParam(title: e.label, value: e),
-                  )
-                  .toList(),
-            );
-            if (res == null) {
-              return;
-            }
-            logger.fine(res);
-          },
-          child: const Text('show'),
+        child: Column(
+          children: [
+            ElevatedButton(
+              onPressed: () async {
+                final res = await showRadioSelector<SampleType>(
+                  context: context,
+                  initialValue: SampleType.hoge,
+                  data: SampleType.values
+                      .map(
+                        (e) => RadioParam(title: e.label, value: e),
+                      )
+                      .toList(),
+                );
+                if (res == null) {
+                  return;
+                }
+                logger.fine(res);
+              },
+              child: const Text('show'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                final res = await showRadioSelector<HogeType>(
+                  context: context,
+                  initialValue: HogeType.hoge1,
+                  data: HogeType.values
+                      .map(
+                        (e) => RadioParam(title: e.label, value: e),
+                      )
+                      .toList(),
+                );
+                if (res == null) {
+                  return;
+                }
+                logger.fine(res);
+              },
+              child: const Text('show'),
+            ),
+          ],
         ),
       ),
     );
