@@ -45,7 +45,7 @@ class _BoxNg extends StatelessWidget {
       // 透過するとみえる。
       child: const ColoredBox(
         color: Colors.blue, // NG
-//        color: Color.fromRGBO(255, 255, 0, 0.3), OK
+        // color: Color.fromRGBO(255, 255, 0, 0.3), // OK
       ),
     );
   }
@@ -93,6 +93,25 @@ class _BoxMaterial extends StatelessWidget {
       color: Colors.blue,
       child: InkWell(
         onTap: () => print(runtimeType),
+      ),
+    );
+  }
+}
+
+class _BoxMaterialColor extends StatelessWidget {
+  const _BoxMaterialColor({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    // ベタ塗りのWidgetを親に持っている場合、Inkで包んでも無効化できない
+    // Materialで包んで`MaterialType.transparency`指定することで透過させて
+    // ベタ塗りにSplash Effectを適用させることができる
+    return ColoredBox(
+      color: Colors.redAccent,
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: () => print(runtimeType),
+        ),
       ),
     );
   }
