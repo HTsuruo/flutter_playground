@@ -148,6 +148,51 @@ class HomePage extends StatelessWidget {
                 builder: (context) => const SubPage(),
               ),
             ),
+          ),
+          const Divider(),
+          // Material Design的にはアイコンなどごちゃごちゃした要素を入れるのは非推奨だが
+          // ある程度わかりやすさは大切にしたい気持ちもある
+          ListTile(
+            title: const Text('Customize Content'),
+            onTap: () async {
+              logger.fine(context.read(scaffoldMessengerKey).currentState);
+              // SnackBar連打時にSnackBarがなにかしらのキュー?に溜まってしまって
+              // 連続して表示されてしまう
+              // 同一のSnackBarが既に表示されているか否かを判定する術はあるのだろうか
+              // ref. https://stackoverflow.com/questions/57210423/how-to-check-if-there-is-a-snack-bar-showing
+              final featureController =
+                  context.read(scaffoldMessengerKey).currentState.showSnackBar(
+                        SnackBar(
+                          duration: const Duration(seconds: 5),
+                          backgroundColor: Colors.black,
+                          content: Row(
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.only(right: 16),
+                                child: Icon(
+                                  Icons.error,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  'なにかしらのエラーが発生しましたなにかしらのエラーが'
+                                  '発生しましたなにかしらのエラーが発生しました',
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                ),
+                              ),
+                            ],
+                          ),
+                          behavior: SnackBarBehavior.floating,
+                          action: SnackBarAction(
+                            label: 'Action',
+                            onPressed: () {},
+                          ),
+                        ),
+                      );
+              logger.fine(await featureController.closed);
+            },
           )
         ],
       ),
