@@ -6,7 +6,7 @@ import 'components/components.dart';
 /// 下記Material Designドキュメントにある、TabBarが隠れる
 /// https://material.io/components/tabs#behavior -> Scrolling
 class ScrollingTabBarPage extends HookWidget {
-  const ScrollingTabBarPage({Key key}) : super(key: key);
+  const ScrollingTabBarPage({Key? key}) : super(key: key);
   static const routeName = '/scrolling_tab_bar_page';
 
   @override

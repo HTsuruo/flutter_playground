@@ -4,7 +4,7 @@ import 'package:flutter_playground/transition_sample/detail.dart';
 void main() => runApp(const App());
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
 }
 
 extension NavigatorStateEx on NavigatorState {
-  Future<T> delayedPush<T extends Object>(Route<T> route) async {
+  Future<T?> delayedPush<T extends Object>(Route<T> route) async {
     await Future<void>.delayed(const Duration(milliseconds: 150));
     return push(route);
   }

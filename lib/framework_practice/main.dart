@@ -17,14 +17,14 @@ void main() {
 }
 
 // Change this for any sample pages.
-String _title = 'Key Practice';
+String _title = 'Key? Practice';
 Map<String, WidgetBuilder> _routes = {
   StatelessSamplePage.routeName: (context) => const StatelessSamplePage(),
   StatefulSamplePage.routeName: (context) => const StatefulSamplePage(),
 };
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

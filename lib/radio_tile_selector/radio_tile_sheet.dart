@@ -12,7 +12,7 @@ final radioTileSheet = ChangeNotifierProvider.autoDispose(
 
 class RadioTileSheet extends HookWidget {
   const RadioTileSheet({
-    Key key,
+    Key? key,
     this.title = 'サンプル',
   }) : super(key: key);
 
@@ -32,7 +32,7 @@ class RadioTileSheet extends HookWidget {
               (value) => RadioListTile<SampleType>(
                 title: Text(
                   value.label,
-                  style: theme.textTheme.bodyText2.copyWith(
+                  style: theme.textTheme.bodyText2!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -41,7 +41,7 @@ class RadioTileSheet extends HookWidget {
                 activeColor: colorScheme.primary,
                 onChanged: (value) => selector.onChange(
                   context,
-                  value: value,
+                  value: value!,
                 ),
               ),
             )
@@ -54,22 +54,22 @@ class RadioTileSheet extends HookWidget {
 @immutable
 class RadioParam<T> {
   const RadioParam({
-    @required this.title,
-    @required this.value,
+    required this.title,
+    required this.value,
     this.subTitle,
   });
 
   final String title;
-  final String subTitle;
+  final String? subTitle;
   final T value;
 }
 
 class RadioTileSheet2<T> extends StatefulWidget {
   const RadioTileSheet2({
-    Key key,
+    Key? key,
     this.title = 'サンプル',
-    this.initialValue,
-    this.data,
+    required this.initialValue,
+    required this.data,
   }) : super(key: key);
 
   final String title;
@@ -80,14 +80,8 @@ class RadioTileSheet2<T> extends StatefulWidget {
   _RadioTileSheet2State createState() => _RadioTileSheet2State<T>();
 }
 
-class _RadioTileSheet2State<T> extends State<RadioTileSheet2> {
-  T groupValue;
-
-  @override
-  void initState() {
-    groupValue = widget.initialValue as T;
-    super.initState();
-  }
+class _RadioTileSheet2State<T> extends State<RadioTileSheet2<T>> {
+  late T groupValue = widget.initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -102,18 +96,20 @@ class _RadioTileSheet2State<T> extends State<RadioTileSheet2> {
               (value) => RadioListTile<T>(
                 title: Text(
                   value.title,
-                  style: theme.textTheme.bodyText2.copyWith(
+                  style: theme.textTheme.bodyText2!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                subtitle: value.subTitle == null ? null : Text(value.subTitle),
-                value: value.value as T,
+                subtitle: value.subTitle == null ? null : Text(value.subTitle!),
+                value: value.value,
                 groupValue: groupValue,
                 activeColor: colorScheme.primary,
                 onChanged: (value) async {
                   setState(
                     () {
-                      groupValue = value;
+                      if (value != null) {
+                        groupValue = value;
+                      }
                     },
                   );
                   await Future<void>.delayed(const Duration(milliseconds: 300));

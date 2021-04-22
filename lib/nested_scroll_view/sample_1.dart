@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Sample1 extends StatelessWidget {
-  const Sample1({Key key}) : super(key: key);
+  const Sample1({Key? key}) : super(key: key);
 
   static const routeName = '/nested_scroll_view/sample1';
 
@@ -63,7 +63,8 @@ class Sample1 extends StatelessWidget {
                       // inner scroll view.
                       // If the "controller" property is set, then this scroll
                       // view will not be associated with the NestedScrollView.
-                      // The PageStorageKey should be unique to this ScrollView;
+                      // The PageStorageKey
+                      // should be unique to this ScrollView;
                       // it allows the list to remember its scroll position when
                       // the tab view is not on the screen.
                       key: PageStorageKey<String>(name),

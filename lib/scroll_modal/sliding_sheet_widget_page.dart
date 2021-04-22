@@ -5,9 +5,11 @@ import 'package:sliding_sheet/sliding_sheet.dart';
 // sliding_sheet 0.4.0
 // https://pub.dev/packages/sliding_sheet
 class SlidingSheetWidgetPage extends StatelessWidget {
-  const SlidingSheetWidgetPage({Key key}) : super(key: key);
+  const SlidingSheetWidgetPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final textStyle = Theme.of(context).textTheme.bodyText1!;
+
     return Scaffold(
       appBar: AppBar(),
       body: SlidingSheet(
@@ -37,10 +39,7 @@ class SlidingSheetWidgetPage extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               'This is the header',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  .copyWith(color: Colors.white),
+              style: textStyle.copyWith(color: Colors.white),
             ),
           );
         },
@@ -52,10 +51,7 @@ class SlidingSheetWidgetPage extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               'This is the footer',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  .copyWith(color: Colors.black),
+              style: textStyle.copyWith(color: Colors.black),
             ),
           );
         },

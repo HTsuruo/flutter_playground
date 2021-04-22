@@ -3,9 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class Tiles extends HookWidget {
   const Tiles({
-    Key key,
-    @required this.title,
-    @required this.tiles,
+    Key? key,
+    required this.title,
+    required this.tiles,
   }) : super(key: key);
 
   final String title;

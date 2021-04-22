@@ -16,7 +16,7 @@ void main() {
 }
 
 class App extends HookWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,29 +41,28 @@ class App extends HookWidget {
 
 // AnimationControllerを使ってハンドリングするスタンダードなアニメーション方法
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  Animation<Color> animation;
-  AnimationController controller;
+  late final AnimationController controller = AnimationController(
+    duration: const Duration(seconds: 3),
+    vsync: this,
+  );
+  late final curvedAnimate = CurvedAnimation(
+    parent: controller,
+    curve: Curves.easeInOut,
+  );
+  late final Animation<Color?> animation =
+      ColorTween(begin: Colors.redAccent, end: Colors.blue)
+          .animate(curvedAnimate);
 
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(
-      duration: const Duration(seconds: 3),
-      vsync: this,
-    );
-    final curvedAnimate = CurvedAnimation(
-      parent: controller,
-      curve: Curves.easeInOut,
-    );
-    animation = ColorTween(begin: Colors.redAccent, end: Colors.blue)
-        .animate(curvedAnimate);
     animation.addListener(() {
       setState(() {});
     });
@@ -105,7 +104,7 @@ class _HomePageState extends State<HomePage>
             height: 100,
             color: animation.value,
           ),
-          Text('value: ${animation?.value}'),
+          Text('value: ${animation.value}'),
           _AnimatedContainer(animation: animation),
         ],
       ),
@@ -116,11 +115,11 @@ class _HomePageState extends State<HomePage>
 // AnimatedWidgetを継承すれば、リスナーの登録やsetStateの再描画などを意識する必要がなくなる
 class _AnimatedContainer extends AnimatedWidget {
   const _AnimatedContainer({
-    Key key,
-    this.animation,
+    Key? key,
+    required this.animation,
   }) : super(key: key, listenable: animation);
 
-  final Animation<Color> animation;
+  final Animation<Color?> animation;
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:flutter_playground/stream/state_provider_sample/state_provider_n
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class StateProviderPage extends HookWidget {
-  const StateProviderPage({Key key}) : super(key: key);
+  const StateProviderPage({Key? key}) : super(key: key);
 
   static const routeName = '/state_provider';
   @override

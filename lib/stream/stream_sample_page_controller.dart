@@ -89,7 +89,7 @@ class StreamSamplePageController extends ChangeNotifier {
   }
 
   // listenの型がStreamSubscriptionで購読の状態をハンドリングすることができる
-  StreamSubscription<String> _sh;
+  late final StreamSubscription<String> _sh;
 
   @override
   void dispose() {

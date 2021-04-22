@@ -4,7 +4,7 @@ import 'package:flutter_playground/stream/stream_sample_page_controller.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class StreamSamplePage extends HookWidget {
-  const StreamSamplePage({Key key}) : super(key: key);
+  const StreamSamplePage({Key? key}) : super(key: key);
 
   static const routeName = '/stream_sample_page';
 
@@ -27,7 +27,7 @@ class StreamSamplePage extends HookWidget {
               return const Text('Not Found');
             }
             final data = snapshot.data;
-            return Text(data);
+            return Text(data ?? '');
           },
         ),
       ),

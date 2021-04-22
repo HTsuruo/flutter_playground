@@ -3,9 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class TabBarSliverListView extends HookWidget {
   const TabBarSliverListView({
-    Key key,
-    @required this.color,
-    @required this.pageName,
+    Key? key,
+    required this.color,
+    required this.pageName,
   }) : super(key: key);
 
   final Color color;

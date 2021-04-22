@@ -15,7 +15,7 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,10 +80,10 @@ class HomePage extends StatelessWidget {
   }
 }
 
-Future<T> showRadioSelector<T>({
-  @required BuildContext context,
-  @required T initialValue,
-  @required List<RadioParam<T>> data,
+Future<T?> showRadioSelector<T>({
+  required BuildContext context,
+  required T initialValue,
+  required List<RadioParam<T>> data,
 }) {
   return showModalBottomSheet<T>(
     context: context,

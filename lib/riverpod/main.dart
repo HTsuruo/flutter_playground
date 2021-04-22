@@ -14,7 +14,7 @@ void main() => runApp(
     );
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends HookWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   static const routeName = '/';
 
@@ -53,7 +53,7 @@ class HomePage extends HookWidget {
 //
 //class _Text extends HookWidget {
 //  const _Text({
-//    Key key,
+//    Key? key,
 //  }) : super(key: key);
 //
 //  @override
@@ -63,7 +63,7 @@ class HomePage extends HookWidget {
 //}
 //
 //class _StateNotifierText extends HookWidget {
-//  const _StateNotifierText({Key key}) : super(key: key);
+//  const _StateNotifierText({Key? key}) : super(key: key);
 //  @override
 //  Widget build(BuildContext context) {
 //    return Text(useProvider(sampleStateNotifierProvider.state).toString());
@@ -72,7 +72,7 @@ class HomePage extends HookWidget {
 //
 //// stateless widgetだけでなく、statefulのwidgetも用意されている
 //class _StateFulSample extends StatefulHookWidget {
-//  const _StateFulSample({Key key}) : super(key: key);
+//  const _StateFulSample({Key? key}) : super(key: key);
 //  @override
 //  _StateFulSampleState createState() => _StateFulSampleState();
 //}

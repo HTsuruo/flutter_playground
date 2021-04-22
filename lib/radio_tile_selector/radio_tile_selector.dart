@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class RadioTileSelector<T> extends ChangeNotifier {
-  T _groupValue;
+  late T _groupValue;
   T get groupValue => _groupValue;
 
   // ignore: use_setters_to_change_properties
@@ -11,7 +11,7 @@ class RadioTileSelector<T> extends ChangeNotifier {
 
   Future<void> onChange(
     BuildContext context, {
-    @required T value,
+    required T value,
   }) async {
     _groupValue = value;
     notifyListeners();

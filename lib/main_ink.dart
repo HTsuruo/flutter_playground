@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(const App());
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _BoxNg extends StatelessWidget {
-  const _BoxNg({Key key}) : super(key: key);
+  const _BoxNg({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -52,7 +52,7 @@ class _BoxNg extends StatelessWidget {
 }
 
 class _BoxInnerBox extends StatelessWidget {
-  const _BoxInnerBox({Key key}) : super(key: key);
+  const _BoxInnerBox({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -70,7 +70,7 @@ class _BoxInnerBox extends StatelessWidget {
 }
 
 class _BoxOk extends StatelessWidget {
-  const _BoxOk({Key key}) : super(key: key);
+  const _BoxOk({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     // Inkで囲ってそれで描画するのが正解
@@ -85,7 +85,7 @@ class _BoxOk extends StatelessWidget {
 }
 
 class _BoxMaterial extends StatelessWidget {
-  const _BoxMaterial({Key key}) : super(key: key);
+  const _BoxMaterial({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     // MaterialでもInkと同様だが、Ink Effect用の描画をしたいだけならInkが適切(そのためにあとから追加されたWidget)
@@ -99,7 +99,7 @@ class _BoxMaterial extends StatelessWidget {
 }
 
 class _BoxMaterialColor extends StatelessWidget {
-  const _BoxMaterialColor({Key key}) : super(key: key);
+  const _BoxMaterialColor({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     // ベタ塗りのWidgetを親に持っている場合、Inkで包んでも無効化できない
@@ -118,7 +118,7 @@ class _BoxMaterialColor extends StatelessWidget {
 }
 
 class _BoxDecoration extends StatelessWidget {
-  const _BoxDecoration({Key key}) : super(key: key);
+  const _BoxDecoration({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Ink(
@@ -136,7 +136,7 @@ class _BoxDecoration extends StatelessWidget {
 }
 
 class _BoxImage extends StatelessWidget {
-  const _BoxImage({Key key}) : super(key: key);
+  const _BoxImage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     // 画像の場合はそれ用のコンストラクターがあって便利

@@ -4,7 +4,7 @@ import 'package:flutter_playground/stream/state_provider_sample/state_provider_c
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class StateProviderNextPage extends HookWidget {
-  const StateProviderNextPage({Key key}) : super(key: key);
+  const StateProviderNextPage({Key? key}) : super(key: key);
 
   static const routeName = '/state_provider_next';
 

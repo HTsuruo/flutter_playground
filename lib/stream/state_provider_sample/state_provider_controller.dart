@@ -23,16 +23,12 @@ class StateProviderController extends ChangeNotifier {
     // ソース見たら`StreamController<T>.broadcast()`となってましたね、理解です
     // StreamController.broadcastだと購読以降のイベントしか流れてこないので別途streamを用意して格納するなど必要そう
     // そもそもそんなケースは少ない???
-    _sh = _read(stateProvider).stream.listen((event) {
-      logger.fine(event);
-    });
+    _sh = _read(stateProvider).stream.listen(logger.fine);
   }
 
   final Reader _read;
-
   String get state => _read(stateProvider).state;
-
-  StreamSubscription _sh;
+  late final StreamSubscription _sh;
 
   @override
   void dispose() {

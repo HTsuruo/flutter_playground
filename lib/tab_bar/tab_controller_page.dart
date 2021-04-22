@@ -4,7 +4,7 @@ import 'package:flutter_playground/tab_bar/components/components.dart';
 
 ///　[TabController]と[TickerProviderStateMixin]で構築するパターン
 class TabControllerPage extends StatefulWidget {
-  const TabControllerPage({Key key}) : super(key: key);
+  const TabControllerPage({Key? key}) : super(key: key);
   static const routeName = '/tab_controller_page';
 
   @override
@@ -13,12 +13,14 @@ class TabControllerPage extends StatefulWidget {
 
 class _TabControllerPageState extends State<TabControllerPage>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  late final TabController _tabController = TabController(
+    length: tabs.length,
+    vsync: this,
+  );
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: tabs.length, vsync: this);
 
     // TabViewスワイプアクションを検知したい場合はaddListerで変更を監視する
     // 但し、TabBarタップ時にはタップ操作とTabViewの変更検知で重複して2回呼ばれるのでケアが必要

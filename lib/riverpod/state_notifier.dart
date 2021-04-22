@@ -9,7 +9,7 @@ final sampleStateNotifierProvider =
 );
 
 class SampleController extends StateNotifier<int> {
-  SampleController({this.value}) : super(0) {
+  SampleController({required this.value}) : super(0) {
     _init();
   }
 
@@ -33,7 +33,7 @@ class SampleController extends StateNotifier<int> {
 }
 
 class StateNotifierPage extends HookWidget {
-  const StateNotifierPage({Key key}) : super(key: key);
+  const StateNotifierPage({Key? key}) : super(key: key);
 
   static const routeName = '/state_notifier';
 
@@ -59,7 +59,7 @@ class StateNotifierPage extends HookWidget {
 // buildの中でuseProviderを使いcontrollerを宣言した場合
 // 画面遷移時にinit, ボタン押下時にincrement, 画面を閉じたらdispose
 class _FabUserProviderPattern extends HookWidget {
-  const _FabUserProviderPattern({Key key}) : super(key: key);
+  const _FabUserProviderPattern({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final controller = useProvider(sampleStateNotifierProvider(4));
@@ -72,7 +72,7 @@ class _FabUserProviderPattern extends HookWidget {
 // context.readの場合
 // ボタン押下時ににinit, increment, dispose をすべて行う
 class _FabContextPattern extends StatelessWidget {
-  const _FabContextPattern({Key key}) : super(key: key);
+  const _FabContextPattern({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
 
 class StatelessSamplePage extends StatelessWidget {
-  const StatelessSamplePage({Key key}) : super(key: key);
+  const StatelessSamplePage({Key? key}) : super(key: key);
 
   static const routeName = '/stateless_sample_page';
 
@@ -34,7 +34,7 @@ class StatelessSamplePage extends StatelessWidget {
 }
 
 class _ColorTile extends StatelessWidget {
-  const _ColorTile({Key key, @required this.color}) : super(key: key);
+  const _ColorTile({Key? key, required this.color}) : super(key: key);
 
   final Color color;
 

@@ -11,7 +11,7 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
 /// 特にアイコンがHeaderの右横に配置されるのは固定ぽい
 /// →Expandable, ExpandableNotifier, and ExpandableButtonを利用してカスタマイズできる
 class _ExpandablePanel extends StatelessWidget {
-  const _ExpandablePanel({Key key}) : super(key: key);
+  const _ExpandablePanel({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ExpandablePanel(
@@ -65,18 +65,17 @@ class _ExpandablePanel extends StatelessWidget {
 
 /// ExpandableController使うとある程度自由にカスタマイズできる
 class _ExpandableCard extends StatefulWidget {
-  const _ExpandableCard({Key key}) : super(key: key);
+  const _ExpandableCard({Key? key}) : super(key: key);
 
   @override
   __ExpandableCardState createState() => __ExpandableCardState();
 }
 
 class __ExpandableCardState extends State<_ExpandableCard> {
-  ExpandableController controller;
+  late final ExpandableController controller = ExpandableController();
 
   @override
   void initState() {
-    controller = ExpandableController();
     controller.addListener(() {
       logger.fine(controller.value);
       setState(() {});
@@ -123,8 +122,8 @@ class __ExpandableCardState extends State<_ExpandableCard> {
 /// WidgetをAddするような使い方ではない
 class _CommonWidget extends StatelessWidget {
   const _CommonWidget({
-    Key key,
-    @required this.expanded,
+    Key? key,
+    required this.expanded,
   }) : super(key: key);
 
   final bool expanded;

@@ -21,7 +21,7 @@ void main() {
 final rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 class App extends HookWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ const _snackBar = SnackBar(
 );
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,19 +90,19 @@ class HomePage extends StatelessWidget {
           const Divider(),
           ListTile(
             title: const Text(
-                'rootScaffoldMessengerKey.currentState.showSnackBar'),
-            subtitle: const Text('GlobalKeyをMaterialAppにセットして呼び出す'),
-            // `rootScaffoldMessengerKey`をscaffoldMessengerKeyに
+                'rootScaffoldMessengerKey?.currentState.showSnackBar'),
+            subtitle: const Text('GlobalKey?をMaterialAppにセットして呼び出す'),
+            // `rootScaffoldMessengerKey?`をscaffoldMessengerKey?に
             // セットしないと存在しないのでエラーになる
             onTap: () =>
-                rootScaffoldMessengerKey.currentState.showSnackBar(_snackBar),
+                rootScaffoldMessengerKey.currentState!.showSnackBar(_snackBar),
           ),
           const Divider(),
           ListTile(
-            title: const Text('Provider経由でGlobalKeyを呼び出す'),
+            title: const Text('Provider経由でGlobalKey?を呼び出す'),
             onTap: () => context
                 .read(scaffoldMessengerKey)
-                .currentState
+                .currentState!
                 .showSnackBar(_snackBar),
           ),
           const Divider(),
@@ -136,7 +136,7 @@ class HomePage extends StatelessWidget {
               );
               context
                   .read(scaffoldMessengerKey)
-                  .currentState
+                  .currentState!
                   .showSnackBar(snackBar);
             },
           ),
@@ -161,7 +161,7 @@ class HomePage extends StatelessWidget {
               // 同一のSnackBarが既に表示されているか否かを判定する術はあるのだろうか
               // ref. https://stackoverflow.com/questions/57210423/how-to-check-if-there-is-a-snack-bar-showing
               final featureController =
-                  context.read(scaffoldMessengerKey).currentState.showSnackBar(
+                  context.read(scaffoldMessengerKey).currentState!.showSnackBar(
                         SnackBar(
                           duration: const Duration(seconds: 5),
                           backgroundColor: Colors.black,

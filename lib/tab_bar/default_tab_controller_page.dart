@@ -8,7 +8,7 @@ import 'components/components.dart';
 /// [TabBar]と[TabBarView]のcontextの祖先となるように包むだけ
 /// [TabBar]と[TabBarView]のcontrollerはそれぞれ内部的にDefaultController.ofで参照している
 class DefaultTabControllerPage extends HookWidget {
-  const DefaultTabControllerPage({Key key}) : super(key: key);
+  const DefaultTabControllerPage({Key? key}) : super(key: key);
 
   static const routeName = '/default_tab_controller_page';
 

@@ -11,7 +11,7 @@ void main() => runApp(
     );
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     const gap = Gap(16);
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
 /// ToggleButton Class(Material Library)
 /// https://api.flutter.dev/flutter/material/ToggleButtons-class.html
 class _ToggleButton extends StatefulWidget {
-  const _ToggleButton({Key key}) : super(key: key);
+  const _ToggleButton({Key? key}) : super(key: key);
 
   @override
   _ToggleButtonState createState() => _ToggleButtonState();
@@ -95,7 +95,7 @@ class ToggleController extends ChangeNotifier {
 }
 
 class _CustomizedToggleButton extends HookWidget {
-  const _CustomizedToggleButton({Key key}) : super(key: key);
+  const _CustomizedToggleButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +124,7 @@ class _CustomizedToggleButton extends HookWidget {
 }
 
 class _CupertinoSegmentedControl extends StatefulWidget {
-  const _CupertinoSegmentedControl({Key key}) : super(key: key);
+  const _CupertinoSegmentedControl({Key? key}) : super(key: key);
 
   @override
   _CupertinoSegmentedControlState createState() =>
@@ -135,9 +135,9 @@ class _CupertinoSegmentedControlState
     extends State<_CupertinoSegmentedControl> {
   int groupValue = 0;
 
-  void _selected(int index) {
+  void _selected(int? index) {
     setState(() {
-      groupValue = index;
+      groupValue = index!;
     });
   }
 
@@ -166,7 +166,7 @@ class _CupertinoSegmentedControlState
 }
 
 class CupertinoSegmentedControlCustomColor extends StatefulWidget {
-  const CupertinoSegmentedControlCustomColor({Key key}) : super(key: key);
+  const CupertinoSegmentedControlCustomColor({Key? key}) : super(key: key);
   @override
   _CupertinoSegmentedControlCustomColorState createState() =>
       _CupertinoSegmentedControlCustomColorState();
@@ -176,9 +176,9 @@ class _CupertinoSegmentedControlCustomColorState
     extends State<CupertinoSegmentedControlCustomColor> {
   int groupValue = 0;
 
-  void _selected(int index) {
+  void _selected(int? index) {
     setState(() {
-      groupValue = index;
+      groupValue = index!;
     });
   }
 

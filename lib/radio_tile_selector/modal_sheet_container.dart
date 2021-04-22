@@ -3,17 +3,17 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class ModalSheetContainer extends HookWidget {
   const ModalSheetContainer({
-    Key key,
-    @required this.title,
-    @required this.child,
+    Key? key,
+    required this.title,
+    required this.child,
     this.subTitle,
     this.scrollController,
   }) : super(key: key);
 
   final String title;
-  final String subTitle;
+  final String? subTitle;
   final Widget child;
-  final ScrollController scrollController;
+  final ScrollController? scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -49,15 +49,15 @@ class ModalSheetContainer extends HookWidget {
                   children: [
                     Text(
                       title,
-                      style: theme.textTheme.bodyText2.copyWith(
+                      style: theme.textTheme.bodyText2!.copyWith(
                         fontWeight: FontWeight.bold,
                         color: theme.colorScheme.surface,
                       ),
                     ),
                     if (subTitle != null)
                       Text(
-                        subTitle,
-                        style: theme.textTheme.caption.copyWith(
+                        subTitle!,
+                        style: theme.textTheme.caption!.copyWith(
                           color: theme.colorScheme.surface,
                         ),
                       ),

@@ -20,7 +20,7 @@ void main() {
 /// ref. https://api.flutter.dev/flutter/material/TabBar-class.html
 /// ref. https://api.flutter.dev/flutter/material/TabBarView-class.html
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class App extends StatelessWidget {
 }
 
 class _ListPage extends StatelessWidget {
-  const _ListPage({Key key}) : super(key: key);
+  const _ListPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     List<ListTile> _tiles() {

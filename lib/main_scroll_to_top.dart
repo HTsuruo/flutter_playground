@@ -9,7 +9,7 @@ void main() => runApp(
     );
 
 class App extends StatelessWidget {
-  const App({Key key}) : super(key: key);
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ final scrollController = Provider<ScrollController>(
 );
 
 class RootPage extends HookWidget {
-  const RootPage({Key key}) : super(key: key);
+  const RootPage({Key? key}) : super(key: key);
 
   static const routeName = '/';
 
@@ -85,7 +85,7 @@ class RootPage extends HookWidget {
 }
 
 class HomePage extends HookWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   static const routeName = '/home';
 
@@ -126,7 +126,7 @@ class HomePage extends HookWidget {
 
 /// SliverAppBarとの組み合わせ
 class NotificationPage extends HookWidget {
-  const NotificationPage({Key key}) : super(key: key);
+  const NotificationPage({Key? key}) : super(key: key);
 
   static const routeName = '/notification';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StatefulSamplePage extends StatefulWidget {
-  const StatefulSamplePage({Key key}) : super(key: key);
+  const StatefulSamplePage({Key? key}) : super(key: key);
   static const routeName = '/stateful_sample_page';
 
   @override

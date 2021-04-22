@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class ListViewContent extends StatelessWidget {
   const ListViewContent({
-    Key key,
+    Key? key,
     this.controller,
     this.physics,
   }) : super(key: key);
 
-  final ScrollController controller;
-  final ScrollPhysics physics;
+  final ScrollController? controller;
+  final ScrollPhysics? physics;
 
   @override
   Widget build(BuildContext context) {
