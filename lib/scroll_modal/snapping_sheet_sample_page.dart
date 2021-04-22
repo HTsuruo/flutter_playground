@@ -13,14 +13,14 @@ class SnappingSheetSamplePage extends StatelessWidget {
       body: SnappingSheet(
         sheetBelow: SnappingSheetContent(
           child: const ListViewContent(),
-          heightBehavior: const SnappingSheetHeight.fit(),
         ),
         grabbing: GrabSection(),
         grabbingHeight: 60,
-        snapPositions: const [
-          SnapPosition(positionFactor: 0),
-          SnapPosition(positionFactor: 0.9),
+        snappingPositions: const [
+          SnappingPosition.factor(positionFactor: 0),
+          SnappingPosition.factor(positionFactor: 0.9),
         ],
+        child: const SizedBox.shrink(),
       ),
     );
   }

@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 final sampleStateNotifierProvider =
-    StateNotifierProvider.family.autoDispose<SampleController, int>(
+    StateNotifierProvider.family.autoDispose<SampleController, int, int>(
   (ref, value) => SampleController(value: value),
 );
 
@@ -62,7 +62,7 @@ class _FabUserProviderPattern extends HookWidget {
   const _FabUserProviderPattern({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final controller = useProvider(sampleStateNotifierProvider(4));
+    final controller = useProvider(sampleStateNotifierProvider(4).notifier);
     return FloatingActionButton(
       onPressed: controller.increment,
     );
@@ -76,7 +76,8 @@ class _FabContextPattern extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () => context.read(sampleStateNotifierProvider(5)).increment(),
+      onPressed: () =>
+          context.read(sampleStateNotifierProvider(5).notifier).increment(),
     );
   }
 }

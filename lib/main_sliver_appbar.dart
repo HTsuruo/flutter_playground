@@ -227,7 +227,7 @@ class _SliverWithFuture extends HookWidget {
     );
   }
 
-  Widget error(Object error, StackTrace stackTrace) {
+  Widget error(Object error, StackTrace? stackTrace) {
     return Scaffold(
       body: Center(
         child: Text(error.toString()),

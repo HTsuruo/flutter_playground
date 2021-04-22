@@ -9,7 +9,7 @@ final stateProviderController = ChangeNotifierProvider.autoDispose(
 );
 
 // サンプルなので命名は仮
-final stateProvider = StateProvider<String>((ref) => null);
+final stateProvider = StateProvider<String?>((ref) => null);
 
 class StateProviderController extends ChangeNotifier {
   StateProviderController(this._read) {
@@ -27,7 +27,7 @@ class StateProviderController extends ChangeNotifier {
   }
 
   final Reader _read;
-  String get state => _read(stateProvider).state;
+  String get state => _read(stateProvider).state!; // `requireState`などとすると良い
   late final StreamSubscription _sh;
 
   @override
