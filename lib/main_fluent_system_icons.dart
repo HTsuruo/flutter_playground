@@ -30,7 +30,8 @@ class HomePage extends StatelessWidget {
           children: const [
             Text('text_bullet_list_24_regular'),
             Gap(16),
-            Icon(FluentIcons.text_bullet_list_24_regular),
+            // アップデートにより変更前の命名は期待通りエラーがでるようになった
+            // Icon(FluentIcons.text_bullet_list_24_regular),
             Gap(40),
             Text('text_bullet_list_ltr_24_regular'),
             Gap(16),
