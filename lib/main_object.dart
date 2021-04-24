@@ -56,6 +56,10 @@ class Hoge {
   // ただし、同じObjectとして扱うためには`==`の変更も必要
   int get hashCode => name.hashCode;
 
+  // 他のフィールドを持っていた時には下記の書き方となる
+  // ちなみに`^`はXOR（排他的論理和）で同じhashCodeだとゼロとなる
+  // int get hashCode => name.hashCode ^ name.age;
+
   @override
   String toString() {
     // return super.toString();
