@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/state_management/main_scaffold.dart';
 
 class Ex1SetStatePage extends StatefulWidget {
   const Ex1SetStatePage({Key? key}) : super(key: key);
@@ -10,9 +11,7 @@ class Ex1SetStatePage extends StatefulWidget {
 }
 
 class _Ex1SetStatePageState extends State<Ex1SetStatePage> {
-  final defaultColor = Colors.blueAccent;
-  final changedColor = Colors.redAccent;
-  late Color color = defaultColor;
+  int counter = 0;
 
   // change circle color
   void _changeColor() {
@@ -21,35 +20,15 @@ class _Ex1SetStatePageState extends State<Ex1SetStatePage> {
     // dirtyなElementからWidgetの再生性とElementツリーの更新を行っている
     // 肝はElementそのものを管理することにある
     // ref. https://zenn.dev/chooyan/articles/7c2bf39f81cbed
-    setState(() {
-      if (color == defaultColor) {
-        color = changedColor;
-      } else {
-        color = defaultColor;
-      }
-    });
+    setState(() => counter++);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.runtimeType.toString()),
-      ),
-      body: Center(
-        child: Container(
-          width: 80,
-          height: 80,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(40),
-          ),
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _changeColor,
-        child: const Icon(Icons.sync),
-      ),
+    return MainScaffold(
+      title: widget.runtimeType.toString(),
+      counter: counter,
+      onPressed: _changeColor,
     );
   }
 }

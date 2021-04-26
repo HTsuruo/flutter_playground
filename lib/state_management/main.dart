@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
 import 'package:flutter_playground/state_management/ex1_set_state_page.dart';
+import 'package:flutter_playground/state_management/ex2_inherited_widget_page.dart';
 import 'package:flutter_playground/tiles.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
@@ -19,6 +20,7 @@ String _title = 'state management';
 Map<String, WidgetBuilder> _routes = {
   // routeName: (context) => Page Class
   Ex1SetStatePage.routeName: (context) => const Ex1SetStatePage(),
+  Ex2InheritedWidgetPage.routeName: (context) => const Ex2InheritedWidgetPage(),
 };
 
 class App extends StatelessWidget {
