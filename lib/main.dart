@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simple_logger/simple_logger.dart';
-
-import 'logger.dart';
 
 void main() {
-  logger.setLevel(Level.FINEST, includeCallerInfo: true);
   runApp(
     const App(),
   );
