@@ -45,6 +45,14 @@ Insert emoji here😀
 
 [不正なリンクフォーマット](htt://markdownlivepreview.com/)
 
+> 引用文もかける
+
+```
+コードブロックはcardのcolorを使うのでlightThemeのデフォルトだと白になってしまう。
+color: theme.cardTheme.color ?? theme.cardColor,
+`MarkdownStyleSheetBaseTheme.cupertino`を使うとsystemColorになるがフォントサイズが大きくなる
+```
+
 ''';
 
 class HomePage extends StatelessWidget {
@@ -61,7 +69,7 @@ class HomePage extends StatelessWidget {
             // `Markdown`Widgetは内部でListViewを持っているのが特徴
             child: Markdown(
               data: markdownSyntax,
-              selectable: true,
+              // selectable: true,
               onTapLink: (_text, href, _title) async {
                 // `href`はnullable
                 // リンクフォーマットにも関わらずhttp or httpsではじまらない場合にnullで返ってくる
@@ -84,7 +92,7 @@ class HomePage extends StatelessWidget {
                 padding: const EdgeInsets.all(16),
                 child: MarkdownBody(
                   data: markdownSyntax,
-                  selectable: true,
+                  // selectable: true,
                   onTapLink: (text, href, title) =>
                       launch(href!, forceSafariVC: true),
                 ),
