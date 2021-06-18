@@ -21,36 +21,33 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
+  animations:
+  cupertino_icons:
+  dartx:
+  expandable:
+  fluentui_system_icons:
   flutter:
     sdk: flutter
-  flutter_localizations: # 日本語フォントが中華フォントになってしまうので
-    sdk: flutter
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons:
-  animations:
-  url_launcher:
-  webview_flutter:
-  hooks_riverpod:
   flutter_hooks:
-  state_notifier:
-  material_segmented_control:
+  flutter_localizations:
+    sdk: flutter
   gap:
+  hooks_riverpod:
+  material_segmented_control:
+  modal_bottom_sheet:
+  modal_progress_hud:
+  rxdart:
+  simple_logger:
   sliding_sheet:
   snapping_sheet:
-  modal_bottom_sheet:
-  dartx:
-  modal_progress_hud:
-  simple_logger:
-  fluentui_system_icons:
-  rxdart:
-  expandable:
+  state_notifier:
+  url_launcher:
+  webview_flutter:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic_mono: any
+  pedantic_mono:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

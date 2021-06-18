@@ -3,6 +3,3 @@ analyzer:
   exclude:
     - lib/**/*.g.dart
     - lib/**/*.freezed.dart
-linter:
-  rules:
-    sort_pub_dependencies: false
