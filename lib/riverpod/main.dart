@@ -1,16 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/riverpod/state_notifier.dart';
+import 'package:flutter_playground/logger.dart';
+import 'package:flutter_playground/riverpod/change_notifer_page.dart';
+import 'package:flutter_playground/riverpod/inherited_widget_page.dart';
+import 'package:flutter_playground/riverpod/provider_page.dart';
+import 'package:flutter_playground/riverpod/set_state_page.dart';
+import 'package:flutter_playground/riverpod/state_notifier_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:simple_logger/simple_logger.dart';
 
-// 通常のProvider（値を渡すだけ）
-final sampleProvider = Provider((ref) => 'tsuruoka4');
-final sampleStateProvider = StateProvider((ref) => 'tsuruokaState');
+import '../tiles.dart';
 
-void main() => runApp(
-      const ProviderScope(
-        child: App(),
-      ),
-    );
+void main() {
+  logger.setLevel(Level.INFO, includeCallerInfo: true);
+  runApp(
+    const ProviderScope(
+      child: App(),
+    ),
+  );
+}
+
+// Change this for any sample pages.
+String _title = 'Riverpod Sample Page';
+Map<String, WidgetBuilder> _routes = {
+  // routeName: (context) => Page Class
+  StateNotifierPage.routeName: (context) => const StateNotifierPage(),
+  ChangeNotifierPage.routeName: (context) => const ChangeNotifierPage(),
+  ProviderPage.routeName: (context) => const ProviderPage(),
+  InheritedWidgetPage.routeName: (context) => const InheritedWidgetPage(),
+  SetStatePage.routeName: (context) => const SetStatePage(),
+};
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -18,68 +36,28 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: HomePage.routeName,
-      routes: {
-        HomePage.routeName: (context) => const HomePage(),
-        StateNotifierPage.routeName: (context) => const StateNotifierPage(),
-      },
-    );
-  }
-}
-
-class HomePage extends ConsumerWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  static const routeName = '/';
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: ListView(
-        children: [
-          ListTile(
-            title: const Text('StateNotifier'),
-            trailing: const Icon(Icons.navigate_next),
-            onTap: () =>
-                Navigator.pushNamed(context, StateNotifierPage.routeName),
-          )
-        ],
+      theme: ThemeData.from(
+        colorScheme: const ColorScheme.light(),
+      ).copyWith(
+        dividerTheme: const DividerThemeData(space: 0),
       ),
+      // 下記エラー回避のためBuilderで包んだ
+      // Navigator operation requested with
+      // a context that does not include a Navigator.
+      home: Builder(
+        builder: (context) => Tiles(
+          title: _title,
+          tiles: _routes.entries
+              .map(
+                (route) => ListTile(
+                  title: Text(route.key),
+                  onTap: () => Navigator.of(context).pushNamed(route.key),
+                ),
+              )
+              .toList(),
+        ),
+      ),
+      routes: _routes,
     );
   }
 }
-
-//
-//class _Text extends HookWidget {
-//  const _Text({
-//    Key? key,
-//  }) : super(key: key);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return Text(useProvider(sampleProvider));
-//  }
-//}
-//
-//class _StateNotifierText extends HookWidget {
-//  const _StateNotifierText({Key? key}) : super(key: key);
-//  @override
-//  Widget build(BuildContext context) {
-//    return Text(useProvider(sampleStateNotifierProvider.state).toString());
-//  }
-//}
-//
-//// stateless widgetだけでなく、statefulのwidgetも用意されている
-//class _StateFulSample extends StatefulHookWidget {
-//  const _StateFulSample({Key? key}) : super(key: key);
-//  @override
-//  _StateFulSampleState createState() => _StateFulSampleState();
-//}
-//
-//class _StateFulSampleState extends State<_StateFulSample> {
-//  @override
-//  Widget build(BuildContext context) {
-//    return Text('this is stateful : ${useProvider(sampleProvider)}');
-//  }
-//}
