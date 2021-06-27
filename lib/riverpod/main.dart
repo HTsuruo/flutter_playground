@@ -35,17 +35,18 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        appBar: AppBar(),
-        body: ListView(
-          children: [
-            ListTile(
-              title: const Text('StateNotifier'),
-              trailing: const Icon(Icons.navigate_next),
-              onTap: () =>
-                  Navigator.pushNamed(context, StateNotifierPage.routeName),
-            )
-          ],
-        ));
+      appBar: AppBar(),
+      body: ListView(
+        children: [
+          ListTile(
+            title: const Text('StateNotifier'),
+            trailing: const Icon(Icons.navigate_next),
+            onTap: () =>
+                Navigator.pushNamed(context, StateNotifierPage.routeName),
+          )
+        ],
+      ),
+    );
   }
 }
 
