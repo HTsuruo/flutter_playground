@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 final sampleStateNotifierProvider =
@@ -32,13 +31,13 @@ class SampleController extends StateNotifier<int> {
   }
 }
 
-class StateNotifierPage extends HookWidget {
+class StateNotifierPage extends ConsumerWidget {
   const StateNotifierPage({Key? key}) : super(key: key);
 
   static const routeName = '/state_notifier';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
 //    final state = useProvider(sampleStateNotifierProvider.state);
 
     return Scaffold(
@@ -58,11 +57,11 @@ class StateNotifierPage extends HookWidget {
 
 // buildの中でuseProviderを使いcontrollerを宣言した場合
 // 画面遷移時にinit, ボタン押下時にincrement, 画面を閉じたらdispose
-class _FabUserProviderPattern extends HookWidget {
+class _FabUserProviderPattern extends ConsumerWidget {
   const _FabUserProviderPattern({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
-    final controller = useProvider(sampleStateNotifierProvider(4).notifier);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(sampleStateNotifierProvider(4).notifier);
     return FloatingActionButton(
       onPressed: controller.increment,
     );
@@ -71,13 +70,13 @@ class _FabUserProviderPattern extends HookWidget {
 
 // context.readの場合
 // ボタン押下時ににinit, increment, dispose をすべて行う
-class _FabContextPattern extends StatelessWidget {
+class _FabContextPattern extends ConsumerWidget {
   const _FabContextPattern({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(
       onPressed: () =>
-          context.read(sampleStateNotifierProvider(5).notifier).increment(),
+          ref.read(sampleStateNotifierProvider(5).notifier).increment(),
     );
   }
 }

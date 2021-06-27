@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() => runApp(
       const ProviderScope(
@@ -176,7 +175,7 @@ final _futureProvider = FutureProvider<bool>((ref) async {
   return true;
 });
 
-class _SliverWithFuture extends HookWidget {
+class _SliverWithFuture extends ConsumerWidget {
   const _SliverWithFuture({Key? key}) : super(key: key);
 
   // ignore: avoid_positional_boolean_parameters
@@ -236,8 +235,8 @@ class _SliverWithFuture extends HookWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final data = useProvider(_futureProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final data = ref.watch(_futureProvider);
     print(data);
     return data.when(data: success, loading: loading, error: error);
   }

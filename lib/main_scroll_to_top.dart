@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() => runApp(
       const ProviderScope(
@@ -54,14 +53,14 @@ final scrollController = Provider<ScrollController>(
   (ref) => ScrollController(),
 );
 
-class RootPage extends HookWidget {
+class RootPage extends ConsumerWidget {
   const RootPage({Key? key}) : super(key: key);
 
   static const routeName = '/';
 
   @override
-  Widget build(BuildContext context) {
-    final controller = useProvider(changeNotifierProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(changeNotifierProvider);
 
     const barItems = [
       BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
@@ -84,14 +83,14 @@ class RootPage extends HookWidget {
   }
 }
 
-class HomePage extends HookWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   static const routeName = '/home';
 
   @override
-  Widget build(BuildContext context) {
-    final controller = useProvider(scrollController);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(scrollController);
 
     return Scaffold(
       key: const PageStorageKey(routeName),
@@ -125,14 +124,14 @@ class HomePage extends HookWidget {
 }
 
 /// SliverAppBarとの組み合わせ
-class NotificationPage extends HookWidget {
+class NotificationPage extends ConsumerWidget {
   const NotificationPage({Key? key}) : super(key: key);
 
   static const routeName = '/notification';
 
   @override
-  Widget build(BuildContext context) {
-    final controller = useProvider(scrollController);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(scrollController);
     return Scaffold(
         key: const PageStorageKey(routeName),
         body: CustomScrollView(

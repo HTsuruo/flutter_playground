@@ -3,15 +3,12 @@ import 'package:flutter_playground/logger.dart';
 import 'package:flutter_playground/state_management/ex1_set_state_page.dart';
 import 'package:flutter_playground/state_management/ex2_inherited_widget_page.dart';
 import 'package:flutter_playground/tiles.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 void main() {
   logger.setLevel(Level.FINEST, includeCallerInfo: true);
   return runApp(
-    const ProviderScope(
-      child: const App(),
-    ),
+    const App(),
   );
 }
 

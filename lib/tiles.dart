@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Tiles extends HookWidget {
+class Tiles extends ConsumerWidget {
   const Tiles({
     Key? key,
     required this.title,
@@ -12,7 +12,7 @@ class Tiles extends HookWidget {
   final List<ListTile> tiles;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),

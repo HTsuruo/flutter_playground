@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_playground/riverpod/state_notifier.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // 通常のProvider（値を渡すだけ）
 final sampleProvider = Provider((ref) => 'tsuruoka4');
@@ -28,13 +27,13 @@ class App extends StatelessWidget {
   }
 }
 
-class HomePage extends HookWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   static const routeName = '/';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(),
         body: ListView(

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_playground/stream/stream_sample_page_controller.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class StreamSamplePage extends HookWidget {
+class StreamSamplePage extends ConsumerWidget {
   const StreamSamplePage({Key? key}) : super(key: key);
 
   static const routeName = '/stream_sample_page';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // 普通のStream/Sinkのサンプル
-    useProvider(streamSamplePageController);
+    ref.watch(streamSamplePageController);
     // useProvider(rxSampleController);
     return Scaffold(
       appBar: AppBar(
@@ -21,7 +20,7 @@ class StreamSamplePage extends HookWidget {
         // `_StreamBuilderBaseState<T, S>`のinitStateで実際にlistenしていることから分かる通り、
         // streamデータを用意するだけで良い感じにハンドリングして描画することができるWidgetということが分かる
         child: StreamBuilder<String>(
-          stream: useProvider(streamSamplePageController).data,
+          stream: ref.watch(streamSamplePageController).data,
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
               return const Text('Not Found');

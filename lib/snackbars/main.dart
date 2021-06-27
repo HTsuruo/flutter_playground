@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_playground/snackbars/navigator_provider.dart';
 import 'package:flutter_playground/snackbars/scaffold_messenger_provider.dart';
 import 'package:flutter_playground/snackbars/sub_page.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 import '../logger.dart';
@@ -20,16 +19,16 @@ void main() {
 
 final rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
-class App extends HookWidget {
+class App extends ConsumerWidget {
   const App({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     const locale = Locale('ja');
     logger.fine(rootScaffoldMessengerKey);
     return MaterialApp(
-      navigatorKey: useProvider(navigatorKey),
-      scaffoldMessengerKey: useProvider(scaffoldMessengerKey),
+      navigatorKey: ref.watch(navigatorKey),
+      scaffoldMessengerKey: ref.watch(scaffoldMessengerKey),
       locale: locale,
       supportedLocales: const [locale],
       localizationsDelegates: const [
@@ -56,10 +55,10 @@ const _snackBar = SnackBar(
   duration: const Duration(seconds: 2),
 );
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(),
       body: ListView(
@@ -100,7 +99,7 @@ class HomePage extends StatelessWidget {
           const Divider(),
           ListTile(
             title: const Text('Provider経由でGlobalKey?を呼び出す'),
-            onTap: () => context
+            onTap: () => ref
                 .read(scaffoldMessengerKey)
                 .currentState!
                 .showSnackBar(_snackBar),
@@ -134,7 +133,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () => logger.fine('onPressed action!!'),
                 ),
               );
-              context
+              ref
                   .read(scaffoldMessengerKey)
                   .currentState!
                   .showSnackBar(snackBar);
@@ -155,13 +154,13 @@ class HomePage extends StatelessWidget {
           ListTile(
             title: const Text('Customize Content'),
             onTap: () async {
-              logger.fine(context.read(scaffoldMessengerKey).currentState);
+              logger.fine(ref.read(scaffoldMessengerKey).currentState);
               // SnackBar連打時にSnackBarがなにかしらのキュー?に溜まってしまって
               // 連続して表示されてしまう
               // 同一のSnackBarが既に表示されているか否かを判定する術はあるのだろうか
               // ref. https://stackoverflow.com/questions/57210423/how-to-check-if-there-is-a-snack-bar-showing
               final featureController =
-                  context.read(scaffoldMessengerKey).currentState!.showSnackBar(
+                  ref.read(scaffoldMessengerKey).currentState!.showSnackBar(
                         SnackBar(
                           duration: const Duration(seconds: 5),
                           backgroundColor: Colors.black,

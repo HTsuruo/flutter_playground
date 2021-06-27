@@ -3,7 +3,7 @@ import 'package:flutter_playground/stream/state_provider_sample/state_provider_n
 import 'package:flutter_playground/stream/state_provider_sample/state_provider_page.dart';
 import 'package:flutter_playground/stream/stream_sample_page.dart';
 import 'package:flutter_playground/tiles.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
 
 import '../logger.dart';

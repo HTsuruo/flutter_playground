@@ -2,16 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
 import 'package:flutter_playground/radio_tile_selector/enum.dart';
 import 'package:flutter_playground/radio_tile_selector/radio_tile_sheet.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:simple_logger/simple_logger.dart';
 
 void main() {
-  logger.setLevel(Level.FINEST, includeCallerInfo: true);
-  runApp(
-    const ProviderScope(
-      child: App(),
-    ),
-  );
+  runApp(const App());
 }
 
 class App extends StatelessWidget {

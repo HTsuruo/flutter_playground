@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:simple_logger/simple_logger.dart';
-
-import '../logger.dart';
 
 void main() {
-  logger.setLevel(Level.FINEST, includeCallerInfo: true);
-  runApp(
-    const ProviderScope(
-      child: App(),
-    ),
-  );
+  runApp(const App());
 }
 
-class App extends HookWidget {
+class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
   @override

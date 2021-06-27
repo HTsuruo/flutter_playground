@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/snackbars/scaffold_messenger_provider.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SubPage extends StatelessWidget {
+class SubPage extends ConsumerWidget {
   const SubPage({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('サブページ'),
@@ -17,10 +17,7 @@ class SubPage extends StatelessWidget {
             // routeが変わっても、ScaffoldMessengerで共通で管理されている
             // （MaterialAppのscaffoldMessengerKey?を指定した場合）ので
             // 他の画面で表示されたsnackBarも操作できる
-            context
-                .read(scaffoldMessengerKey)
-                .currentState!
-                .hideCurrentSnackBar();
+            ref.read(scaffoldMessengerKey).currentState!.hideCurrentSnackBar();
           },
         ),
       ),

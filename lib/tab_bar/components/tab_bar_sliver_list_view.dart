@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
-class TabBarSliverListView extends HookWidget {
+class TabBarSliverListView extends StatelessWidget {
   const TabBarSliverListView({
     Key? key,
     required this.color,

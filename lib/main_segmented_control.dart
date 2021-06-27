@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() => runApp(
       const ProviderScope(
@@ -94,12 +93,12 @@ class ToggleController extends ChangeNotifier {
   }
 }
 
-class _CustomizedToggleButton extends HookWidget {
+class _CustomizedToggleButton extends ConsumerWidget {
   const _CustomizedToggleButton({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final controller = useProvider(_changeNotifierProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(_changeNotifierProvider);
 
     return LayoutBuilder(
       builder: (context, constraints) => ToggleButtons(

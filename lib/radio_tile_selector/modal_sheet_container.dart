@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
-class ModalSheetContainer extends HookWidget {
+class ModalSheetContainer extends StatelessWidget {
   const ModalSheetContainer({
     Key? key,
     required this.title,

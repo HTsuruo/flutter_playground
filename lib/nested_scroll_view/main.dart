@@ -2,18 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/nested_scroll_view/sample_1.dart';
 import 'package:flutter_playground/nested_scroll_view/sample_2.dart';
 import 'package:flutter_playground/nested_scroll_view/sample_3.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:simple_logger/simple_logger.dart';
-
-import '../logger.dart';
 
 void main() {
-  logger.setLevel(Level.FINEST, includeCallerInfo: true);
-  return runApp(
-    const ProviderScope(
-      child: const App(),
-    ),
-  );
+  return runApp(const App());
 }
 
 class App extends StatelessWidget {

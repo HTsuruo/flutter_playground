@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_playground/radio_tile_selector/enum.dart';
 import 'package:flutter_playground/radio_tile_selector/radio_tile_selector.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'modal_sheet_container.dart';
 
@@ -10,7 +9,7 @@ final radioTileSheet = ChangeNotifierProvider.autoDispose(
   (ref) => RadioTileSelector<SampleType>(),
 );
 
-class RadioTileSheet extends HookWidget {
+class RadioTileSheet extends ConsumerWidget {
   const RadioTileSheet({
     Key? key,
     this.title = 'サンプル',
@@ -19,8 +18,8 @@ class RadioTileSheet extends HookWidget {
   final String title;
 
   @override
-  Widget build(BuildContext context) {
-    final selector = useProvider(radioTileSheet);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final selector = ref.watch(radioTileSheet);
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
