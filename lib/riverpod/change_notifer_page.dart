@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final _countNotifier = ChangeNotifierProvider.autoDispose(
-  (ref) => _CountNotifier(),
+final _counter = ChangeNotifierProvider.autoDispose(
+  (ref) => _Counter(),
 );
 
-class _CountNotifier extends ChangeNotifier {
-  _CountNotifier();
+class _Counter extends ChangeNotifier {
+  _Counter();
 
   int _count = 0;
   int get count => _count;
@@ -31,7 +31,7 @@ class ChangeNotifierPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notifier = ref.watch(_countNotifier.notifier);
+    final notifier = ref.watch(_counter.notifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sample'),
@@ -65,7 +65,7 @@ class _Text extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // `select`指定することで指定のStateのみの変更を伝搬させることができる
-    final count = ref.watch(_countNotifier.select((s) => s.count));
+    final count = ref.watch(_counter.select((s) => s.count));
     return Text('count: $count');
   }
 }
@@ -74,7 +74,7 @@ class _RefreshText extends ConsumerWidget {
   const _RefreshText({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final refreshed = ref.watch(_countNotifier.select((s) => s.refreshed));
+    final refreshed = ref.watch(_counter.select((s) => s.refreshed));
     return Text('refreshed: $refreshed');
   }
 }
