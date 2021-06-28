@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
 import 'package:flutter_playground/riverpod/change_notifer_page.dart';
+import 'package:flutter_playground/riverpod/controller_pattern/consumer_scopoed_page.dart';
+import 'package:flutter_playground/riverpod/controller_pattern/stateless_page.dart';
 import 'package:flutter_playground/riverpod/inherited_widget_page.dart';
 import 'package:flutter_playground/riverpod/provider_page.dart';
 import 'package:flutter_playground/riverpod/set_state_page.dart';
@@ -25,6 +27,8 @@ Map<String, WidgetBuilder> _routes = {
   // routeName: (context) => Page Class
   StateNotifierPage.routeName: (context) => const StateNotifierPage(),
   ChangeNotifierPage.routeName: (context) => const ChangeNotifierPage(),
+  StatelessPage.routeName: (context) => const StatelessPage(),
+  ConsumerScopedPage.routeName: (context) => const ConsumerScopedPage(),
   ProviderPage.routeName: (context) => const ProviderPage(),
   InheritedWidgetPage.routeName: (context) => const InheritedWidgetPage(),
   SetStatePage.routeName: (context) => const SetStatePage(),
