@@ -43,9 +43,9 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            _audioPlayer.play('sounds/sample.mp3', volume: 2);
+            _audioPlayer.play('sounds/sample.mp3');
           },
-          child: const Text('play'),
+          child: const Text('sound play'),
         ),
       ),
     );
