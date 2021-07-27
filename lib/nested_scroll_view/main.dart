@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/nested_scroll_view/keep_safearea/no_safearea_page.dart';
+import 'package:flutter_playground/nested_scroll_view/keep_safearea/safearea_with_transparent_appbar_page.dart';
+import 'package:flutter_playground/nested_scroll_view/keep_safearea/safearea_with_wrap_page.dart';
 import 'package:flutter_playground/nested_scroll_view/sample_1.dart';
 import 'package:flutter_playground/nested_scroll_view/sample_2.dart';
 import 'package:flutter_playground/nested_scroll_view/sample_3.dart';
@@ -23,6 +26,11 @@ class App extends StatelessWidget {
         Sample1.routeName: (context) => const Sample1(),
         Sample2.routeName: (context) => const Sample2(),
         Sample3.routeName: (context) => const Sample3(),
+        NoSafeAreaPage.routeName: (context) => const NoSafeAreaPage(),
+        SafeAreaWithWrapPage.routeName: (context) =>
+            const SafeAreaWithWrapPage(),
+        SafeAreaWithTransparentAppBarPage.routeName: (context) =>
+            const SafeAreaWithTransparentAppBarPage(),
       },
     );
   }
@@ -45,6 +53,21 @@ class _ListPage extends StatelessWidget {
         ListTile(
           title: const Text(Sample3.routeName),
           onTap: () => Navigator.of(context).pushNamed(Sample3.routeName),
+        ),
+        ListTile(
+          title: const Text(NoSafeAreaPage.routeName),
+          onTap: () =>
+              Navigator.of(context).pushNamed(NoSafeAreaPage.routeName),
+        ),
+        ListTile(
+          title: const Text(SafeAreaWithWrapPage.routeName),
+          onTap: () =>
+              Navigator.of(context).pushNamed(SafeAreaWithWrapPage.routeName),
+        ),
+        ListTile(
+          title: const Text(SafeAreaWithTransparentAppBarPage.routeName),
+          onTap: () => Navigator.of(context)
+              .pushNamed(SafeAreaWithTransparentAppBarPage.routeName),
         ),
       ];
     }
