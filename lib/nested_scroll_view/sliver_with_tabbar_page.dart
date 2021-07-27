@@ -36,6 +36,8 @@ class SliverWithTabBarPage extends StatelessWidget {
                       ),
                     ),
                     forceElevated: innerBoxIsScrolled,
+                    // TODO(tsuruoka): title部分は隠しつつ、TabBarのみ固定する方法はあるのだろうか
+                    // Twitterの通知タブの「すべて」と「@ツイート」のような挙動のイメージ
                     bottom: TabBar(
                       tabs: _tabs.map((name) => Tab(text: name)).toList(),
                     ),
