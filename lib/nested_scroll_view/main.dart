@@ -5,6 +5,7 @@ import 'package:flutter_playground/nested_scroll_view/keep_safearea/safearea_wit
 import 'package:flutter_playground/nested_scroll_view/sample_1.dart';
 import 'package:flutter_playground/nested_scroll_view/sample_2.dart';
 import 'package:flutter_playground/nested_scroll_view/sample_3.dart';
+import 'package:flutter_playground/nested_scroll_view/sliver_with_tabbar_page.dart';
 
 void main() {
   return runApp(const App());
@@ -31,6 +32,8 @@ class App extends StatelessWidget {
             const SafeAreaWithWrapPage(),
         SafeAreaWithTransparentAppBarPage.routeName: (context) =>
             const SafeAreaWithTransparentAppBarPage(),
+        SliverWithTabBarPage.routeName: (context) =>
+            const SliverWithTabBarPage(),
       },
     );
   }
@@ -68,6 +71,11 @@ class _ListPage extends StatelessWidget {
           title: const Text(SafeAreaWithTransparentAppBarPage.routeName),
           onTap: () => Navigator.of(context)
               .pushNamed(SafeAreaWithTransparentAppBarPage.routeName),
+        ),
+        ListTile(
+          title: const Text(SliverWithTabBarPage.routeName),
+          onTap: () =>
+              Navigator.of(context).pushNamed(SliverWithTabBarPage.routeName),
         ),
       ];
     }
