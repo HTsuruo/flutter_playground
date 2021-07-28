@@ -15,26 +15,23 @@ class FlChartPieChartPage extends StatelessWidget {
 
     final sections = [
       PieChartSectionData(
-        title: '1',
+        title: 'タイトル1',
         showTitle: false,
-        // badgeWidgetはWidgetを指定できるのでText以外の任意のWidgetを配置できる
-        // badgeWidget: Container(
-        //   color: Colors.black,
-        //   height: 20,
-        //   width: 50,
-        // ),
+        badgeWidget: const _BadgeWidget(label: '50%'),
         color: colorScheme.primary,
         value: 50,
       ),
       PieChartSectionData(
-        title: '2',
+        title: 'タイトル2',
         showTitle: false,
+        badgeWidget: const _BadgeWidget(label: '40%'),
         color: colorScheme.primaryVariant,
         value: 40,
       ),
       PieChartSectionData(
-        title: '3',
+        title: 'タイトル3',
         showTitle: false,
+        badgeWidget: const _BadgeWidget(label: '10%'),
         color: Colors.orange,
         value: 10,
       ),
@@ -101,23 +98,13 @@ class FlChartPieChartPage extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    // TODO(tsuruoka): 実際なIterableな形でよしなになるはず
-                    children: [
-                      _Legend(
-                        color: colorScheme.primary,
-                        label: 'タイトル1',
-                      ),
-                      const Gap(16),
-                      _Legend(
-                        color: colorScheme.primaryVariant,
-                        label: 'タイトル2',
-                      ),
-                      const Gap(16),
-                      const _Legend(
-                        color: Colors.orange,
-                        label: 'タイトル3',
-                      ),
-                    ],
+                    children: sections
+                        .map((s) => Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 4),
+                              child: _Legend(color: s.color, label: s.title),
+                            ))
+                        .toList(),
                   ),
                 ),
               ),
@@ -158,6 +145,25 @@ class _Legend extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _BadgeWidget extends StatelessWidget {
+  const _BadgeWidget({Key? key, required this.label}) : super(key: key);
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    return Text(
+      label,
+      style: theme.textTheme.caption!.copyWith(
+        color: colorScheme.surface,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 }
