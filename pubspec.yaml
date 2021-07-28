@@ -26,6 +26,7 @@ dependencies:
   cupertino_icons:
   dartx:
   expandable:
+  fl_chart:
   fluentui_system_icons:
   flutter:
     sdk: flutter
