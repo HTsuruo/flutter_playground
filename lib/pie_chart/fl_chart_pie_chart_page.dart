@@ -82,6 +82,7 @@ class FlChartPieChartPage extends StatelessWidget {
                           },
                         ),
                       ),
+                      swapAnimationDuration: const Duration(seconds: 1),
                       swapAnimationCurve: Curves.easeInOut,
                     ),
                   ),
