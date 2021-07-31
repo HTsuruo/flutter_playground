@@ -44,6 +44,7 @@ dependencies:
   sliding_sheet:
   snapping_sheet:
   state_notifier:
+  tsuruo_kit:
   url_launcher:
   webview_flutter:
 

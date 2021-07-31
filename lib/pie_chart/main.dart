@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/pie_chart/fl_chart_pie_chart_page.dart';
-import 'package:flutter_playground/tiles.dart';
+import 'package:tsuruo_kit/widgets/playground_builder.dart';
 
 void main() {
   return runApp(const App());
@@ -24,21 +24,9 @@ class App extends StatelessWidget {
       ).copyWith(
         dividerTheme: const DividerThemeData(space: 0),
       ),
-      // 下記エラー回避のためBuilderで包んだ
-      // Navigator operation requested with
-      // a context that does not include a Navigator.
-      home: Builder(
-        builder: (context) => Tiles(
-          title: _title,
-          tiles: _routes.entries
-              .map(
-                (route) => ListTile(
-                  title: Text(route.key),
-                  onTap: () => Navigator.of(context).pushNamed(route.key),
-                ),
-              )
-              .toList(),
-        ),
+      home: PlaygroundBuilder(
+        title: _title,
+        routes: _routes,
       ),
       routes: _routes,
     );

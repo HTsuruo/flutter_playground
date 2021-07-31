@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/stream/state_provider_sample/state_provider_next_page.dart';
 import 'package:flutter_playground/stream/state_provider_sample/state_provider_page.dart';
 import 'package:flutter_playground/stream/stream_sample_page.dart';
-import 'package:flutter_playground/tiles.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
+import 'package:tsuruo_kit/tsuruo_kit.dart';
 
 import '../logger.dart';
 
@@ -12,7 +12,7 @@ void main() {
   logger.setLevel(Level.FINEST, includeCallerInfo: true);
   return runApp(
     const ProviderScope(
-      child: const App(),
+      child: App(),
     ),
   );
 }
@@ -36,18 +36,9 @@ class App extends StatelessWidget {
       ).copyWith(
         dividerTheme: const DividerThemeData(space: 0),
       ),
-      home: Builder(
-        builder: (context) => Tiles(
-          title: _title,
-          tiles: _routes.entries
-              .map(
-                (route) => ListTile(
-                  title: Text(route.key),
-                  onTap: () => Navigator.of(context).pushNamed(route.key),
-                ),
-              )
-              .toList(),
-        ),
+      home: PlaygroundBuilder(
+        title: _title,
+        routes: _routes,
       ),
       routes: _routes,
     );

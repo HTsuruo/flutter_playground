@@ -9,8 +9,7 @@ import 'package:flutter_playground/riverpod/set_state_page.dart';
 import 'package:flutter_playground/riverpod/state_notifier_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
-
-import '../tiles.dart';
+import 'package:tsuruo_kit/widgets/playground_builder.dart';
 
 void main() {
   logger.setLevel(Level.INFO, includeCallerInfo: true);
@@ -45,21 +44,9 @@ class App extends StatelessWidget {
       ).copyWith(
         dividerTheme: const DividerThemeData(space: 0),
       ),
-      // 下記エラー回避のためBuilderで包んだ
-      // Navigator operation requested with
-      // a context that does not include a Navigator.
-      home: Builder(
-        builder: (context) => Tiles(
-          title: _title,
-          tiles: _routes.entries
-              .map(
-                (route) => ListTile(
-                  title: Text(route.key),
-                  onTap: () => Navigator.of(context).pushNamed(route.key),
-                ),
-              )
-              .toList(),
-        ),
+      home: PlaygroundBuilder(
+        title: _title,
+        routes: _routes,
       ),
       routes: _routes,
     );
