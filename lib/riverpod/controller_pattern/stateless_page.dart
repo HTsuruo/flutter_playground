@@ -16,11 +16,11 @@ class StatelessPage extends ConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
         onPressed: () {
           // providerとやりとりができる
           ref.read(sampleProvider).doSomething();
         },
+        child: const Icon(Icons.add),
       ),
     );
   }

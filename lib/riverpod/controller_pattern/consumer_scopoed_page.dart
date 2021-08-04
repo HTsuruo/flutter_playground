@@ -18,11 +18,11 @@ class ConsumerScopedPage extends StatelessWidget {
       // この小さいスコープで閉じることも可能
       floatingActionButton: Consumer(builder: (context, ref, child) {
         return FloatingActionButton(
-          child: const Icon(Icons.add),
           onPressed: () {
             // providerとやりとりができる
             ref.read(sampleProvider).doSomething();
           },
+          child: const Icon(Icons.add),
         );
       }),
     );
