@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tsuruo_kit/widgets/playground_builder.dart';
+import 'package:flutter_playground/playground_builder.dart';
 
 void main() {
   return runApp(const App());

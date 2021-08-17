@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
+import 'package:flutter_playground/playground_builder.dart';
 import 'package:flutter_playground/state_management/ex1_set_state_page.dart';
 import 'package:flutter_playground/state_management/ex2_inherited_widget_page.dart';
 import 'package:simple_logger/simple_logger.dart';
-import 'package:tsuruo_kit/widgets/playground_builder.dart';
 
 void main() {
   logger.setLevel(Level.FINEST, includeCallerInfo: true);

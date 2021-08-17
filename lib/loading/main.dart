@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/loading/circular_progress_indicator_page.dart';
 import 'package:flutter_playground/loading/shimmer_page.dart';
+import 'package:flutter_playground/playground_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tsuruo_kit/widgets/playground_builder.dart';
 
 void main() {
   return runApp(

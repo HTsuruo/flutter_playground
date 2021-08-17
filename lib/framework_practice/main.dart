@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/framework_practice//stateful_sample_page.dart';
 import 'package:flutter_playground/framework_practice/stateless_sample_page.dart';
-import 'package:tsuruo_kit/widgets/playground_builder.dart';
+import 'package:flutter_playground/playground_builder.dart';
 
 void main() {
   return runApp(const App());

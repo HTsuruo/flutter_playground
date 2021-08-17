@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
+import 'package:flutter_playground/playground_builder.dart';
 import 'package:flutter_playground/riverpod/change_notifer_page.dart';
 import 'package:flutter_playground/riverpod/controller_pattern/consumer_scopoed_page.dart';
 import 'package:flutter_playground/riverpod/controller_pattern/stateless_page.dart';
@@ -10,7 +11,6 @@ import 'package:flutter_playground/riverpod/set_state_page.dart';
 import 'package:flutter_playground/riverpod/state_notifier_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
-import 'package:tsuruo_kit/widgets/playground_builder.dart';
 
 void main() {
   logger.setLevel(Level.INFO, includeCallerInfo: true);
