@@ -12,7 +12,7 @@ class ProviderPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Sample'),
       ),
-      body: Center(
+      body: const Center(
         child: Text('counter:'),
       ),
       floatingActionButton: FloatingActionButton(
