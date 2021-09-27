@@ -63,21 +63,22 @@ class FlChartPieChartPage extends StatelessWidget {
                         sections: sections,
                         startDegreeOffset: -90,
                         pieTouchData: PieTouchData(
-                          touchCallback: (pieTouchResponse) {
-                            logger.info(
-                              'clickHappened: '
-                              '${pieTouchResponse.clickHappened}',
-                            );
+                          touchCallback: (touchEvent, touchResponse) {
                             // タップイベントが発生しているか否かを間引く用のプロパティと推測
-                            if (pieTouchResponse.clickHappened) {
+                            if (touchEvent.isInterestedForInteractions) {
+                              return;
+                            }
+
+                            // これがnullになるのはどういった場合？
+                            if (touchResponse == null) {
                               return;
                             }
                             // 中央の部分もclickableになっていて、
                             // その場合のtouchSectionIndexは`-1`となるのを確認
                             logger.info(
                               'touchedSectionIndex: '
-                              '${pieTouchResponse.touchedSection?.touchedSectionIndex},'
-                              'touchInput: ${pieTouchResponse.touchInput},',
+                              '${touchResponse.touchedSection!.touchedSectionIndex},'
+                              'touchedSection: ${touchResponse.touchedSection!.touchedSection},',
                             );
                           },
                         ),
