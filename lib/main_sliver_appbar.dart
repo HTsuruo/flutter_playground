@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() => runApp(
       const ProviderScope(
-        child: const App(),
+        child: App(),
       ),
     );
 
@@ -218,26 +218,22 @@ class _SliverWithFuture extends ConsumerWidget {
     );
   }
 
-  Widget loading() {
-    return const Scaffold(
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final data = ref.watch(_futureProvider);
+    const loading = Scaffold(
       body: Center(
         child: CircularProgressIndicator(),
       ),
     );
-  }
-
-  Widget error(Object error, StackTrace? stackTrace) {
-    return Scaffold(
-      body: Center(
-        child: Text(error.toString()),
+    return data.when(
+      data: success,
+      loading: (_) => loading,
+      error: (error, stackTrace, _) => Scaffold(
+        body: Center(
+          child: Text(error.toString()),
+        ),
       ),
     );
-  }
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(_futureProvider);
-    print(data);
-    return data.when(data: success, loading: loading, error: error);
   }
 }
