@@ -24,7 +24,8 @@ class _CountPageState extends ConsumerState<CountPage> {
         actions: [
           TextButton(
             onPressed: () {
-              ref.read(countProvider.notifier).state = 0;
+              // ref.read(countProvider.notifier).state = 0;
+              ref.read(countProvider.notifier).update((_) => 0);
             },
             child: Text(
               'Reset',
