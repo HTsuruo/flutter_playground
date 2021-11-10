@@ -24,7 +24,7 @@ class _CountPageState extends ConsumerState<CountPage> {
         actions: [
           TextButton(
             onPressed: () {
-              ref.read(countProvider).state = 0;
+              ref.read(countProvider.notifier).state = 0;
             },
             child: Text(
               'Reset',
@@ -49,7 +49,7 @@ class _CountPageState extends ConsumerState<CountPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(countProvider).state++;
+          ref.read(countProvider.notifier).state++;
         },
         child: const Icon(Icons.add),
       ),
@@ -97,7 +97,7 @@ class _Count extends ConsumerWidget {
   const _Count({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(countProvider).state;
+    final count = ref.watch(countProvider);
     return _CountDisplay(
       label: 'count',
       value: count.toString(),
@@ -109,7 +109,7 @@ class _Count extends ConsumerWidget {
 final doubleCountProvider = Provider(
   (ref) {
     logger.info('doubleCountProvider');
-    final count = ref.watch(countProvider.select((s) => s.state));
+    final count = ref.watch(countProvider);
     return count * 2;
   },
 );
@@ -132,7 +132,7 @@ final thresholdProvider = Provider(
     logger.info('isOverThreshold');
     // `select`の中でbool条件をいれると満たしていない場合を間引ける
     final isOverThreshold = ref.watch(
-      countProvider.select((s) => s.state > 5 ? s.state : 0),
+      countProvider.select<int>((s) => s > 5 ? s : 0),
     );
     return isOverThreshold;
   },

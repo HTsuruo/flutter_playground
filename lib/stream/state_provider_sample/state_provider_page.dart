@@ -9,17 +9,17 @@ class StateProviderPage extends ConsumerWidget {
   static const routeName = '/state_provider';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(stateProvider);
+    final state = ref.watch(stateProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text(runtimeType.toString()),
       ),
       body: Center(
-        child: Text('画面遷移元:${controller.state}'),
+        child: Text('画面遷移元:$state'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.state = 'Navigate!!';
+          ref.read(stateProvider.notifier).update((_) => 'Navigate!!');
           Navigator.of(context).pushNamed(StateProviderNextPage.routeName);
         },
         child: const Icon(Icons.navigate_next),

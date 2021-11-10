@@ -33,7 +33,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_markdown:
-  flutter_riverpod: ^1.0.0-dev.1
+  flutter_riverpod:
   flutter_web_auth:
   gap:
   material_segmented_control:

@@ -221,15 +221,14 @@ class _SliverWithFuture extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final data = ref.watch(_futureProvider);
-    const loading = Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
     return data.when(
       data: success,
-      loading: (_) => loading,
-      error: (error, stackTrace, _) => Scaffold(
+      loading: () => const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
+      error: (error, stackTrace) => Scaffold(
         body: Center(
           child: Text(error.toString()),
         ),
