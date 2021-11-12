@@ -34,7 +34,13 @@ class HomePage extends StatelessWidget {
         title: Text(Localizations.localeOf(context).languageCode),
       ),
       body: Center(
-        child: Text(AppLocalizations.of(context)!.helloWorld),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(AppLocalizations.of(context)!.helloWorld),
+            Text(AppLocalizations.of(context)!.hello('TSURUOKA')),
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
 {
-  "helloWorld": "こんにちは、世界"
+  "helloWorld": "こんにちは、世界",
+  "hello": "こんにちは {name}"
 }
