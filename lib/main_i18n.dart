@@ -25,6 +25,14 @@ class App extends StatelessWidget {
   }
 }
 
+extension on BuildContext {
+  // `AppLocalizations.of(this)!`の記述が煩わしいので生やしてみた
+  // `!`も1箇所に集約できて良い
+  // 不要なExtension生やして元の書き方が損なわれるのは好きではないものの
+  // わかりやすさ重視した
+  AppLocalizations get l10n => AppLocalizations.of(this)!;
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
@@ -37,8 +45,8 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(AppLocalizations.of(context)!.helloWorld),
-            Text(AppLocalizations.of(context)!.hello('TSURUOKA')),
+            Text(context.l10n.helloWorld),
+            Text(context.l10n.hello('TSURUOKA')),
           ],
         ),
       ),
