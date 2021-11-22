@@ -1,4 +1,6 @@
 PODS:
+  - audio_streamer (0.0.1):
+    - Flutter
   - audioplayers (0.0.1):
     - Flutter
   - cloud_firestore (3.1.0):
@@ -48,6 +50,8 @@ PODS:
   - nanopb/encode (2.30908.0)
   - path_provider (0.0.1):
     - Flutter
+  - "permission_handler (5.1.0+2)":
+    - Flutter
   - PromisesObjC (2.0.0)
   - url_launcher (0.0.1):
     - Flutter
@@ -55,6 +59,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - audio_streamer (from `.symlinks/plugins/audio_streamer/ios`)
   - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
@@ -62,6 +67,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_web_auth (from `.symlinks/plugins/flutter_web_auth/ios`)
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
 
@@ -76,6 +82,8 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  audio_streamer:
+    :path: ".symlinks/plugins/audio_streamer/ios"
   audioplayers:
     :path: ".symlinks/plugins/audioplayers/ios"
   cloud_firestore:
@@ -91,6 +99,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_web_auth/ios"
   path_provider:
     :path: ".symlinks/plugins/path_provider/ios"
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
   url_launcher:
     :path: ".symlinks/plugins/url_launcher/ios"
   webview_flutter_wkwebview:
@@ -102,6 +112,7 @@ CHECKOUT OPTIONS:
     :tag: 8.9.0
 
 SPEC CHECKSUMS:
+  audio_streamer: af49e73eb66f71c4eeabb4bbcb05f122d03a6709
   audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
   cloud_firestore: 2cff0618e560f435fc05da5c94c2d213eb7ba640
   Firebase: 13d8d96499e2635428d5bf0ec675df21f95d9a95
@@ -115,6 +126,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   path_provider: d1e9807085df1f9cc9318206cd649dc0b76be3de
+  permission_handler: ccb20a9fad0ee9b1314a52b70b76b473c5f8dab0
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   url_launcher: b6e016d912f04be9f5bf6e8e82dc599b7ba59649
   webview_flutter_wkwebview: 02b129c6fe415e58e4ab7346512c8c2f79f678db
