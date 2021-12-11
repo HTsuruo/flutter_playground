@@ -7,6 +7,24 @@ final _mockFutureProvider = FutureProvider<int>((ref) async {
   return Future.value(5);
 });
 
+final stateProvider = StateProvider<Model>((ref) {
+  final value = ref.watch(_mockFutureProvider).value;
+  final value2 = ref.watch(_mockFutureProvider).value;
+  final value3 = ref.watch(_mockFutureProvider).value;
+  return Model(value: value, value2: value2, value3: value3);
+});
+
+class Model {
+  Model({
+    required this.value,
+    required this.value2,
+    required this.value3,
+  });
+  final int? value;
+  final int? value2;
+  final int? value3;
+}
+
 class FutureProviderPage extends ConsumerWidget {
   const FutureProviderPage({Key? key}) : super(key: key);
 
@@ -15,7 +33,9 @@ class FutureProviderPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final value = ref.watch(_mockFutureProvider).value;
+    final model = ref.watch(stateProvider);
     logger.info('value: $value');
+    logger.info('model: $model');
     return Scaffold(
       appBar: AppBar(
         title: Text(
