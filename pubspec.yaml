@@ -36,6 +36,7 @@ dependencies:
   flutter_riverpod:
   flutter_web_auth:
   gap:
+  go_router:
   intl:
   material_segmented_control:
   modal_bottom_sheet:
