@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_playground/date_picker/selectable_date_picker.dart';
+import 'package:flutter_playground/date_picker/selectable_date_range_picker_dialog.dart';
 import 'package:flutter_playground/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -137,7 +137,7 @@ class HomePage extends StatelessWidget {
               final datetimeRange = await showModalBottomSheet<DateTimeRange?>(
                 context: context,
                 builder: (context) {
-                  return SelectableDatePickerDialog(
+                  return SelectableDateRangePickerDialog(
                     firstDate: firstDate,
                     lastDate: lastDate,
                     currentDate: currentDate,
@@ -159,7 +159,7 @@ class HomePage extends StatelessWidget {
                   await showCupertinoModalBottomSheet<DateTimeRange?>(
                 context: context,
                 builder: (context) {
-                  return SelectableDatePickerDialog(
+                  return SelectableDateRangePickerDialog(
                     firstDate: firstDate,
                     lastDate: lastDate,
                     currentDate: currentDate,

@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'date_range_selector.dart';
 
-class SelectableDatePickerDialog extends ConsumerWidget {
-  const SelectableDatePickerDialog({
+class SelectableDateRangePickerDialog extends ConsumerWidget {
+  const SelectableDateRangePickerDialog({
     Key? key,
     required this.firstDate,
     required this.lastDate,
