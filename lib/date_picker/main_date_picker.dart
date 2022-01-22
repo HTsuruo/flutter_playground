@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_playground/date_picker/selectable_date_picker.dart';
 import 'package:flutter_playground/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -136,7 +137,11 @@ class HomePage extends StatelessWidget {
               final datetimeRange = await showModalBottomSheet<DateTimeRange?>(
                 context: context,
                 builder: (context) {
-                  return const _DateRangeWithCustomWidget();
+                  return SelectableDatePickerDialog(
+                    firstDate: firstDate,
+                    lastDate: lastDate,
+                    currentDate: currentDate,
+                  );
                 },
               );
               logger.info(
@@ -154,7 +159,11 @@ class HomePage extends StatelessWidget {
                   await showCupertinoModalBottomSheet<DateTimeRange?>(
                 context: context,
                 builder: (context) {
-                  return const _DateRangeWithCustomWidget();
+                  return SelectableDatePickerDialog(
+                    firstDate: firstDate,
+                    lastDate: lastDate,
+                    currentDate: currentDate,
+                  );
                 },
               );
               logger.info(
@@ -184,60 +193,6 @@ class _LocalizedDateRangePickerDialog extends StatelessWidget {
         // カレンダーのみ指定も可
         initialEntryMode: DatePickerEntryMode.calendarOnly,
       ),
-    );
-  }
-}
-
-class _DateRangeWithCustomWidget extends StatelessWidget {
-  const _DateRangeWithCustomWidget({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      left: false,
-      right: false,
-      child: Column(
-        children: const [
-          Expanded(
-            child: _LocalizedDateRangePickerDialog(),
-          ),
-          Divider(height: 0),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 2,
-            ),
-            child: _DateRangeSelectButtons(),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _DateRangeSelectButtons extends StatelessWidget {
-  const _DateRangeSelectButtons({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        OutlinedButton(
-          onPressed: () {},
-          child: const Text('14日間'),
-        ),
-        OutlinedButton(
-          onPressed: () {},
-          child: const Text('今月'),
-        ),
-        OutlinedButton(
-          onPressed: () {},
-          // style: OutlinedButton.styleFrom(
-          //   visualDensity: VisualDensity.compact,
-          // ),
-          child: const Text('今年'),
-        ),
-      ],
     );
   }
 }
