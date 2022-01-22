@@ -192,22 +192,25 @@ class _DateRangeWithCustomWidget extends StatelessWidget {
   const _DateRangeWithCustomWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    return Column(
-      children: const [
-        Expanded(
-          child: _LocalizedDateRangePickerDialog(),
-        ),
-        Divider(height: 0),
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 2,
+    return SafeArea(
+      top: false,
+      left: false,
+      right: false,
+      child: Column(
+        children: const [
+          Expanded(
+            child: _LocalizedDateRangePickerDialog(),
           ),
-          child: _DateRangeSelectButtons(),
-        ),
-      ],
+          Divider(height: 0),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 2,
+            ),
+            child: _DateRangeSelectButtons(),
+          ),
+        ],
+      ),
     );
   }
 }
