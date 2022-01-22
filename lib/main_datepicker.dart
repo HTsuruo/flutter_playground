@@ -1,9 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_playground/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gap/gap.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
@@ -120,22 +120,7 @@ class HomePage extends StatelessWidget {
             onTap: () async {
               final datetimeRange = await showModalBottomSheet<DateTimeRange?>(
                 context: context,
-                builder: (context) {
-                  final dialog = DateRangePickerDialog(
-                    firstDate: firstDate,
-                    lastDate: lastDate,
-                    currentDate: currentDate,
-                    // カレンダーのみ指定も可
-                    initialEntryMode: DatePickerEntryMode.calendarOnly,
-                  );
-                  // localを指定する場合はshowDateRangePickerの実装を参考に
-                  // Localizations.overrideで包むと再現できる。
-                  return Localizations.override(
-                    context: context,
-                    locale: locale,
-                    child: dialog,
-                  );
-                },
+                builder: (_) => const _LocalizedDateRangePickerDialog(),
               );
               logger.info(
                 'start: ${datetimeRange?.start}, end: ${datetimeRange?.end}',
@@ -151,61 +136,25 @@ class HomePage extends StatelessWidget {
               final datetimeRange = await showModalBottomSheet<DateTimeRange?>(
                 context: context,
                 builder: (context) {
-                  final dialog = DateRangePickerDialog(
-                    firstDate: firstDate,
-                    lastDate: lastDate,
-                    currentDate: currentDate,
-                    // カレンダーのみ指定も可
-                    initialEntryMode: DatePickerEntryMode.calendarOnly,
-                  );
-                  // localを指定する場合はshowDateRangePickerの実装を参考に
-                  // Localizations.overrideで包むと再現できる。
-                  return Column(
-                    children: [
-                      Expanded(
-                        child: Localizations.override(
-                          context: context,
-                          locale: locale,
-                          child: dialog,
-                        ),
-                      ),
-                      const Divider(height: 0),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 2,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            OutlinedButton(
-                              onPressed: () {},
-                              style: OutlinedButton.styleFrom(
-                                visualDensity: VisualDensity.compact,
-                              ),
-                              child: const Text('Recently'),
-                            ),
-                            const Gap(8),
-                            OutlinedButton(
-                              onPressed: () {},
-                              style: OutlinedButton.styleFrom(
-                                visualDensity: VisualDensity.compact,
-                              ),
-                              child: const Text('Monthly'),
-                            ),
-                            const Gap(8),
-                            OutlinedButton(
-                              onPressed: () {},
-                              style: OutlinedButton.styleFrom(
-                                visualDensity: VisualDensity.compact,
-                              ),
-                              child: const Text('Yearly'),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  );
+                  return const _DateRangeWithCustomWidget();
+                },
+              );
+              logger.info(
+                'start: ${datetimeRange?.start}, end: ${datetimeRange?.end}',
+              );
+            },
+          ),
+          divider,
+          // ref. https://api.flutter.dev/flutter/material/DateRangePickerDialog-class.html
+          ListTile(
+            title: const Text('DateRangePicker + showCupertinoDialog'),
+            subtitle: const Text('任意のWidgetを組み合わせた場合'),
+            onTap: () async {
+              final datetimeRange =
+                  await showCupertinoModalBottomSheet<DateTimeRange?>(
+                context: context,
+                builder: (context) {
+                  return const _DateRangeWithCustomWidget();
                 },
               );
               logger.info(
@@ -215,6 +164,77 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _LocalizedDateRangePickerDialog extends StatelessWidget {
+  const _LocalizedDateRangePickerDialog({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    // localを指定する場合はshowDateRangePickerの実装を参考に
+    // Localizations.overrideで包むと再現できる。
+    return Localizations.override(
+      context: context,
+      locale: locale,
+      child: DateRangePickerDialog(
+        firstDate: firstDate,
+        lastDate: lastDate,
+        currentDate: currentDate,
+        // カレンダーのみ指定も可
+        initialEntryMode: DatePickerEntryMode.calendarOnly,
+      ),
+    );
+  }
+}
+
+class _DateRangeWithCustomWidget extends StatelessWidget {
+  const _DateRangeWithCustomWidget({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    return Column(
+      children: const [
+        Expanded(
+          child: _LocalizedDateRangePickerDialog(),
+        ),
+        Divider(height: 0),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 2,
+          ),
+          child: _DateRangeSelectButtons(),
+        ),
+      ],
+    );
+  }
+}
+
+class _DateRangeSelectButtons extends StatelessWidget {
+  const _DateRangeSelectButtons({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        OutlinedButton(
+          onPressed: () {},
+          child: const Text('14日間'),
+        ),
+        OutlinedButton(
+          onPressed: () {},
+          child: const Text('今月'),
+        ),
+        OutlinedButton(
+          onPressed: () {},
+          // style: OutlinedButton.styleFrom(
+          //   visualDensity: VisualDensity.compact,
+          // ),
+          child: const Text('今年'),
+        ),
+      ],
     );
   }
 }
