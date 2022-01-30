@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
           width: 100,
           height: 100,
           // ここを弄ってHot Reloadして各種Widgetがどう表示されるか見てみてください
-          child: _BoxMaterialTransparency(),
+          child: _BoxCardBackground(),
         ),
       ),
     );
@@ -147,6 +147,44 @@ class _BoxImage extends StatelessWidget {
     // 画像の場合はそれ用のコンストラクターがあって便利
     return Ink.image(
       image: const NetworkImage('https://mono0926.com/images/love_logo.png'),
+      child: InkWell(
+        onTap: () => print(runtimeType),
+      ),
+    );
+  }
+}
+
+class _BoxColoredBackground extends StatelessWidget {
+  const _BoxColoredBackground({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    final borderRadius = BorderRadius.circular(16);
+    // Inkのdecorationにあわせるためには同様の値をInkWellにも適用する必要がある
+    return Ink(
+      decoration: BoxDecoration(
+        color: Colors.redAccent,
+        borderRadius: borderRadius,
+      ),
+      child: InkWell(
+        borderRadius: borderRadius,
+        onTap: () => print(runtimeType),
+      ),
+    );
+  }
+}
+
+class _BoxCardBackground extends StatelessWidget {
+  const _BoxCardBackground({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      // Card WidgetにはclipBehaviorという便利なプロパティがあり
+      // これを適用することで子Widgetの要素が親のCardの領域をはみ出して
+      // 表示される部分を切り取ることができる。
+      clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: InkWell(
         onTap: () => print(runtimeType),
       ),
