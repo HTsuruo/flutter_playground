@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const App());
@@ -27,7 +26,7 @@ class HomePage extends StatelessWidget {
           width: 100,
           height: 100,
           // ここを弄ってHot Reloadして各種Widgetがどう表示されるか見てみてください
-          child: _BoxOk(),
+          child: _BoxMaterialTransparency(),
         ),
       ),
     );
@@ -40,12 +39,12 @@ class _BoxNg extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => print(runtimeType),
-      // childの描画はRipple Effectの前面を覆うためベタ塗り系はそれを全部隠してしまう
+      // Ripple Effect(splash)は親のMaterialに対してかかるため、
+      // child、つまりZ軸の手前側に不透明なWidgetを配置するとsplashが隠れてします。
       // 包むWidgetは背面に描画されていくので、現在ベタ塗りのColoredBoxですべて隠れてしまう。
-      // 透過するとみえる。
       child: const ColoredBox(
         color: Colors.blue, // NG
-        // color: Color.fromRGBO(255, 255, 0, 0.3), // OK
+        // color: Color.fromRGBO(0, 0, 255, 0.3), // OK
       ),
     );
   }
@@ -73,26 +72,32 @@ class _BoxOk extends StatelessWidget {
   const _BoxOk({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // Inkで囲ってそれで描画するのが正解
-    // InkWellはタップ時に上層のInk描画を弄るイメージ
-    return Ink(
-      color: Colors.blue,
-      child: InkWell(
-        onTap: () => print(runtimeType),
+    // ColoredBoxなど不透明なWidgetの部分を
+    // Inkに`代替する`ことで不透明な色を付けつつも裏側のsplashを表示することができる
+    // Inkはあくまで色付け（またはDecorationやImage）Widgetの代替として使い、
+    // InkWellとセットで使うことが多い。
+    return InkWell(
+      onTap: () => print(runtimeType),
+      child: Ink(
+        color: Colors.blue,
       ),
     );
   }
 }
 
-class _BoxMaterial extends StatelessWidget {
-  const _BoxMaterial({Key? key}) : super(key: key);
+class _BoxMaterialTransparency extends StatelessWidget {
+  const _BoxMaterialTransparency({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // MaterialでもInkと同様だが、Ink Effect用の描画をしたいだけならInkが適切(そのためにあとから追加されたWidget)
-    return Material(
+    // 親のMaterialとInkWellの間に不透明なWidgetがあると普通はsplashが隠れてしまう
+    // 間にもう一枚Material Widget（tarnsparency）を挟むことでそれを回避できる
+    return ColoredBox(
       color: Colors.blue,
-      child: InkWell(
-        onTap: () => print(runtimeType),
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: () => print(runtimeType),
+        ),
       ),
     );
   }
