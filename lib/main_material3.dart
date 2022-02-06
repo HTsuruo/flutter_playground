@@ -14,6 +14,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     const seed = Color(0xFF2C5918);
     // const seed = Color(0xFF0063d7);
+
+    // Mediumの記事を参考に
+    // ref. https://medium.com/flutter/whats-new-in-flutter-2-10-5aafb0314b12#babb
     final lightScheme = ColorScheme.fromSeed(seedColor: seed);
     final darkScheme = ColorScheme.fromSeed(
       seedColor: seed,
@@ -21,12 +24,14 @@ class App extends StatelessWidget {
     );
 
     return MaterialApp(
-      // スタンダードな指定
+      // ThemeDataのcolorSchemeSeedプロパティにColorクラスを指定するパターン
       // theme: ThemeData(
       //   useMaterial3: true,
       //   colorSchemeSeed: seed,
       // ),
-      // colorSchemeをTheme算出より前に指定する汎用パターン
+
+      // ColorSchemeのfactoryコンストラクタ`fromSeed`を指定するパターン
+      // colorSchemeをTheme算出より前に指定する使い方ができる。
       // 両者でDividerのカラーが異なる
       theme: ThemeData.from(
         colorScheme: lightScheme,
