@@ -12,7 +12,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const seed = Color(0xFF2C5918);
+    const seed = Color(0xFF2E5817);
     // const seed = Color(0xFF0063d7);
 
     // Mediumの記事を参考に
