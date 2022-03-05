@@ -30,6 +30,7 @@ class App extends StatelessWidget {
         ),
       ).copyWith(
         useMaterial3: true,
+        dividerTheme: const DividerThemeData(space: 0),
       ),
       home: PlaygroundBuilder(
         title: 'Paging',

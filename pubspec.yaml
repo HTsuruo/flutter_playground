@@ -35,6 +35,7 @@ dependencies:
   flutter_markdown:
   flutter_riverpod:
   flutter_web_auth:
+  flutterfire_ui:
   gap:
   go_router:
   intl:

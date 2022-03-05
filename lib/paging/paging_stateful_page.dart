@@ -19,6 +19,13 @@ class PagingStatefulPage extends ConsumerStatefulWidget {
 class _PagingStatefulPageState extends ConsumerState<PagingStatefulPage> {
   bool loadMore = false;
 
+  Future<void> fetchMore() async {
+    await Future<void>.delayed(const Duration(seconds: 2));
+    setState(() {
+      loadMore = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,12 +33,14 @@ class _PagingStatefulPageState extends ConsumerState<PagingStatefulPage> {
         title: const Text('Paging'),
       ),
       body: InfinityScrollListener(
-        onEnd: () {
+        onListener: () async {
           setState(() {
             loadMore = true;
           });
+          await fetchMore();
         },
-        child: ListView.builder(
+        child: ListView.separated(
+          separatorBuilder: (context, _) => const Divider(),
           itemBuilder: (context, index) {
             if (loadMore && index == 19) {
               logger.info('canNext');

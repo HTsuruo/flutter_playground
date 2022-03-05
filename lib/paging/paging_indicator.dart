@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 class PagingIndicator extends StatelessWidget {
   const PagingIndicator({Key? key}) : super(key: key);
@@ -8,14 +7,16 @@ class PagingIndicator extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: const [
-        SizedBox(
-          width: 20,
-          height: 20,
-          child: CircularProgressIndicator(
-            strokeWidth: 2,
+        Padding(
+          padding: EdgeInsets.only(top: 8, bottom: 16),
+          child: SizedBox(
+            width: 20,
+            height: 20,
+            child: CircularProgressIndicator(
+              strokeWidth: 2,
+            ),
           ),
         ),
-        Gap(16),
       ],
     );
   }

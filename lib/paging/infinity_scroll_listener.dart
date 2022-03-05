@@ -5,12 +5,12 @@ class InfinityScrollListener extends StatelessWidget {
   const InfinityScrollListener({
     Key? key,
     required this.child,
-    required this.onEnd,
+    required this.onListener,
     this.threshold = 20,
   }) : super(key: key);
 
   final Widget child;
-  final VoidCallback onEnd;
+  final VoidCallback onListener;
   final int threshold;
 
   @override
@@ -27,7 +27,7 @@ class InfinityScrollListener extends StatelessWidget {
             notification.metrics.maxScrollExtent - notification.metrics.pixels <
                 threshold;
         if (isScrollEnd) {
-          onEnd();
+          onListener();
         }
         return true;
       },

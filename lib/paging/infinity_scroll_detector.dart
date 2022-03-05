@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final infinityScrollDetector = Provider.autoDispose(
@@ -12,10 +13,13 @@ final infinityScrollDetector = Provider.autoDispose(
 class InfinityScrollDetector {
   InfinityScrollDetector() {
     scrollController.addListener(() {
+      logger.fine('scrollController.offset: ${scrollController.offset}');
+      logger.fine(
+          'scrollController.offset: ${scrollController.position.maxScrollExtent}');
       if (scrollController.offset >=
-              scrollController.position.maxScrollExtent &&
-          !scrollController.position.outOfRange) {
+          scrollController.position.maxScrollExtent) {
         _canNext = true;
+        logger.fine('maxScrollExtent');
       }
     });
   }
