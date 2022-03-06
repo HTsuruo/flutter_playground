@@ -1,8 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/logger.dart';
-import 'package:flutter_playground/paging/paging_indicator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutterfire_ui/firestore.dart';
 
 import 'infinity_scroll_detector.dart';
 
@@ -18,25 +18,33 @@ class FirestoreQueryBuilderPage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Paging'),
       ),
-      body: ListView.builder(
-        controller: detector.scrollController,
-        itemBuilder: (context, index) {
-          if (detector.canNext && index == 19) {
-            logger.info('canNext');
-            return Column(
-              children: [
-                ListTile(
-                  title: Text('index: $index'),
-                ),
-                const PagingIndicator(),
-              ],
+      body: FirestoreQueryBuilder(
+        pageSize: 2,
+        query: FirebaseFirestore.instance.collection('user'),
+        builder: (context, snapshot, _) {
+          if (snapshot.isFetching) {
+            return const Center(
+              child: CircularProgressIndicator(),
             );
           }
-          return ListTile(
-            title: Text('index: $index'),
+          if (snapshot.hasError) {
+            return Text('error: ${snapshot.error}');
+          }
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final users = snapshot.docs.map((d) => d.data()).toList();
+              final user = users[index];
+              if (snapshot.hasMore && index + 1 == snapshot.docs.length) {
+                snapshot.fetchMore();
+              }
+              return ListTile(
+                title: Text('user: $user}'),
+                subtitle: Text('index: $index'),
+              );
+            },
+            itemCount: snapshot.docs.length,
           );
         },
-        itemCount: 20,
       ),
     );
   }

@@ -23,9 +23,11 @@ environment:
 dependencies:
   animations:
   audioplayers:
+  cloud_firestore:
   cupertino_icons:
   dartx:
   expandable:
+  firebase_core:
   fl_chart:
   fluentui_system_icons:
   flutter:

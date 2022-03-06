@@ -21,9 +21,6 @@ class _PagingStatefulPageState extends ConsumerState<PagingStatefulPage> {
 
   Future<void> fetchMore() async {
     await Future<void>.delayed(const Duration(seconds: 2));
-    setState(() {
-      loadMore = false;
-    });
   }
 
   @override
