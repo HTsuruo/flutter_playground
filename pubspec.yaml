@@ -24,6 +24,7 @@ dependencies:
   animations:
   audioplayers:
   cloud_firestore:
+  collection:
   cupertino_icons:
   dartx:
   expandable:
@@ -40,6 +41,7 @@ dependencies:
   flutterfire_ui:
   gap:
   go_router:
+  html:
   intl:
   material_segmented_control:
   modal_bottom_sheet:
