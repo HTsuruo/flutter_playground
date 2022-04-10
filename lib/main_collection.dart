@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+// import 'package:dartx/dartx.dart' as dartx;
 import 'package:flutter_playground/logger.dart';
 
 const unmodifiedList = <int>[1, 2, 3, 4, 5, 6];
@@ -59,37 +60,48 @@ void main() {
   final modifiableList = <int>[1, 2, 3, 4, 5, 6]..sort();
   logger.info('sortedIntegerIterable: $modifiableList');
 
+  // final sorted = students.sorted((a, b) => a.score.compareTo(b.score)).map(
+  //       (e) => e.name,
+  //     );
+  final sorted = students.sorted((a, b) => a.score.compareTo(b.score)).map(
+        (e) => e.name,
+      );
+  logger.info('sortedBy: $sorted');
+
+  final sortedByDescending = students
+      .sorted(
+        (a, b) => -a.score.compareTo(b.score),
+      )
+      .map((e) => e.name);
+  logger.info('sortedByDescending: $sortedByDescending');
+
   // Studentクラスで定義された`compareTo`メソッドがデフォルトで使われる
-  final sortedBy = students.sortedBy<Student>((e) => e).map((e) => e.name);
-  logger.info('sortedBy: $sortedBy');
+  // final sortedBy = students.sortedBy<Student>((e) => e).map((e) => e.name);
+  // logger.info('sortedBy: $sortedBy');
 
   // `compareTo`に定義していないメソッドも一応指定できる
-  final sortedByCompareByScore = students
-      .sortedByCompare<Student>(
-          (e) => e,
-          (a, b) => a.score == b.score
-              ? 0
-              : a.score > b.score
-                  ? 1
-                  : -1)
-      .map((e) => e.name);
-  logger.info('sortedByCompareByScore: $sortedByCompareByScore');
+  // final sortedByCompareByScore = students
+  //     .sortedByCompare<Student>((e) => e,
+  //     (a, b) => a.score.compareTo(b.score))
+  //     .map((e) => e.name);
+  // logger.info('sortedByCompareByScore: $sortedByCompareByScore');
 
   // `compareTo`の判定を逆にすればDescending相当の事も一応できる
-  final sortedByCompareByScoreDescending = students
-      .sortedByCompare<Student>(
-          (e) => e,
-          (a, b) => a.score == b.score
-              ? 0
-              : a.score > b.score
-                  ? -1
-                  : 1)
-      .map((e) => e.name);
-  logger.info(
-    'sortedByCompareByScoreDescending: $sortedByCompareByScoreDescending',
-  );
+  // final sortedByCompareByScoreDescending = students
+  //     .sortedByCompare<Student>((e) => e,
+  //     (a, b) => -a.score.compareTo(b.score))
+  //     .map((e) => e.name);
+  // logger.info(
+  //   'sortedByCompareByScoreDescending: $sortedByCompareByScoreDescending',
+  // );
+
+  // final sortedBy = students.sortedBy((e) => e.name)
+  // .map((e) => e.name).toList();
+  // logger.info('sortedBy: $sortedBy');
 }
 
 // extension on Iterable<S> {
-//   T maxBy(T Function(S) orderBy) => maxBy<S, T>(this, orderBy);
+//   Iterable<S> sortedBy(Compare Function(S element)) => sorted((a, b) =>
+//   a.score.compareTo(b.score));
+// T maxBy(T Function(S) orderBy) => maxBy<S, T>(this, orderBy);
 // }

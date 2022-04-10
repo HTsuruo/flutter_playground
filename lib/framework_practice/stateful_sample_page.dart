@@ -5,6 +5,7 @@ class StatefulSamplePage extends StatefulWidget {
   static const routeName = '/stateful_sample_page';
 
   @override
+  // ignore: unnecessary_overrides
   StatefulElement createElement() {
     // statelessWidget同様、Widgetに対応するStatefulElementを生成する
     // 本来意識せずただthisが渡っているだけ

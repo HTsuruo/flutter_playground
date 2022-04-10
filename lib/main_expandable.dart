@@ -104,8 +104,8 @@ class __ExpandableCardState extends State<_ExpandableCard> {
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: const Text('展開されたコンテンツ'),
+                    padding: EdgeInsets.all(16),
+                    child: Text('展開されたコンテンツ'),
                   ),
                 ),
               ],

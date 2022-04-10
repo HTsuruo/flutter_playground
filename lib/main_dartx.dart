@@ -1,5 +1,6 @@
 import 'package:dartx/dartx.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/logger.dart';
 
 void main() => runApp(const App());
 
@@ -35,13 +36,13 @@ class HomePage extends StatelessWidget {
     ];
 
     final grouped = list.groupBy((e) => e.key);
-    print(grouped);
+    logger.fine(grouped);
 
     final sum = grouped.entries.map((e) {
       final s = e.value.sumBy((e) => e.value);
       return s;
     }).toList();
-    print(sum);
+    logger.fine(sum);
 
     return Scaffold(
       appBar: AppBar(),

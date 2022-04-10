@@ -3,12 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final fruitTabTypeController =
     StateNotifierProvider<FruitTabTypeController, FruitType>(
-  (ref) => FruitTabTypeController(ref.read),
+  (ref) => FruitTabTypeController(),
 );
 
 class FruitTabTypeController extends StateNotifier<FruitType> {
-  FruitTabTypeController(this._read) : super(FruitType.apple);
-  final Reader _read;
+  FruitTabTypeController() : super(FruitType.apple);
 
   // ignore: use_setters_to_change_properties
   void select(FruitType type) {

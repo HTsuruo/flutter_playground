@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:html/parser.dart' show parse;
 
 void main() {
   runApp(
@@ -13,7 +14,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.from(
-        colorScheme: const ColorScheme.light(),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF2E5817),
+        ),
+      ).copyWith(
+        useMaterial3: true,
       ),
       home: const HomePage(),
     );
@@ -24,27 +29,13 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final document =
+        parse('<body>Hello world! <a href="www.html5rocks.com">HTML5 rocks!');
     return Scaffold(
       appBar: AppBar(),
-      body: Stack(
-        children: const [
-          Positioned(
-            child: _Box(),
-          ),
-        ],
+      body: Center(
+        child: Text(document.outerHtml),
       ),
-    );
-  }
-}
-
-class _Box extends StatelessWidget {
-  const _Box({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      color: Colors.black,
     );
   }
 }

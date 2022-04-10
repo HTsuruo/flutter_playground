@@ -9,7 +9,7 @@ class CircularProgressIndicatorPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final value = ref.watch(futureMock).data?.value;
+    final value = ref.watch(futureMock).value;
 
     return Scaffold(
       appBar: AppBar(

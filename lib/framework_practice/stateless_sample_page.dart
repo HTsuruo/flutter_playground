@@ -7,6 +7,7 @@ class StatelessSamplePage extends StatelessWidget {
   static const routeName = '/stateless_sample_page';
 
   @override
+  // ignore: unnecessary_overrides
   StatelessElement createElement() {
     // Widgetの設計図を頼りに対応するElementをcreateする
     // 本来は意識することなくthisが受け渡されている

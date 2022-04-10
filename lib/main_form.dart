@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
           child: ListView(
             children: const [
               Text('NGなやりかた'),
-              const Divider(),
+              Divider(),
               _NormalTextForm(),
               SizedBox(height: 24),
               _SizedBoxTextForm1(),
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
               _SizedBoxTextForm3(),
               SizedBox(height: 24),
               Text('GOODなやりかた'),
-              const Divider(),
+              Divider(),
               _DenseTextForm(),
               SizedBox(height: 24),
               _DenseTextForm2(),
