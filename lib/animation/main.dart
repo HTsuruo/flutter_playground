@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/animation/implicitly_animated/animated_container.dart';
-import 'package:flutter_playground/animation/implicitly_animated/animated_phisical_model.dart';
+import 'package:flutter_playground/animation/implicitly_animated/animated_physical_model.dart';
 import 'package:flutter_playground/animation/implicitly_animated/animated_switcher.dart';
 import 'package:flutter_playground/playground_builder.dart';
 
