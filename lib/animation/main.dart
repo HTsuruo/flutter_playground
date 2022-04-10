@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/animation/implicitly_animated/animated_container.dart';
+import 'package:flutter_playground/animation/implicitly_animated/animated_phisical_model.dart';
 import 'package:flutter_playground/animation/implicitly_animated/animated_switcher.dart';
 import 'package:flutter_playground/playground_builder.dart';
 
@@ -18,6 +19,8 @@ class App extends StatelessWidget {
       AnimatedSwitcherPage.routeName: (context) => const AnimatedSwitcherPage(),
       AnimatedContainerPage.routeName: (context) =>
           const AnimatedContainerPage(),
+      AnimatedPhysicalModelPage.routeName: (context) =>
+          const AnimatedPhysicalModelPage(),
     };
     return MaterialApp(
       theme: ThemeData.from(
