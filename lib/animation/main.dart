@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/animation/animated_container.dart';
 import 'package:flutter_playground/animation/animated_switcher.dart';
 import 'package:flutter_playground/playground_builder.dart';
 
@@ -15,6 +16,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     final routes = <String, WidgetBuilder>{
       AnimatedSwitcherPage.routeName: (context) => const AnimatedSwitcherPage(),
+      AnimatedContainerPage.routeName: (context) =>
+          const AnimatedContainerPage(),
     };
     return MaterialApp(
       theme: ThemeData.from(
