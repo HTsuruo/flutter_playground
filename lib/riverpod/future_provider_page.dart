@@ -34,8 +34,9 @@ class FutureProviderPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final value = ref.watch(_mockFutureProvider).value;
     final model = ref.watch(stateProvider);
-    logger.info('value: $value');
-    logger.info('model: $model');
+    logger
+      ..info('value: $value')
+      ..info('model: $model');
     return Scaffold(
       appBar: AppBar(
         title: Text(

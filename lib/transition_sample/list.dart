@@ -33,9 +33,8 @@ class HomePage extends StatelessWidget {
             ListTile(
               title: const Text('画面遷移'),
               trailing: const Icon(Icons.navigate_next),
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute<PageRoute>(
+              onTap: () => Navigator.of(context).push<void>(
+                MaterialPageRoute(
                   builder: (context) => const Detail(),
                 ),
               ),
@@ -43,8 +42,8 @@ class HomePage extends StatelessWidget {
             ListTile(
               title: const Text('ディレイ画面遷移'),
               trailing: const Icon(Icons.navigate_next),
-              onTap: () => Navigator.of(context).delayedPush(
-                MaterialPageRoute<PageRoute>(
+              onTap: () => Navigator.of(context).delayedPush<void>(
+                MaterialPageRoute(
                   builder: (context) => const Detail(),
                 ),
               ),
@@ -57,7 +56,7 @@ class HomePage extends StatelessWidget {
 }
 
 extension NavigatorStateEx on NavigatorState {
-  Future<T?> delayedPush<T extends Object>(Route<T> route) async {
+  Future<T?> delayedPush<T extends Object?>(Route<T> route) async {
     await Future<void>.delayed(const Duration(milliseconds: 150));
     return push(route);
   }

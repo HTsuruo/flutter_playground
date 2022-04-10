@@ -77,7 +77,7 @@ class __ExpandableCardState extends State<_ExpandableCard> {
   @override
   void initState() {
     controller.addListener(() {
-      logger.fine(controller.value);
+      logger.info(controller.value);
       setState(() {});
     });
     super.initState();
@@ -96,20 +96,18 @@ class __ExpandableCardState extends State<_ExpandableCard> {
         controller: controller,
         child: Expandable(
           collapsed: _CommonWidget(expanded: controller.value),
-          expanded: Container(
-            child: Column(
-              children: [
-                _CommonWidget(expanded: controller.value),
-                const Divider(height: 0),
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Text('展開されたコンテンツ'),
-                  ),
+          expanded: Column(
+            children: [
+              _CommonWidget(expanded: controller.value),
+              const Divider(height: 0),
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text('展開されたコンテンツ'),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

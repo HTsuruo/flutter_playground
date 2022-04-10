@@ -37,7 +37,7 @@ class _TabControllerPageState extends State<TabControllerPage>
         }
         // indexの変更が完了したタイミング（アニメーション終了後）に行いたい処理
         // ...
-        logger.fine('Changed Tab Index: $previousIndex → $currentIndex');
+        logger.info('Changed Tab Index: $previousIndex → $currentIndex');
       },
     );
   }

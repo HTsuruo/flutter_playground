@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_playground/nested_scroll_view/keep_safearea/app_custom_scroll_view.dart';
 
 /// ScaffoldのAppBarをステータスバーとして活用してスクロール時のステータスバー干渉を防ぐケース
@@ -33,8 +34,7 @@ class _TransparentAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
-      elevation: 0,
-      brightness: Brightness.dark,
+      elevation: 0, systemOverlayStyle: SystemUiOverlayStyle.light,
     );
   }
 

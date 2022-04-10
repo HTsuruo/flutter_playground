@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
           children: [
             TextButton(
               onPressed: () {
-                print('Lambda');
+                logger.info('Lambda');
               },
               child: const Text('button1: (){}'),
             ),
@@ -47,19 +47,19 @@ class HomePage extends StatelessWidget {
               onPressed: onPressedCallBack(),
               child: const Text('button3: onPressedCallBack()'),
             ),
-            TextButton(
-              onPressed: () => onPressedCallBack(),
-              child: const Text('button4: () => onPressedCallBack()'),
+            const TextButton(
+              onPressed: onPressedCallBack,
+              child: Text('button4: () => onPressedCallBack()'),
             ),
             TextButton(
               onPressed: () => () {
-                print('lambda in lambda');
+                logger.info('lambda in lambda');
               },
               child: const Text('button5: () => (){})'),
             ),
-            TextButton(
+            const TextButton(
               onPressed: onPressedIntCallBack,
-              child: const Text('button4: () => onPressedCallBack()'),
+              child: Text('button4: () => onPressedCallBack()'),
             ),
           ],
         ),
@@ -70,14 +70,14 @@ class HomePage extends StatelessWidget {
 
 // これ自体がVoidCallBack = Function()
 void voidFunction() {
-  print('void function');
+  logger.info('void function');
 }
 
 // VoidCallBack = Function()を返すFunction
 VoidCallback onPressedCallBack() {
-  print('outer');
+  logger.info('outer');
   return () {
-    print('inner');
+    logger.info('inner');
   };
 }
 
@@ -85,6 +85,6 @@ VoidCallback onPressedCallBack() {
 // 引数は空なので`onPressed`でtear-offとして書ける
 // 関数そのままを渡すイメージ
 int onPressedIntCallBack() {
-  print('int');
+  logger.info('int');
   return 1;
 }

@@ -14,7 +14,7 @@ final stateProvider = StateProvider<String?>((ref) => null);
 class StateProviderController extends ChangeNotifier {
   StateProviderController(this._read) {
     /// これは呼ばれる
-    logger.fine(state);
+    logger.info(state);
 
     // これは呼ばれない
     // 購読前にデータが確定しているためここには流れてこない
@@ -23,7 +23,7 @@ class StateProviderController extends ChangeNotifier {
     // ソース見たら`StreamController<T>.broadcast()`となってましたね、理解です
     // StreamController.broadcastだと購読以降のイベントしか流れてこないので別途streamを用意して格納するなど必要そう
     // そもそもそんなケースは少ない???
-    _sh = _read(stateProvider.notifier).stream.listen(logger.fine);
+    _sh = _read(stateProvider.notifier).stream.listen(logger.info);
   }
 
   final Reader _read;

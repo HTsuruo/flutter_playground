@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
             child: Markdown(
               data: markdownSyntax,
               // selectable: true,
-              onTapLink: (_text, href, _title) async {
+              onTapLink: (_, href, __) async {
                 // `href`はnullable
                 // リンクフォーマットにも関わらずhttp or httpsではじまらない場合にnullで返ってくる
                 assert(
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                   'Invalid link, required `http://~` or `https://~`',
                 );
                 if (await canLaunch(href!)) {
-                  launch(href, forceSafariVC: true);
+                  await launch(href, forceSafariVC: true);
                 } else {
                   logger.warning('Invalid `href` format');
                 }

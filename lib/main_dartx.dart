@@ -36,13 +36,13 @@ class HomePage extends StatelessWidget {
     ];
 
     final grouped = list.groupBy((e) => e.key);
-    logger.fine(grouped);
+    logger.info(grouped);
 
     final sum = grouped.entries.map((e) {
       final s = e.value.sumBy((e) => e.value);
       return s;
     }).toList();
-    logger.fine(sum);
+    logger.info(sum);
 
     return Scaffold(
       appBar: AppBar(),

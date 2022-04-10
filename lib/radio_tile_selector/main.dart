@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                 if (res == null) {
                   return;
                 }
-                logger.fine(res);
+                logger.info(res);
               },
               child: const Text('show'),
             ),
@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
                 if (res == null) {
                   return;
                 }
-                logger.fine(res);
+                logger.info(res);
               },
               child: const Text('show'),
             ),

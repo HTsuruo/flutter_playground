@@ -79,12 +79,12 @@ class _SliverCustom extends StatelessWidget {
                         minHeight: 32,
                         minWidth: 80,
                       ),
+                      isSelected: const [true, false],
+                      onPressed: (index) {},
                       children: const [
                         Text('AAA'),
                         Text('BBB'),
                       ],
-                      isSelected: const [true, false],
-                      onPressed: (index) {},
                     ),
                     const Text('タイトル2'),
                     const Text('タイトル3'),
@@ -127,7 +127,7 @@ class _SliverWithTab extends StatelessWidget {
           slivers: [
             SliverAppBar(
               title: const TabBar(
-                tabs: const [
+                tabs: [
                   Tab(text: 'AAA'),
                   Tab(text: 'BBB'),
                 ],

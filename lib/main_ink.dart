@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/logger.dart';
 
 void main() => runApp(const App());
 
@@ -38,7 +39,7 @@ class _BoxNg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print(runtimeType),
+      onTap: () => logger.info(runtimeType),
       // Ripple Effect(splash)は親のMaterialに対してかかるため、
       // child、つまりZ軸の手前側に不透明なWidgetを配置するとsplashが隠れてします。
       // 包むWidgetは背面に描画されていくので、現在ベタ塗りのColoredBoxですべて隠れてしまう。
@@ -55,7 +56,7 @@ class _BoxInnerBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print(runtimeType),
+      onTap: () => logger.info(runtimeType),
       // ベタ塗りした外の領域のRipple Effectは見える例
       child: Center(
         child: Container(
@@ -77,7 +78,7 @@ class _BoxOk extends StatelessWidget {
     // Inkはあくまで色付け（またはDecorationやImage）Widgetの代替として使い、
     // InkWellとセットで使うことが多い。
     return InkWell(
-      onTap: () => print(runtimeType),
+      onTap: () => logger.info(runtimeType),
       child: Ink(
         color: Colors.blue,
       ),
@@ -96,7 +97,7 @@ class _BoxMaterialTransparency extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: () => print(runtimeType),
+          onTap: () => logger.info(runtimeType),
         ),
       ),
     );
@@ -115,7 +116,7 @@ class _BoxMaterialColor extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
-          onTap: () => print(runtimeType),
+          onTap: () => logger.info(runtimeType),
         ),
       ),
     );
@@ -134,7 +135,7 @@ class _BoxDecoration extends StatelessWidget {
         ),
       ),
       child: InkWell(
-        onTap: () => print(runtimeType),
+        onTap: () => logger.info(runtimeType),
       ),
     );
   }
@@ -148,7 +149,7 @@ class _BoxImage extends StatelessWidget {
     return Ink.image(
       image: const NetworkImage('https://mono0926.com/images/love_logo.png'),
       child: InkWell(
-        onTap: () => print(runtimeType),
+        onTap: () => logger.info(runtimeType),
       ),
     );
   }
@@ -167,7 +168,7 @@ class _BoxColoredBackground extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: borderRadius,
-        onTap: () => print(runtimeType),
+        onTap: () => logger.info(runtimeType),
       ),
     );
   }
@@ -186,7 +187,7 @@ class _BoxCardBackground extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: InkWell(
-        onTap: () => print(runtimeType),
+        onTap: () => logger.info(runtimeType),
       ),
     );
   }

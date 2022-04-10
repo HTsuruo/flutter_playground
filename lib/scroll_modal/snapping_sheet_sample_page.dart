@@ -14,7 +14,7 @@ class SnappingSheetSamplePage extends StatelessWidget {
         sheetBelow: SnappingSheetContent(
           child: const ListViewContent(),
         ),
-        grabbing: GrabSection(),
+        grabbing: const GrabSection(),
         grabbingHeight: 60,
         snappingPositions: const [
           SnappingPosition.factor(positionFactor: 0),
@@ -27,10 +27,12 @@ class SnappingSheetSamplePage extends StatelessWidget {
 }
 
 class GrabSection extends StatelessWidget {
+  const GrabSection({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     const borderRadius = Radius.circular(30);
-    return Container(
+    return DecoratedBox(
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [

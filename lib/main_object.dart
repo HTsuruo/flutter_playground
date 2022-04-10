@@ -1,3 +1,5 @@
+import 'logger.dart';
+
 // 【Dart】Objectクラスの基本
 // ref. https://zenn.dev/iwaku/articles/2020-12-18-iwaku
 
@@ -7,27 +9,30 @@
 void main() {
   final hoge = Hoge('hoge');
   final hoge2 = hoge;
-  print('hoge.toString(): ${hoge.toString()}');
-  print('hoge hashcode: ${hoge.hashCode}');
-  // 同一インスタンスであればhashcodeが一緒
-  print('hoge2 hashcode: ${hoge2.hashCode}');
-  // 同一インスタンスであれば当然同じObjectとして扱われる
-  print('hoge == hoge2: ${hoge == hoge2}');
+  logger
+    ..fine('hoge.toString(): ${hoge.toString()}')
+    ..fine('hoge hashcode: ${hoge.hashCode}')
+    // 同一インスタンスであればhashcodeが一緒
+    ..fine('hoge2 hashcode: ${hoge2.hashCode}')
+    // 同一インスタンスであれば当然同じObjectとして扱われる
+    ..fine('hoge == hoge2: ${hoge == hoge2}');
 
   final hoge3 = Hoge('hoge');
   // 同じ`name`でも通常インスタンスが異なれば異なるhashcodeとなる
-  print('hoge3 hashcode: ${hoge3.hashCode}');
-  // ignore: cascade_invocations
-  print('hoge == hoge3: ${hoge == hoge3}');
+  logger
+    ..fine('hoge3 hashcode: ${hoge3.hashCode}')
+    // ignore: cascade_invocations
+    ..fine('hoge == hoge3: ${hoge == hoge3}');
 
   // 同一`name`を同じObjectとして扱い場合はhashcodeの算出を弄れば良い
 
   final foo = Hoge('foo');
-  print('foo.toString(): ${foo.toString()}');
-  // 通常Objectはインスタンスごとにhashcodeが代わる. これは真っ当な挙動
-  print('foo hashcode: ${foo.hashCode}');
-  // 当然別インスタンスかつ`name`が異なれば別のObjectを意図しているはずなので`false`となる
-  print('hoge == foo: ${hoge == foo}');
+  logger
+    ..fine('foo.toString(): ${foo.toString()}')
+    // 通常Objectはインスタンスごとにhashcodeが代わる. これは真っ当な挙動
+    ..fine('foo hashcode: ${foo.hashCode}')
+    // 当然別インスタンスかつ`name`が異なれば別のObjectを意図しているはずなので`false`となる
+    ..fine('hoge == foo: ${hoge == foo}');
 }
 
 class Hoge {
@@ -54,6 +59,7 @@ class Hoge {
   // こうすると`name`フィールドのhashcodeで判定されるので同一`name`つまり
   // 同一文字列であれば同じhashcodeが帰るようになる
   // ただし、同じObjectとして扱うためには`==`の変更も必要
+  @override
   int get hashCode => name.hashCode;
 
   // 他のフィールドを持っていた時には下記の書き方となる

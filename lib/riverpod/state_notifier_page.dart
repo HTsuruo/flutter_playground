@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state_notifier/state_notifier.dart';
 
 final _sampleController =
     StateNotifierProvider.autoDispose<_SampleController, int>(
@@ -62,8 +61,8 @@ class _BuildPhaseReadPattern extends ConsumerWidget {
     // となる
     final controller = ref.read(_sampleController.notifier);
     return FloatingActionButton(
-      child: const Icon(Icons.add),
       onPressed: controller.increment,
+      child: const Icon(Icons.add),
     );
   }
 }
@@ -77,8 +76,8 @@ class _BuildPhaseWatchPattern extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(_sampleController.notifier);
     return FloatingActionButton(
-      child: const Icon(Icons.add),
       onPressed: controller.increment,
+      child: const Icon(Icons.add),
     );
   }
 }

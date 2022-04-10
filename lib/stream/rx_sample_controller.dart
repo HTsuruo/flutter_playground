@@ -31,21 +31,27 @@ class RxSampleController extends ChangeNotifier {
     // 購読者
     // ignore: cascade_invocations
     _publishSubject.listen((data) {
-      logger.fine('_publishSubject:subscriber1:$data');
+      logger.info('_publishSubject:subscriber1:$data');
     });
 
     _behaviorSubject.listen((data) {
-      logger.fine('_behaviorSubject:subscriber1:$data');
+      logger.info('_behaviorSubject:subscriber1:$data');
     });
 
     _replySubject.listen((data) {
-      logger.fine('_replySubject:subscriber1:$data');
+      logger.info('_replySubject:subscriber1:$data');
     });
 
     // ignore: cascade_invocations
-    _publishSubject..add('data1')..add('data2');
-    _behaviorSubject..add('data1')..add('data2');
-    _replySubject..add('data1')..add('data2');
+    _publishSubject
+      ..add('data1')
+      ..add('data2');
+    _behaviorSubject
+      ..add('data1')
+      ..add('data2');
+    _replySubject
+      ..add('data1')
+      ..add('data2');
 
     Future(() async {
       await Future<void>.delayed(const Duration(seconds: 3));
@@ -56,17 +62,17 @@ class RxSampleController extends ChangeNotifier {
       // 購読者
       // ignore: cascade_invocations
       _publishSubject.listen((data) {
-        logger.fine('_publishSubject:subscriber2:$data');
+        logger.info('_publishSubject:subscriber2:$data');
       });
 
       _behaviorSubject.listen((data) {
-        logger.fine('_behaviorSubject:subscriber2:$data');
+        logger.info('_behaviorSubject:subscriber2:$data');
       });
 
       // ReplySubjectの特徴
       // この購読では過去に発行したdata0~data3まですべて流れてくる
       _replySubject.listen((data) {
-        logger.fine('_replySubject:subscriber2:$data');
+        logger.info('_replySubject:subscriber2:$data');
       });
 
       // ignore: cascade_invocations

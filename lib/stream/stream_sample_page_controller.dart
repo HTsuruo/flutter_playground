@@ -17,12 +17,12 @@ class StreamSamplePageController extends ChangeNotifier {
 
     // 購読者1
     _singleController.stream.listen((data) {
-      logger.fine('subscriber[single]:$data');
+      logger.info('subscriber[single]:$data');
     });
 
     // 購読者2（これは通常ブロードキャスト指定をしないと失敗する）
     // Bad state: Stream has already been listened to.
-    // controller.stream.listen(logger.fine);
+    // controller.stream.listen(logger.info);
 
     _singleController.sink.add('SingleStream1');
     _singleController.sink.add('SingleStream2');
@@ -33,39 +33,39 @@ class StreamSamplePageController extends ChangeNotifier {
     _broadcastController.sink.add('BroadCast0');
     // 購読者1
     _broadcastController.stream.listen((data) {
-      logger.fine('subscriber[A]:$data');
+      logger.info('subscriber[A]:$data');
     });
     // 購読者2
     _broadcastController.stream.listen((data) {
-      logger.fine('subscriber[B]:$data');
+      logger.info('subscriber[B]:$data');
     });
     _broadcastController.sink.add('BroadCast1');
     _broadcastController.sink.add('BroadCast2');
 
     // transformで監視している購読は`BroadCast3`がかなり早いタイミングで流れてくる
     _broadcastController.stream.transform(_transform()).listen((data) {
-      logger.fine('subscriber[C]:$data');
+      logger.info('subscriber[C]:$data');
     });
     _broadcastController.sink.add('BroadCast3');
 
     // StreamSubscriptionに渡してみる
     _sh = _broadcastController.stream.listen((data) {
-      logger.fine('subscriber[D]:$data');
+      logger.info('subscriber[D]:$data');
     });
 
     // StreamSubscriptionはこのような形でstreamデータをハンドリングすることが可能
     // ちなみに`onData`指定した場合、前述での監視はされる`onData`が優先される
     // 重複で監視することにはならない.　とはいえonDataであれば普通にlistenすれば良いので使う機会は少なそう
     // _sh.onData((data) {
-    //   logger.fine('subscriber[D]:onData:$data');
+    //   logger.info('subscriber[D]:onData:$data');
     // });
 
     _broadcastController.sink.add('BroadCast4');
 
     Future(() async {
       await Future<void>.delayed(const Duration(seconds: 3));
-      _sh.cancel();
-      logger.fine('---subscriber[D] canceled---');
+      await _sh.cancel();
+      logger.info('---subscriber[D] canceled---');
       // StreamSubscriptionをcancelすることでsubscriber[D]は`BroadCast5`を
       // 受け取らないというハンドリングができる
       // cancel以外にも`pause`や`resume`で流し込むstreamを一時停止,再開したりできる

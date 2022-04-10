@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gap/gap.dart';
 
 void main() => runApp(
       const ProviderScope(
-        child: const App(),
+        child: App(),
       ),
     );
 
@@ -24,7 +23,6 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    const gap = Gap(16);
     return Scaffold(
       appBar: AppBar(),
       body: Column(
@@ -67,13 +65,13 @@ class _ToggleButtonState extends State<_ToggleButton> {
   @override
   Widget build(BuildContext context) {
     return ToggleButtons(
+      onPressed: _selected,
+      isSelected: isSelected,
       children: const [
         Text('日'),
         Text('週'),
         Text('月'),
       ],
-      onPressed: _selected,
-      isSelected: isSelected,
     );
   }
 }
@@ -111,12 +109,12 @@ class _CustomizedToggleButton extends ConsumerWidget {
           minHeight: 32, //ボタンとしては非推奨だが最小高さを変えることも可
         ),
         borderRadius: BorderRadius.circular(8),
+        onPressed: controller.selected,
+        isSelected: controller.isSelected,
         children: const [
           Text('絞り込み'),
           Text('すべて'),
         ],
-        onPressed: controller.selected,
-        isSelected: controller.isSelected,
       ),
     );
   }

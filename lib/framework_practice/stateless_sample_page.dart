@@ -27,7 +27,7 @@ class StatelessSamplePage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => logger.fine('onTap'),
+        onPressed: () => logger.info('onTap'),
         child: const Icon(Icons.add),
       ),
     );

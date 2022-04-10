@@ -7,18 +7,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Streamが流れ続けてしまいガベージコレクションも働かず永遠にメモリを逼迫してしまう
 final disposeSampleController = Provider.autoDispose(
   (ref) {
-    final controller = DisposeSampleController(ref.read);
+    final controller = DisposeSampleController();
     ref.onDispose(controller.dispose);
     return controller;
   },
 );
 
 class DisposeSampleController {
-  DisposeSampleController(this._read) {
+  DisposeSampleController() {
     logger.info('$runtimeType: constructor');
   }
-
-  final Reader _read;
 
   void dispose() {
     logger.info('$runtimeType: dispose');

@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 final _tabs = ['Tab1', 'Tab2'];
 
@@ -76,8 +76,7 @@ class _TransparentAppBar extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
-      elevation: 0,
-      brightness: Brightness.dark,
+      elevation: 0, systemOverlayStyle: SystemUiOverlayStyle.light,
     );
   }
 

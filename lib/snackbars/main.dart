@@ -25,7 +25,7 @@ class App extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     const locale = Locale('ja');
-    logger.fine(rootScaffoldMessengerKey);
+    logger.info(rootScaffoldMessengerKey);
     return MaterialApp(
       navigatorKey: ref.watch(navigatorKey),
       scaffoldMessengerKey: ref.watch(scaffoldMessengerKey),
@@ -52,7 +52,7 @@ class App extends ConsumerWidget {
 
 const _snackBar = SnackBar(
   content: Text('snackBarContent'),
-  duration: const Duration(seconds: 2),
+  duration: Duration(seconds: 2),
 );
 
 class HomePage extends ConsumerWidget {
@@ -71,7 +71,7 @@ class HomePage extends ConsumerWidget {
                   ScaffoldMessenger.of(context).showSnackBar(_snackBar);
               // どんな操作で閉じられたか取得できる
               final closeReason = await featureController.closed;
-              logger.fine('closeReason: $closeReason');
+              logger.info('closeReason: $closeReason');
             },
           ),
           const Divider(),
@@ -130,7 +130,7 @@ class HomePage extends ConsumerWidget {
                 content: const Text('Custom SnackBar Content\nhogehogehge'),
                 action: SnackBarAction(
                   label: 'action',
-                  onPressed: () => logger.fine('onPressed action!!'),
+                  onPressed: () => logger.info('onPressed action!!'),
                 ),
               );
               ref
@@ -154,7 +154,7 @@ class HomePage extends ConsumerWidget {
           ListTile(
             title: const Text('Customize Content'),
             onTap: () async {
-              logger.fine(ref.read(scaffoldMessengerKey).currentState);
+              logger.info(ref.read(scaffoldMessengerKey).currentState);
               // SnackBar連打時にSnackBarがなにかしらのキュー?に溜まってしまって
               // 連続して表示されてしまう
               // 同一のSnackBarが既に表示されているか否かを判定する術はあるのだろうか
@@ -190,7 +190,7 @@ class HomePage extends ConsumerWidget {
                           ),
                         ),
                       );
-              logger.fine(await featureController.closed);
+              logger.info(await featureController.closed);
             },
           )
         ],

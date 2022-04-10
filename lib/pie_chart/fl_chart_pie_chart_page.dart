@@ -25,7 +25,7 @@ class FlChartPieChartPage extends StatelessWidget {
         title: 'タイトル2',
         showTitle: false,
         badgeWidget: const _BadgeWidget(label: '40%'),
-        color: colorScheme.primaryVariant,
+        color: colorScheme.primaryContainer,
         value: 40,
       ),
       PieChartSectionData(
@@ -38,7 +38,7 @@ class FlChartPieChartPage extends StatelessWidget {
     ];
 
     return Scaffold(
-      backgroundColor: colorScheme.primaryVariant,
+      backgroundColor: colorScheme.primaryContainer,
       appBar: AppBar(
         title: Text(runtimeType.toString()),
       ),
@@ -75,10 +75,13 @@ class FlChartPieChartPage extends StatelessWidget {
                             }
                             // 中央の部分もclickableになっていて、
                             // その場合のtouchSectionIndexは`-1`となるのを確認
+                            final touchedSection =
+                                touchResponse.touchedSection!;
+                            final sectionIndex =
+                                touchedSection.touchedSectionIndex;
                             logger.info(
-                              'touchedSectionIndex: '
-                              '${touchResponse.touchedSection!.touchedSectionIndex},'
-                              'touchedSection: ${touchResponse.touchedSection!.touchedSection},',
+                              'touchedSectionIndex: $sectionIndex ,'
+                              'touchedSection: $touchedSection',
                             );
                           },
                         ),

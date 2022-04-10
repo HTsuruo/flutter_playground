@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/logger.dart';
 import 'package:flutter_playground/scroll_modal/component/list_view_content.dart';
 import 'package:flutter_playground/scroll_modal/cupertino_page.dart';
 import 'package:flutter_playground/scroll_modal/sliding_sheet_widget_page.dart';
@@ -106,7 +107,7 @@ class HomePage extends StatelessWidget {
                         );
                       });
                 });
-                print(result);
+                logger.info(result);
               }),
           const Divider(),
           ListTile(

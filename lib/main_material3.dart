@@ -18,10 +18,10 @@ class App extends StatelessWidget {
     // Mediumの記事を参考に
     // ref. https://medium.com/flutter/whats-new-in-flutter-2-10-5aafb0314b12#babb
     final lightScheme = ColorScheme.fromSeed(seedColor: seed);
-    final darkScheme = ColorScheme.fromSeed(
-      seedColor: seed,
-      brightness: Brightness.dark,
-    );
+    // final darkScheme = ColorScheme.fromSeed(
+    //   seedColor: seed,
+    //   brightness: Brightness.dark,
+    // );
 
     return MaterialApp(
       // ThemeDataのcolorSchemeSeedプロパティにColorクラスを指定するパターン

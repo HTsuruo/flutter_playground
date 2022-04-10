@@ -72,10 +72,8 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           OutlinedButton(
+            onPressed: _subscription.cancel,
             child: const Text('Cancel'),
-            onPressed: () {
-              _subscription.cancel();
-            },
           ),
         ],
       ),

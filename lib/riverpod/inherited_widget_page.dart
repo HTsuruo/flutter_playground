@@ -30,8 +30,8 @@ class _InheritedWidgetPageState extends State<InheritedWidgetPage> {
         // `Scaffold`を包むのでも構わないが本来は変更を伝搬したいスコープ
         // つまりこの場合は`_Text()`を包むとベター
         child: _Inherited(
-          child: const _Text(),
           count: _counter,
+          child: const _Text(),
         ),
       ),
       floatingActionButton: FloatingActionButton(

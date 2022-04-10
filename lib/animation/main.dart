@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage>
       setState(() {});
     });
     // animation.addStatusListener((status) {
-    //   logger.fine('animationStatus: $status');
+    //   logger.info('animationStatus: $status');
     //   switch (status) {
     //     case AnimationStatus.completed:
     //       controller.reverse();

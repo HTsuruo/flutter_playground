@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
-
-import 'infinity_scroll_detector.dart';
 
 class FirestoreQueryBuilderPage extends ConsumerWidget {
   const FirestoreQueryBuilderPage({Key? key}) : super(key: key);
@@ -13,7 +10,6 @@ class FirestoreQueryBuilderPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final detector = ref.watch(infinityScrollDetector);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Paging'),

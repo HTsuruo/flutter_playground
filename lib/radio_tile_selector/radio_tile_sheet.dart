@@ -76,7 +76,7 @@ class RadioTileSheet2<T> extends StatefulWidget {
   final List<RadioParam<T>> data;
 
   @override
-  _RadioTileSheet2State createState() => _RadioTileSheet2State<T>();
+  _RadioTileSheet2State<T> createState() => _RadioTileSheet2State<T>();
 }
 
 class _RadioTileSheet2State<T> extends State<RadioTileSheet2<T>> {

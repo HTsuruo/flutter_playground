@@ -20,7 +20,7 @@ class DefaultTabControllerPage extends StatelessWidget {
           title: const Text(routeName),
           bottom: TabBar(
             tabs: tabs.map((t) => t.tab).toList(),
-            onTap: (value) => logger.fine('Tapped index is: $value'),
+            onTap: (value) => logger.info('Tapped index is: $value'),
           ),
         ),
         body: TabBarView(

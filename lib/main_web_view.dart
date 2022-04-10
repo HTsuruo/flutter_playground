@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import 'logger.dart';
+
 void main() => runApp(const App());
 
 class App extends StatelessWidget {
@@ -24,7 +26,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
-        child: FlatButton(
+        child: TextButton(
           child: const Text('launchURL'),
           onPressed: () async => _launchWebView(context),
         ),
@@ -46,10 +48,9 @@ class HomePage extends StatelessWidget {
 
   Future<void> _launchWebView(BuildContext context) async {
     const url = 'https://flutter.dev/';
-    final _controller = Completer<WebViewController>();
-    var resURL = '';
-    final result = await Navigator.of(context).push(
-      MaterialPageRoute<PageRoute>(
+    final controller = Completer<WebViewController>();
+    await Navigator.of(context).push<void>(
+      MaterialPageRoute(
         builder: (context) {
           return Scaffold(
             appBar: AppBar(
@@ -65,23 +66,23 @@ class HomePage extends StatelessWidget {
             body: WebView(
               initialUrl: url,
               javascriptMode: JavascriptMode.unrestricted,
-              onWebViewCreated: _controller.complete,
+              onWebViewCreated: controller.complete,
               navigationDelegate: (NavigationRequest request) {
                 if (request.url.startsWith('https://flutter.dev/docs')) {
-                  resURL = request.url;
+                  // final resURL = request.url;
                   Navigator.pop(context);
                   // TODO(tsuruoka): Navigator.popに引数を指定すると動かない
 //                  Navigator.pop(context, request.url);
                   return NavigationDecision.prevent;
                 }
-                print('allowing navigation to $request');
+                logger.info('allowing navigation to $request');
                 return NavigationDecision.navigate;
               },
               onPageStarted: (String url) {
-                print('Page started loading: $url');
+                logger.info('Page started loading: $url');
               },
               onPageFinished: (String url) {
-                print('Page finished loading: $url');
+                logger.info('Page finished loading: $url');
               },
             ),
           );
@@ -89,7 +90,5 @@ class HomePage extends StatelessWidget {
         fullscreenDialog: true,
       ),
     );
-    print('result is $result');
-    print('result is $resURL');
   }
 }
