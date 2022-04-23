@@ -50,6 +50,11 @@
     </application>
     <!-- ref. https://pub.dev/packages/url_launcher#android -->
     <queries>
+        <!-- If your app opens https URLs -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
         <!-- If your app makes calls -->
         <intent>
             <action android:name="android.intent.action.DIAL" />

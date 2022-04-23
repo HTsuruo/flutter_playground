@@ -9,6 +9,7 @@ import 'logger.dart';
 
 void main() => runApp(const App());
 
+/// `webview_flutter`と`url_launcher`のサンプル
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
@@ -82,16 +83,20 @@ class HomePage extends StatelessWidget {
   }
 
   // Universal LinksやApp Linksの場合はアプリが起動する
+  // iOSの場合（例: Appleメールアプリ）
+  // info.plistに`LSApplicationQueriesSchemes`への追記が必要
+  // ref. https://support.apple.com/ja-jp/guide/mdm/mdm90f60c1ce/web
+  // const url = 'com.apple.mobilemail://';
+
+  // Androidの場合（例: 電話アプリが開く）
+  // Android 30以上はAndroidManifestファイルに追記が必要
   // const url = 'http://maps.google.com/maps?q=東京スカイツリー'; // Android
-  // const url = 'sms:'; //iOS
   Future<void> _launchDefaultBrowser(String url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: false,
-        forceWebView: false,
-      );
-    }
+    await launch(
+      url,
+      forceSafariVC: false,
+      forceWebView: false,
+    );
   }
 
   Future<void> _openWebView(BuildContext context, String url) async {
