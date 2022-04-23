@@ -99,19 +99,22 @@ class HomePage extends StatelessWidget {
 
   Future<void> _openWebView(BuildContext context, String url) async {
     final controller = Completer<WebViewController>();
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     await Navigator.of(context).push<void>(
       MaterialPageRoute(
         builder: (context) {
           return Scaffold(
             appBar: AppBar(
-              title: const Text(
+              title: Text(
                 'WebView埋め込み表示',
-                style: TextStyle(
-                  color: Colors.black,
+                style: theme.textTheme.titleMedium!.copyWith(
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-              backgroundColor: Colors.white,
-              iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
+              backgroundColor: colorScheme.surface,
+              foregroundColor: colorScheme.onSurface,
+              iconTheme: IconThemeData(color: colorScheme.onSurface),
             ),
             body: WebView(
               initialUrl: url,
