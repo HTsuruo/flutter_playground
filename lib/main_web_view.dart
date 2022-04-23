@@ -73,13 +73,11 @@ class HomePage extends StatelessWidget {
   }
 
   Future<void> _launchInAppBrowser(String url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-      );
-    }
+    await launch(
+      url,
+      forceSafariVC: true,
+      forceWebView: true,
+    );
   }
 
   // Universal LinksやApp Linksの場合はアプリが起動する
