@@ -37,7 +37,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     const trailingIcon = Icon(Icons.navigate_next);
     const url = 'https://flutter.dev/';
-    const universalLink = 'https://twitter.com/h_tsuruo';
+    final uri = Uri.https('flutter.dev', '');
+    final universalLinkUri = Uri.https('twitter.com', 'h_tsuruo');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Webページ表示の方法'),
@@ -54,31 +55,27 @@ class HomePage extends StatelessWidget {
             title: const Text('アプリ内ブラウザ起動'),
             subtitle: const Text(url),
             trailing: trailingIcon,
-            onTap: () => _launchInAppBrowser(url),
+            onTap: () => _launchInAppBrowser(uri),
           ),
           ListTile(
             title: const Text('外部ブラウザ起動'),
             subtitle: const Text(url),
             trailing: trailingIcon,
-            onTap: () => _launchDefaultBrowser(url),
+            onTap: () => _launchExternalApplication(uri),
           ),
           ListTile(
             title: const Text('Universal Links / App Links起動'),
-            subtitle: const Text(universalLink),
+            subtitle: Text(universalLinkUri.toString()),
             trailing: trailingIcon,
-            onTap: () => _launchDefaultBrowser(universalLink),
+            onTap: () => _launchExternalApplication(universalLinkUri),
           ),
         ].intersperse(const Divider()).toList(),
       ),
     );
   }
 
-  Future<void> _launchInAppBrowser(String url) async {
-    await launch(
-      url,
-      forceSafariVC: true,
-      forceWebView: true,
-    );
+  Future<void> _launchInAppBrowser(Uri uri) async {
+    await launchUrl(uri);
   }
 
   // Universal LinksやApp Linksの場合はアプリが起動する
@@ -90,11 +87,10 @@ class HomePage extends StatelessWidget {
   // Androidの場合（例: 電話アプリが開く）
   // Android 30以上はAndroidManifestファイルに追記が必要
   // const url = 'http://maps.google.com/maps?q=東京スカイツリー'; // Android
-  Future<void> _launchDefaultBrowser(String url) async {
-    await launch(
-      url,
-      forceSafariVC: false,
-      forceWebView: false,
+  Future<void> _launchExternalApplication(Uri uri) async {
+    await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
     );
   }
 
