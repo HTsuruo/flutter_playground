@@ -47,7 +47,6 @@ dependencies:
   material_segmented_control:
   modal_bottom_sheet:
   modal_progress_hud:
-  noise_meter:
   quiver:
   rxdart:
   shimmer:
