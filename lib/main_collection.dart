@@ -41,7 +41,7 @@ final students = [
 
 void main() {
   // 要素が入っていることがわかっているIterableに対してもnullableになってしまうのが扱いづらい（`value!`）
-  final max = maxBy<int, int>(unmodifiedList, (value) => value!);
+  final max = maxBy<int, int>(unmodifiedList, (value) => value);
   logger.info('max: $max');
   final min = minBy<int, int>(unmodifiedList, (value) => value);
   logger.info('max: $min');
@@ -51,7 +51,7 @@ void main() {
 
   final studentHasMaxValue = maxBy<Student, int>(
     students,
-    (hoge) => hoge!.value,
+    (hoge) => hoge.value,
   );
   logger.info('studentHasMaxValue: ${studentHasMaxValue?.name}');
 

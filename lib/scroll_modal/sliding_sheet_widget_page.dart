@@ -16,9 +16,7 @@ class SlidingSheetWidgetPage extends StatelessWidget {
         elevation: 8,
         cornerRadius: 16,
         snapSpec: const SnapSpec(
-          snap: true,
           snappings: [0.2, 1.0],
-          positioning: SnapPositioning.relativeToAvailableSpace,
         ),
         builder: (context, state) => const SizedBox(
           height: 600, // 高さの指定がやりにくい

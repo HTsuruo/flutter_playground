@@ -94,7 +94,6 @@ class _SliverCustom extends StatelessWidget {
             ),
             expandedHeight: 140,
             floating: true,
-            pinned: false,
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(

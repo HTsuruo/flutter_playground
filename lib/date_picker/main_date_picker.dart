@@ -47,7 +47,7 @@ class App extends StatelessWidget {
   }
 }
 
-final firstDate = DateTime(2022, 1);
+final firstDate = DateTime(2022);
 final currentDate = DateTime.now();
 final lastDate = currentDate.add(const Duration(days: 360));
 const locale = Locale('ja');

@@ -156,6 +156,6 @@ class NotificationPage extends ConsumerWidget {
               ),
             ),
           ],
-        ));
+        ),);
   }
 }

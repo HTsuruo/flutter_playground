@@ -24,7 +24,7 @@ class ConsumerScopedPage extends StatelessWidget {
           },
           child: const Icon(Icons.add),
         );
-      }),
+      },),
     );
   }
 }

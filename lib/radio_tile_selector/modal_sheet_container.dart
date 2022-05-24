@@ -40,7 +40,6 @@ class ModalSheetContainer extends StatelessWidget {
             color: theme.colorScheme.primary,
             height: topPadding,
             child: Align(
-              alignment: Alignment.center,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(

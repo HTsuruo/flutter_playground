@@ -26,7 +26,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const _ToggleButton(),
           const _CustomizedToggleButton(),

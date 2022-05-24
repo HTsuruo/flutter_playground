@@ -85,7 +85,8 @@ class StreamSamplePageController extends ChangeNotifier {
   // データ加工も色々できる
   StreamTransformer<String, String> _transform() {
     return StreamTransformer.fromHandlers(
-        handleData: (value, sink) => sink.add('[HEADER]:$value'));
+      handleData: (value, sink) => sink.add('[HEADER]:$value'),
+    );
   }
 
   // listenの型がStreamSubscriptionで購読の状態をハンドリングすることができる

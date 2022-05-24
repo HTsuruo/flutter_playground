@@ -59,7 +59,7 @@ class SliverWithTabBarPage extends StatelessWidget {
                       ),
                     ],
                   );
-                });
+                },);
               }).toList(),
             ),
           ),

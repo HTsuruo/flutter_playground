@@ -89,7 +89,8 @@ class HomePage extends ConsumerWidget {
           const Divider(),
           ListTile(
             title: const Text(
-                'rootScaffoldMessengerKey?.currentState.showSnackBar'),
+              'rootScaffoldMessengerKey?.currentState.showSnackBar',
+            ),
             subtitle: const Text('GlobalKey?をMaterialAppにセットして呼び出す'),
             // `rootScaffoldMessengerKey?`をscaffoldMessengerKey?に
             // セットしないと存在しないのでエラーになる

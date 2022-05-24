@@ -104,11 +104,12 @@ class FlChartPieChartPage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: sections
-                        .map((s) => Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 4),
-                              child: _Legend(color: s.color, label: s.title),
-                            ))
+                        .map(
+                          (s) => Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            child: _Legend(color: s.color, label: s.title),
+                          ),
+                        )
                         .toList(),
                   ),
                 ),

@@ -159,8 +159,6 @@ class _DenseTextForm2 extends StatelessWidget {
         labelText: 'これはラベルです',
         helperText: 'これはヘルパーテキストです',
         contentPadding: const EdgeInsets.symmetric(
-          // ここで調整
-          vertical: 0,
           horizontal: 12,
         ),
       ),

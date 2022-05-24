@@ -76,45 +76,49 @@ class HomePage extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
-              title: const Text('sliding_sheet as a BottomSheetDialog'),
-              onTap: () async {
-                final result = await showSlidingBottomSheet<String>(context,
-                    builder: (context) {
+            title: const Text('sliding_sheet as a BottomSheetDialog'),
+            onTap: () async {
+              final result = await showSlidingBottomSheet<String>(
+                context,
+                builder: (context) {
                   return SlidingSheetDialog(
-                      elevation: 8,
-                      cornerRadius: 16,
-                      snapSpec: const SnapSpec(
-                        snap: true,
-                        snappings: [0.3, 0.9],
-                        positioning: SnapPositioning.relativeToAvailableSpace,
-                      ),
-                      builder: (context, state) {
-                        return Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Text(
-                            'あああああああああああああああああああああああああ'
-                            'あああああああああああああああああああああああああ'
-                            'あああああああああああああああああああああああああ'
-                            'あああああああああああああああああああああああああ'
-                            'あああああああああああああああああああああああああ'
-                            'あああああああああああああああああああああああああ'
-                            'あああああああああああああああああああああああああ'
-                            'あああああああああああああああああああああああああ'
-                            'あああああああああああああああああああああああああ'
-                            'あああああああああああああああああああああああああ',
-                            style: Theme.of(context).textTheme.headline4,
-                          ),
-                        );
-                      });
-                });
-                logger.info(result);
-              }),
+                    elevation: 8,
+                    cornerRadius: 16,
+                    snapSpec: const SnapSpec(
+                      snappings: [0.3, 0.9],
+                    ),
+                    builder: (context, state) {
+                      return Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Text(
+                          'あああああああああああああああああああああああああ'
+                          'あああああああああああああああああああああああああ'
+                          'あああああああああああああああああああああああああ'
+                          'あああああああああああああああああああああああああ'
+                          'あああああああああああああああああああああああああ'
+                          'あああああああああああああああああああああああああ'
+                          'あああああああああああああああああああああああああ'
+                          'あああああああああああああああああああああああああ'
+                          'あああああああああああああああああああああああああ'
+                          'あああああああああああああああああああああああああ',
+                          style: Theme.of(context).textTheme.headline4,
+                        ),
+                      );
+                    },
+                  );
+                },
+              );
+              logger.info(result);
+            },
+          ),
           const Divider(),
           ListTile(
             title: const Text('snapping_sheet'),
-            onTap: () => Navigator.of(context).push<void>(MaterialPageRoute(
-              builder: (context) => const SnappingSheetSamplePage(),
-            )),
+            onTap: () => Navigator.of(context).push<void>(
+              MaterialPageRoute(
+                builder: (context) => const SnappingSheetSamplePage(),
+              ),
+            ),
           ),
           const Divider(),
           ListTile(
