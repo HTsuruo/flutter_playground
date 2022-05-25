@@ -36,3 +36,19 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+class ExpansionMessage extends StatefulWidget {
+  const ExpansionMessage({super.key});
+
+  @override
+  State<ExpansionMessage> createState() => _ExpansionMessageState();
+}
+
+class _ExpansionMessageState extends State<ExpansionMessage> {
+  bool show = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
