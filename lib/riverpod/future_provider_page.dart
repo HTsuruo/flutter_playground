@@ -7,24 +7,6 @@ final _mockFutureProvider = FutureProvider<int>((ref) async {
   return Future.value(5);
 });
 
-final stateProvider = StateProvider<Model>((ref) {
-  final value = ref.watch(_mockFutureProvider).value;
-  final value2 = ref.watch(_mockFutureProvider).value;
-  final value3 = ref.watch(_mockFutureProvider).value;
-  return Model(value: value, value2: value2, value3: value3);
-});
-
-class Model {
-  Model({
-    required this.value,
-    required this.value2,
-    required this.value3,
-  });
-  final int? value;
-  final int? value2;
-  final int? value3;
-}
-
 class FutureProviderPage extends ConsumerWidget {
   const FutureProviderPage({super.key});
 
@@ -33,15 +15,23 @@ class FutureProviderPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final value = ref.watch(_mockFutureProvider).value;
-    final model = ref.watch(stateProvider);
-    logger
-      ..info('value: $value')
-      ..info('model: $model');
     return Scaffold(
       appBar: AppBar(
         title: Text(
           runtimeType.toString(),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push<void>(
+                MaterialPageRoute(
+                  builder: (context) => const _AutoDisposePage(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.navigate_next),
+          )
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: () {
@@ -62,6 +52,36 @@ class FutureProviderPage extends ConsumerWidget {
                 },
                 separatorBuilder: (context, index) => const Divider(),
               ),
+      ),
+    );
+  }
+}
+
+final _autoDisposeProvider = FutureProvider.autoDispose<int>(
+  (ref) async {
+    await Future<void>.delayed(const Duration(seconds: 2));
+    ref.onDispose(() {
+      logger.info('onDispose!!');
+    });
+    return Future.value(5);
+  },
+  cacheTime: const Duration(seconds: 5),
+  // disposeDelay: const Duration(seconds: 5),
+);
+
+class _AutoDisposePage extends ConsumerWidget {
+  const _AutoDisposePage();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final count = ref.watch(_autoDisposeProvider).value;
+    logger.info('count: $count');
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('autoDispose'),
+      ),
+      body: Center(
+        child: Text('count: $count'),
       ),
     );
   }

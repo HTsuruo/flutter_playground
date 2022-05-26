@@ -46,7 +46,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.from(
-        colorScheme: const ColorScheme.light(),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        useMaterial3: true,
       ).copyWith(
         dividerTheme: const DividerThemeData(space: 0),
       ),
