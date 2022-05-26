@@ -59,11 +59,12 @@ class FutureProviderPage extends ConsumerWidget {
 
 final _autoDisposeProvider = FutureProvider.autoDispose<int>(
   (ref) async {
-    await Future<void>.delayed(const Duration(seconds: 2));
+    logger.info('provider: : ${ref.hashCode}');
+    final plusOne = ref.watch(plusOneProvider);
     ref.onDispose(() {
-      logger.info('onDispose!!');
+      logger.info('onDispose: ${ref.hashCode}');
     });
-    return Future.value(5);
+    return Future.value(5 + plusOne);
   },
   cacheTime: const Duration(seconds: 5),
   // disposeDelay: const Duration(seconds: 5),
@@ -74,7 +75,7 @@ class _AutoDisposePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final count = ref.watch(_autoDisposeProvider).value;
+    final count = ref.watch(_autoDisposeProvider.select((s) => s.value));
     logger.info('count: $count');
     return Scaffold(
       appBar: AppBar(
@@ -83,6 +84,15 @@ class _AutoDisposePage extends ConsumerWidget {
       body: Center(
         child: Text('count: $count'),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          logger.info('plusOne!!');
+          ref.read(plusOneProvider.notifier).update((state) => state + 1);
+        },
+        child: const Icon(Icons.plus_one),
+      ),
     );
   }
 }
+
+final plusOneProvider = StateProvider<int>((ref) => 0);
