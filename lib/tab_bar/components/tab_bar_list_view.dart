@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class TabBarListView extends StatelessWidget {
   const TabBarListView({
-    Key? key,
+    super.key,
     required this.color,
     required this.pageName,
-  }) : super(key: key);
+  });
 
   final Color color;
   final String pageName;

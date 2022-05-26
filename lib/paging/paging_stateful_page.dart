@@ -8,7 +8,7 @@ import 'package:quiver/iterables.dart';
 final items = range(0, 100).toList();
 
 class PagingStatefulPage extends ConsumerStatefulWidget {
-  const PagingStatefulPage({Key? key}) : super(key: key);
+  const PagingStatefulPage({super.key});
   static const routeName = '/paging_stateful';
 
   @override

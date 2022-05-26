@@ -9,7 +9,7 @@ void main() => runApp(
     );
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
 /// ToggleButton Class(Material Library)
 /// https://api.flutter.dev/flutter/material/ToggleButtons-class.html
 class _ToggleButton extends StatefulWidget {
-  const _ToggleButton({Key? key}) : super(key: key);
+  const _ToggleButton({super.key});
 
   @override
   _ToggleButtonState createState() => _ToggleButtonState();
@@ -91,7 +91,7 @@ class ToggleController extends ChangeNotifier {
 }
 
 class _CustomizedToggleButton extends ConsumerWidget {
-  const _CustomizedToggleButton({Key? key}) : super(key: key);
+  const _CustomizedToggleButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -120,7 +120,7 @@ class _CustomizedToggleButton extends ConsumerWidget {
 }
 
 class _CupertinoSegmentedControl extends StatefulWidget {
-  const _CupertinoSegmentedControl({Key? key}) : super(key: key);
+  const _CupertinoSegmentedControl({super.key});
 
   @override
   _CupertinoSegmentedControlState createState() =>
@@ -162,7 +162,7 @@ class _CupertinoSegmentedControlState
 }
 
 class CupertinoSegmentedControlCustomColor extends StatefulWidget {
-  const CupertinoSegmentedControlCustomColor({Key? key}) : super(key: key);
+  const CupertinoSegmentedControlCustomColor({super.key});
   @override
   _CupertinoSegmentedControlCustomColorState createState() =>
       _CupertinoSegmentedControlCustomColorState();

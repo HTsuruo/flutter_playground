@@ -5,7 +5,7 @@ import 'package:shimmer/shimmer.dart';
 
 // Loading中のスケルトンスクリーンのサンプル
 class ShimmerPage extends ConsumerWidget {
-  const ShimmerPage({Key? key}) : super(key: key);
+  const ShimmerPage({super.key});
 
   static const routeName = '/loading/shimmer';
 

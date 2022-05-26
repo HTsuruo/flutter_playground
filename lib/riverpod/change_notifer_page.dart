@@ -25,7 +25,7 @@ class _Counter extends ChangeNotifier {
 }
 
 class ChangeNotifierPage extends ConsumerWidget {
-  const ChangeNotifierPage({Key? key}) : super(key: key);
+  const ChangeNotifierPage({super.key});
 
   static const routeName = '/change_notifier';
 
@@ -61,7 +61,7 @@ class ChangeNotifierPage extends ConsumerWidget {
 }
 
 class _Text extends ConsumerWidget {
-  const _Text({Key? key}) : super(key: key);
+  const _Text({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // `select`指定することで指定のStateのみの変更を伝搬させることができる
@@ -71,7 +71,7 @@ class _Text extends ConsumerWidget {
 }
 
 class _RefreshText extends ConsumerWidget {
-  const _RefreshText({Key? key}) : super(key: key);
+  const _RefreshText({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final refreshed = ref.watch(_counter.select((s) => s.refreshed));

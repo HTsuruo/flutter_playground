@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
 
 class FadeTransitionPage extends StatefulWidget {
-  const FadeTransitionPage({Key? key}) : super(key: key);
+  const FadeTransitionPage({super.key});
 
   static const routeName = '/fade_transition';
 

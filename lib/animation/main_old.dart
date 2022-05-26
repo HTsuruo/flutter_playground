@@ -6,7 +6,7 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class App extends StatelessWidget {
 
 // AnimationControllerを使ってハンドリングするスタンダードなアニメーション方法
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -105,9 +105,9 @@ class _HomePageState extends State<HomePage>
 // AnimatedWidgetを継承すれば、リスナーの登録やsetStateの再描画などを意識する必要がなくなる
 class _AnimatedContainer extends AnimatedWidget {
   const _AnimatedContainer({
-    Key? key,
+    super.key,
     required this.animation,
-  }) : super(key: key, listenable: animation);
+  }) : super(listenable: animation);
 
   final Animation<Color?> animation;
 

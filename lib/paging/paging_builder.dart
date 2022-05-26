@@ -3,12 +3,12 @@ import 'package:flutter_playground/logger.dart';
 
 class PagingBuilder extends StatefulWidget {
   const PagingBuilder({
-    Key? key,
+    super.key,
     required this.child,
     required this.itemLength,
     required this.loadMore,
     this.pageSize = 10,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final int itemLength;

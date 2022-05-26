@@ -5,7 +5,7 @@ import 'package:sliding_sheet/sliding_sheet.dart';
 // sliding_sheet 0.4.0
 // https://pub.dev/packages/sliding_sheet
 class SlidingSheetWidgetPage extends StatelessWidget {
-  const SlidingSheetWidgetPage({Key? key}) : super(key: key);
+  const SlidingSheetWidgetPage({super.key});
   @override
   Widget build(BuildContext context) {
     final textStyle = Theme.of(context).textTheme.bodyText1!;

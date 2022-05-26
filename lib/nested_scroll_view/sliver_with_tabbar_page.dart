@@ -5,7 +5,7 @@ final _tabs = ['Tab1', 'Tab2'];
 
 /// ScaffoldのAppBarをステータスバーとして活用してスクロール時のステータスバー干渉を防ぐケース
 class SliverWithTabBarPage extends StatelessWidget {
-  const SliverWithTabBarPage({Key? key}) : super(key: key);
+  const SliverWithTabBarPage({super.key});
 
   static const routeName = '/nested_scroll_view/sliver_with_tabbar_page';
 
@@ -71,7 +71,7 @@ class SliverWithTabBarPage extends StatelessWidget {
 
 class _TransparentAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const _TransparentAppBar({Key? key}) : super(key: key);
+  const _TransparentAppBar({super.key});
   @override
   Widget build(BuildContext context) {
     return AppBar(

@@ -11,9 +11,9 @@ final radioTileSheet = ChangeNotifierProvider.autoDispose(
 
 class RadioTileSheet extends ConsumerWidget {
   const RadioTileSheet({
-    Key? key,
+    super.key,
     this.title = 'サンプル',
-  }) : super(key: key);
+  });
 
   final String title;
 
@@ -65,11 +65,11 @@ class RadioParam<T> {
 
 class RadioTileSheet2<T> extends StatefulWidget {
   const RadioTileSheet2({
-    Key? key,
+    super.key,
     this.title = 'サンプル',
     required this.initialValue,
     required this.data,
-  }) : super(key: key);
+  });
 
   final String title;
   final T initialValue;

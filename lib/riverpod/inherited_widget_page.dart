@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class InheritedWidgetPage extends StatefulWidget {
-  const InheritedWidgetPage({Key? key}) : super(key: key);
+  const InheritedWidgetPage({super.key});
 
   static const routeName = '/inherited_widget';
 
@@ -43,7 +43,7 @@ class _InheritedWidgetPageState extends State<InheritedWidgetPage> {
 }
 
 class _Text extends StatelessWidget {
-  const _Text({Key? key}) : super(key: key);
+  const _Text({super.key});
   @override
   Widget build(BuildContext context) {
     // 引数を渡さずとも上位`Scaffold`を包んだ`_Inherited`にアクセスできる
@@ -58,10 +58,10 @@ class _Text extends StatelessWidget {
 // InheritedWidgetでO(1)アクセスにある
 class _Inherited extends InheritedWidget {
   const _Inherited({
-    Key? key,
-    required Widget child,
+    super.key,
+    required super.child,
     required this.count,
-  }) : super(key: key, child: child);
+  });
 
   final int count;
 

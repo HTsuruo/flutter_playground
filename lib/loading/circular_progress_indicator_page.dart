@@ -3,7 +3,7 @@ import 'package:flutter_playground/loading/future_mock.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CircularProgressIndicatorPage extends ConsumerWidget {
-  const CircularProgressIndicatorPage({Key? key}) : super(key: key);
+  const CircularProgressIndicatorPage({super.key});
 
   static const routeName = '/loading/circular_progress_indicator';
 

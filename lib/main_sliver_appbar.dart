@@ -8,7 +8,7 @@ void main() => runApp(
     );
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return const _SliverWithFuture();
@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
 
 /// flexibleSpaceを使わないAppBarのデフォルトサイズを使った基本的なやり方
 class _SliverDefault extends StatelessWidget {
-  const _SliverDefault({Key? key}) : super(key: key);
+  const _SliverDefault({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +60,7 @@ class _SliverDefault extends StatelessWidget {
 
 /// flexibleSpaceやexpandedHeightを使い、高さを可変にしたやり方
 class _SliverCustom extends StatelessWidget {
-  const _SliverCustom({Key? key}) : super(key: key);
+  const _SliverCustom({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,7 +116,7 @@ class _SliverCustom extends StatelessWidget {
 
 /// Tabを固定しつつ、それ以外の項目はスクロール時にフェードアウトするやりかた
 class _SliverWithTab extends StatelessWidget {
-  const _SliverWithTab({Key? key}) : super(key: key);
+  const _SliverWithTab({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -175,7 +175,7 @@ final _futureProvider = FutureProvider<bool>((ref) async {
 });
 
 class _SliverWithFuture extends ConsumerWidget {
-  const _SliverWithFuture({Key? key}) : super(key: key);
+  const _SliverWithFuture({super.key});
 
   // ignore: avoid_positional_boolean_parameters
   Widget success(bool data) {

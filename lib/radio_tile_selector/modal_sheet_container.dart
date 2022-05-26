@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class ModalSheetContainer extends StatelessWidget {
   const ModalSheetContainer({
-    Key? key,
+    super.key,
     required this.title,
     required this.child,
     this.subTitle,
     this.scrollController,
-  }) : super(key: key);
+  });
 
   final String title;
   final String? subTitle;

@@ -4,7 +4,7 @@ import 'package:flutter_playground/stream/state_provider_sample/state_provider_n
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StateProviderPage extends ConsumerWidget {
-  const StateProviderPage({Key? key}) : super(key: key);
+  const StateProviderPage({super.key});
 
   static const routeName = '/state_provider';
   @override

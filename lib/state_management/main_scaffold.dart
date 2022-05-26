@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class MainScaffold extends StatelessWidget {
   const MainScaffold({
-    Key? key,
+    super.key,
     required this.title,
     required this.counter,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   final String title;
   final int counter;

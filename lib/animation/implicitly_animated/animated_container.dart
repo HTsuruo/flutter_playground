@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
 
 class AnimatedContainerPage extends StatefulWidget {
-  const AnimatedContainerPage({Key? key}) : super(key: key);
+  const AnimatedContainerPage({super.key});
 
   static const routeName = '/animated_container';
 

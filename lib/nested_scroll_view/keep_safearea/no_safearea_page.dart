@@ -4,7 +4,7 @@ import 'package:flutter_playground/nested_scroll_view/keep_safearea/app_custom_s
 /// 普通にSliverAppBarの`floating:true`でスクロールすると
 /// ステータスバー部分がコンテンツを覆いかぶさってしまう
 class NoSafeAreaPage extends StatelessWidget {
-  const NoSafeAreaPage({Key? key}) : super(key: key);
+  const NoSafeAreaPage({super.key});
 
   static const routeName = '/nested_scroll_view/no_safearea_page';
 

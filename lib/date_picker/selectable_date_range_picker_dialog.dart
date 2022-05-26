@@ -5,11 +5,11 @@ import 'date_range_selector.dart';
 
 class SelectableDateRangePickerDialog extends ConsumerWidget {
   const SelectableDateRangePickerDialog({
-    Key? key,
+    super.key,
     required this.firstDate,
     required this.lastDate,
     this.currentDate,
-  }) : super(key: key);
+  });
 
   final DateTime firstDate;
   final DateTime lastDate;
@@ -49,7 +49,7 @@ class SelectableDateRangePickerDialog extends ConsumerWidget {
 }
 
 class _DateRangeSelectButtons extends ConsumerWidget {
-  const _DateRangeSelectButtons({Key? key}) : super(key: key);
+  const _DateRangeSelectButtons({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selector = ref.watch(dateRangeSelector.notifier);

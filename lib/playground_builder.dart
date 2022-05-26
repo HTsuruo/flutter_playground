@@ -3,10 +3,10 @@ import 'package:tsuruo_kit/tsuruo_kit.dart';
 
 class PlaygroundBuilder extends StatelessWidget {
   const PlaygroundBuilder({
-    Key? key,
+    super.key,
     required this.title,
     required this.routes,
-  }) : super(key: key);
+  });
 
   final String title;
   final Map<String, WidgetBuilder> routes;

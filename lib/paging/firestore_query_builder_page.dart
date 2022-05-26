@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutterfire_ui/firestore.dart';
 
 class FirestoreQueryBuilderPage extends ConsumerWidget {
-  const FirestoreQueryBuilderPage({Key? key}) : super(key: key);
+  const FirestoreQueryBuilderPage({super.key});
 
   static const routeName = '/firestore_query_builder';
 

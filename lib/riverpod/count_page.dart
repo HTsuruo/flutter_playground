@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import '../logger.dart';
 
 class CountPage extends ConsumerStatefulWidget {
-  const CountPage({Key? key}) : super(key: key);
+  const CountPage({super.key});
 
   static const routeName = '/count';
 
@@ -60,10 +60,10 @@ class _CountPageState extends ConsumerState<CountPage> {
 
 class _CountDisplay extends StatelessWidget {
   const _CountDisplay({
-    Key? key,
+    super.key,
     required this.label,
     required this.value,
-  }) : super(key: key);
+  });
 
   final String label;
   final String value;
@@ -95,7 +95,7 @@ class _CountDisplay extends StatelessWidget {
 final countProvider = StateProvider((ref) => 0);
 
 class _Count extends ConsumerWidget {
-  const _Count({Key? key}) : super(key: key);
+  const _Count({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final count = ref.watch(countProvider);
@@ -116,7 +116,7 @@ final doubleCountProvider = Provider(
 );
 
 class _DoubleCount extends ConsumerWidget {
-  const _DoubleCount({Key? key}) : super(key: key);
+  const _DoubleCount({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final count = ref.watch(doubleCountProvider);
@@ -140,7 +140,7 @@ final thresholdProvider = Provider(
 );
 
 class _CountThreshold extends ConsumerWidget {
-  const _CountThreshold({Key? key}) : super(key: key);
+  const _CountThreshold({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final threshold = ref.watch(thresholdProvider);

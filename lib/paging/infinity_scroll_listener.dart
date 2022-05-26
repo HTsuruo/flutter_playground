@@ -3,11 +3,11 @@ import 'package:flutter/rendering.dart';
 
 class InfinityScrollListener extends StatelessWidget {
   const InfinityScrollListener({
-    Key? key,
+    super.key,
     required this.child,
     required this.onListener,
     this.threshold = 20,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final VoidCallback onListener;

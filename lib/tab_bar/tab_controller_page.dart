@@ -4,7 +4,7 @@ import 'package:flutter_playground/tab_bar/components/components.dart';
 
 ///　[TabController]と[TickerProviderStateMixin]で構築するパターン
 class TabControllerPage extends StatefulWidget {
-  const TabControllerPage({Key? key}) : super(key: key);
+  const TabControllerPage({super.key});
   static const routeName = '/tab_controller_page';
 
   @override

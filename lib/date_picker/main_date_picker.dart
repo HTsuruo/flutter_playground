@@ -23,7 +23,7 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ final lastDate = currentDate.add(const Duration(days: 360));
 const locale = Locale('ja');
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     const divider = Divider();
@@ -177,7 +177,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _LocalizedDateRangePickerDialog extends StatelessWidget {
-  const _LocalizedDateRangePickerDialog({Key? key}) : super(key: key);
+  const _LocalizedDateRangePickerDialog({super.key});
   @override
   Widget build(BuildContext context) {
     // localを指定する場合はshowDateRangePickerの実装を参考に

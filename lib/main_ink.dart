@@ -4,7 +4,7 @@ import 'package:flutter_playground/logger.dart';
 void main() => runApp(const App());
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _BoxNg extends StatelessWidget {
-  const _BoxNg({Key? key}) : super(key: key);
+  const _BoxNg({super.key});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -52,7 +52,7 @@ class _BoxNg extends StatelessWidget {
 }
 
 class _BoxInnerBox extends StatelessWidget {
-  const _BoxInnerBox({Key? key}) : super(key: key);
+  const _BoxInnerBox({super.key});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -70,7 +70,7 @@ class _BoxInnerBox extends StatelessWidget {
 }
 
 class _BoxOk extends StatelessWidget {
-  const _BoxOk({Key? key}) : super(key: key);
+  const _BoxOk({super.key});
   @override
   Widget build(BuildContext context) {
     // ColoredBoxなど不透明なWidgetの部分を
@@ -87,7 +87,7 @@ class _BoxOk extends StatelessWidget {
 }
 
 class _BoxMaterialTransparency extends StatelessWidget {
-  const _BoxMaterialTransparency({Key? key}) : super(key: key);
+  const _BoxMaterialTransparency({super.key});
   @override
   Widget build(BuildContext context) {
     // 親のMaterialとInkWellの間に不透明なWidgetがあると普通はsplashが隠れてしまう
@@ -105,7 +105,7 @@ class _BoxMaterialTransparency extends StatelessWidget {
 }
 
 class _BoxMaterialColor extends StatelessWidget {
-  const _BoxMaterialColor({Key? key}) : super(key: key);
+  const _BoxMaterialColor({super.key});
   @override
   Widget build(BuildContext context) {
     // ベタ塗りのWidgetを親に持っている場合、Inkで包んでも無効化できない
@@ -124,7 +124,7 @@ class _BoxMaterialColor extends StatelessWidget {
 }
 
 class _BoxDecoration extends StatelessWidget {
-  const _BoxDecoration({Key? key}) : super(key: key);
+  const _BoxDecoration({super.key});
   @override
   Widget build(BuildContext context) {
     return Ink(
@@ -142,7 +142,7 @@ class _BoxDecoration extends StatelessWidget {
 }
 
 class _BoxImage extends StatelessWidget {
-  const _BoxImage({Key? key}) : super(key: key);
+  const _BoxImage({super.key});
   @override
   Widget build(BuildContext context) {
     // 画像の場合はそれ用のコンストラクターがあって便利
@@ -156,7 +156,7 @@ class _BoxImage extends StatelessWidget {
 }
 
 class _BoxColoredBackground extends StatelessWidget {
-  const _BoxColoredBackground({Key? key}) : super(key: key);
+  const _BoxColoredBackground({super.key});
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(16);
@@ -175,7 +175,7 @@ class _BoxColoredBackground extends StatelessWidget {
 }
 
 class _BoxCardBackground extends StatelessWidget {
-  const _BoxCardBackground({Key? key}) : super(key: key);
+  const _BoxCardBackground({super.key});
   @override
   Widget build(BuildContext context) {
     return Card(

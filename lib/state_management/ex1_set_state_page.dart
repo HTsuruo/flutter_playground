@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/state_management/main_scaffold.dart';
 
 class Ex1SetStatePage extends StatefulWidget {
-  const Ex1SetStatePage({Key? key}) : super(key: key);
+  const Ex1SetStatePage({super.key});
 
   static const routeName = 'ex1_set_state_page';
 

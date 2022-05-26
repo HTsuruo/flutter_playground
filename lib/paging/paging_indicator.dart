@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PagingIndicator extends StatelessWidget {
-  const PagingIndicator({Key? key}) : super(key: key);
+  const PagingIndicator({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(

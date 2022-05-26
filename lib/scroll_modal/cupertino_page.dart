@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class CupertinoPage extends StatelessWidget {
-  const CupertinoPage({Key? key}) : super(key: key);
+  const CupertinoPage({super.key});
 
   @override
   Widget build(BuildContext context) {

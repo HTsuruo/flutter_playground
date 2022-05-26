@@ -8,7 +8,7 @@
       "name": "flutter_playground",
       "request": "launch",
       "type": "dart",
-      "program": "lib/expansion_message/main_expansion_message.dart",
+      "program": "lib/riverpod/main.dart",
       "flutterMode": "debug"
     }
   ]

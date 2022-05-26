@@ -3,7 +3,7 @@ import 'package:flutter_playground/riverpod/controller_pattern/sample_provider.d
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ConsumerScopedPage extends StatelessWidget {
-  const ConsumerScopedPage({Key? key}) : super(key: key);
+  const ConsumerScopedPage({super.key});
   static const routeName = '/consumer_scoped';
 
   // WidgetRef: widget層でproviderとやりとりができるObject

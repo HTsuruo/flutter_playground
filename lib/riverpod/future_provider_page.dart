@@ -26,7 +26,7 @@ class Model {
 }
 
 class FutureProviderPage extends ConsumerWidget {
-  const FutureProviderPage({Key? key}) : super(key: key);
+  const FutureProviderPage({super.key});
 
   static const routeName = '/future_provider';
 

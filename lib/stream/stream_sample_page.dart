@@ -3,7 +3,7 @@ import 'package:flutter_playground/stream/stream_sample_page_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StreamSamplePage extends ConsumerWidget {
-  const StreamSamplePage({Key? key}) : super(key: key);
+  const StreamSamplePage({super.key});
 
   static const routeName = '/stream_sample_page';
 

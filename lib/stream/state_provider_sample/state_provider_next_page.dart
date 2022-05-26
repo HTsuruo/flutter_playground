@@ -3,7 +3,7 @@ import 'package:flutter_playground/stream/state_provider_sample/state_provider_c
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StateProviderNextPage extends ConsumerWidget {
-  const StateProviderNextPage({Key? key}) : super(key: key);
+  const StateProviderNextPage({super.key});
 
   static const routeName = '/state_provider_next';
 

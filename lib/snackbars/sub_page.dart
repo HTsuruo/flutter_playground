@@ -3,7 +3,7 @@ import 'package:flutter_playground/snackbars/scaffold_messenger_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SubPage extends ConsumerWidget {
-  const SubPage({Key? key}) : super(key: key);
+  const SubPage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(const App());
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class App extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _NormalTextForm extends StatelessWidget {
-  const _NormalTextForm({Key? key}) : super(key: key);
+  const _NormalTextForm({super.key});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -68,7 +68,7 @@ class _NormalTextForm extends StatelessWidget {
 }
 
 class _SizedBoxTextForm1 extends StatelessWidget {
-  const _SizedBoxTextForm1({Key? key}) : super(key: key);
+  const _SizedBoxTextForm1({super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -84,7 +84,7 @@ class _SizedBoxTextForm1 extends StatelessWidget {
 }
 
 class _SizedBoxTextForm2 extends StatelessWidget {
-  const _SizedBoxTextForm2({Key? key}) : super(key: key);
+  const _SizedBoxTextForm2({super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -103,7 +103,7 @@ class _SizedBoxTextForm2 extends StatelessWidget {
 }
 
 class _SizedBoxTextForm3 extends StatelessWidget {
-  const _SizedBoxTextForm3({Key? key}) : super(key: key);
+  const _SizedBoxTextForm3({super.key});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -124,7 +124,7 @@ class _SizedBoxTextForm3 extends StatelessWidget {
 /// isDenseを使ったパターン：
 /// 「uses less vertical space」 高さが気になる場合にサクッと修正できる
 class _DenseTextForm extends StatelessWidget {
-  const _DenseTextForm({Key? key}) : super(key: key);
+  const _DenseTextForm({super.key});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -148,7 +148,7 @@ class _DenseTextForm extends StatelessWidget {
 /// and `EdgeInsets.fromLTRB(12, 24, 12, 16)` when isDense is false.
 /// 上記のisDenseを指定するパターンだと内部的にcontentPaddingを(12, 20, 12, 12)に指定している
 class _DenseTextForm2 extends StatelessWidget {
-  const _DenseTextForm2({Key? key}) : super(key: key);
+  const _DenseTextForm2({super.key});
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -170,7 +170,7 @@ class _DenseTextForm2 extends StatelessWidget {
 /// フォームの高さを全て共通にする場合（ベースを用意する場合）はこれが良さそう
 /// ただしフォーム以外も全体的にcompactになるのはやや懸念か
 class _DenseTextForm3 extends StatelessWidget {
-  const _DenseTextForm3({Key? key}) : super(key: key);
+  const _DenseTextForm3({super.key});
   @override
   Widget build(BuildContext context) {
     return Theme(

@@ -3,7 +3,7 @@ import 'package:flutter_playground/riverpod/dispose_pattern/dispose_sample_contr
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DisposeSamplePage extends ConsumerWidget {
-  const DisposeSamplePage({Key? key}) : super(key: key);
+  const DisposeSamplePage({super.key});
 
   static const routeName = '/dispose_sample_page';
 

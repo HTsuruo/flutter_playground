@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Sample3 extends StatelessWidget {
-  const Sample3({Key? key}) : super(key: key);
+  const Sample3({super.key});
 
   static const routeName = '/nested_scroll_view/sample3';
 

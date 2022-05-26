@@ -25,7 +25,7 @@ class _SampleController extends StateNotifier<int> {
 }
 
 class StateNotifierPage extends ConsumerWidget {
-  const StateNotifierPage({Key? key}) : super(key: key);
+  const StateNotifierPage({super.key});
 
   static const routeName = '/state_notifier';
 
@@ -52,7 +52,7 @@ class StateNotifierPage extends ConsumerWidget {
 // buildフェーズで`ref.read`としcontrollerを宣言した場合
 // 画面遷移時にinit, 直後にdispose, ボタン押下時には既にdisposeされているのでエラー
 class _BuildPhaseReadPattern extends ConsumerWidget {
-  const _BuildPhaseReadPattern({Key? key}) : super(key: key);
+  const _BuildPhaseReadPattern({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // buildメソッドで`ref.read`とするとコンストラクタが呼ばれた直後に
@@ -71,7 +71,7 @@ class _BuildPhaseReadPattern extends ConsumerWidget {
 // 画面遷移時にinit, ボタン押下時にincrement, 画面破棄時にdispose
 // `notifier`指定しているので、stateの変更は流れず無駄なビルドを防げる
 class _BuildPhaseWatchPattern extends ConsumerWidget {
-  const _BuildPhaseWatchPattern({Key? key}) : super(key: key);
+  const _BuildPhaseWatchPattern({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(_sampleController.notifier);
@@ -90,7 +90,7 @@ class _BuildPhaseWatchPattern extends ConsumerWidget {
 // こういう何度も呼ばれる処理を実装する場合は前述のBuildPhase中に
 // `ref.watch`としてコンストラクタを定義した状態で寿命を保つ形が良い
 class _CallbackReadPattern extends ConsumerWidget {
-  const _CallbackReadPattern({Key? key}) : super(key: key);
+  const _CallbackReadPattern({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FloatingActionButton(

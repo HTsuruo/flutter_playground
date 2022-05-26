@@ -20,7 +20,7 @@ void main() {
 final rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
 class App extends ConsumerWidget {
-  const App({Key? key}) : super(key: key);
+  const App({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -56,7 +56,7 @@ const _snackBar = SnackBar(
 );
 
 class HomePage extends ConsumerWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(

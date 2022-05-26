@@ -9,7 +9,7 @@ import 'infinity_scroll_detector.dart';
 final items = range(0, 100).toList();
 
 class PagingPage extends ConsumerWidget {
-  const PagingPage({Key? key}) : super(key: key);
+  const PagingPage({super.key});
 
   static const routeName = '/paging';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/state_management/main_scaffold.dart';
 
 class Ex2InheritedWidgetPage extends StatelessWidget {
-  const Ex2InheritedWidgetPage({Key? key}) : super(key: key);
+  const Ex2InheritedWidgetPage({super.key});
   static const routeName = 'ex2_inherited_widget_page';
 
   @override
@@ -19,9 +19,9 @@ class Ex2InheritedWidgetPage extends StatelessWidget {
 
 class _Inherited extends StatelessWidget {
   const _Inherited({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimatedSwitcherPage extends StatefulWidget {
-  const AnimatedSwitcherPage({Key? key}) : super(key: key);
+  const AnimatedSwitcherPage({super.key});
 
   static const routeName = '/animated_switcher';
 
@@ -64,7 +64,7 @@ class _AnimatedSwitcherPageState extends State<AnimatedSwitcherPage> {
 }
 
 class HogeBox extends StatelessWidget {
-  const HogeBox({Key? key}) : super(key: key);
+  const HogeBox({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -76,7 +76,7 @@ class HogeBox extends StatelessWidget {
 }
 
 class PiyoBox extends StatelessWidget {
-  const PiyoBox({Key? key}) : super(key: key);
+  const PiyoBox({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(

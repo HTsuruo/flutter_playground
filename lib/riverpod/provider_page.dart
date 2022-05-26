@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProviderPage extends ConsumerWidget {
-  const ProviderPage({Key? key}) : super(key: key);
+  const ProviderPage({super.key});
 
   static const routeName = '/provider';
 

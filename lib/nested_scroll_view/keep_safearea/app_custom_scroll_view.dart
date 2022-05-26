@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppCustomScrollView extends StatelessWidget {
   const AppCustomScrollView({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   final String title;
 

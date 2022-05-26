@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AnimatedPhysicalModelPage extends StatefulWidget {
-  const AnimatedPhysicalModelPage({Key? key}) : super(key: key);
+  const AnimatedPhysicalModelPage({super.key});
 
   static const routeName = '/animated_physical_model';
 

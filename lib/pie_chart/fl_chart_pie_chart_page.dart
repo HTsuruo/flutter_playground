@@ -4,7 +4,7 @@ import 'package:flutter_playground/logger.dart';
 import 'package:gap/gap.dart';
 
 class FlChartPieChartPage extends StatelessWidget {
-  const FlChartPieChartPage({Key? key}) : super(key: key);
+  const FlChartPieChartPage({super.key});
 
   static const routeName = '/pie_chart/fl_chart';
 
@@ -124,10 +124,10 @@ class FlChartPieChartPage extends StatelessWidget {
 
 class _Legend extends StatelessWidget {
   const _Legend({
-    Key? key,
+    super.key,
     required this.color,
     required this.label,
-  }) : super(key: key);
+  });
 
   final Color color;
   final String label;
@@ -156,7 +156,7 @@ class _Legend extends StatelessWidget {
 }
 
 class _BadgeWidget extends StatelessWidget {
-  const _BadgeWidget({Key? key, required this.label}) : super(key: key);
+  const _BadgeWidget({super.key, required this.label});
 
   final String label;
 

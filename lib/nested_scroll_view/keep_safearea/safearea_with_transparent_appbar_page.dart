@@ -4,7 +4,7 @@ import 'package:flutter_playground/nested_scroll_view/keep_safearea/app_custom_s
 
 /// ScaffoldのAppBarをステータスバーとして活用してスクロール時のステータスバー干渉を防ぐケース
 class SafeAreaWithTransparentAppBarPage extends StatelessWidget {
-  const SafeAreaWithTransparentAppBarPage({Key? key}) : super(key: key);
+  const SafeAreaWithTransparentAppBarPage({super.key});
 
   static const routeName =
       '/nested_scroll_view/safearea_with_transparent_appbar_page';
@@ -29,7 +29,7 @@ class SafeAreaWithTransparentAppBarPage extends StatelessWidget {
 
 class _TransparentAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const _TransparentAppBar({Key? key}) : super(key: key);
+  const _TransparentAppBar({super.key});
   @override
   Widget build(BuildContext context) {
     return AppBar(

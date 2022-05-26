@@ -3,7 +3,7 @@ import 'package:flutter_playground/riverpod/controller_pattern/sample_provider.d
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StatelessPage extends ConsumerWidget {
-  const StatelessPage({Key? key}) : super(key: key);
+  const StatelessPage({super.key});
   static const routeName = '/stateless';
 
   // WidgetRef: widget層でproviderとやりとりができるObject
