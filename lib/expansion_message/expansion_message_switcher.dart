@@ -1,51 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
-  runApp(
-    const App(),
-  );
-}
+final _expansionMessageSwitcher =
+    StateNotifierProvider<_ExpansionMessageSwitcher, bool>(
+  (ref) => _ExpansionMessageSwitcher(),
+);
 
-class App extends StatelessWidget {
-  const App({super.key});
+class _ExpansionMessageSwitcher extends StateNotifier<bool> {
+  _ExpansionMessageSwitcher() : super(false);
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF2E5817),
-        ),
-      ).copyWith(
-        useMaterial3: true,
-      ),
-      home: const HomePage(),
-    );
+  void show() {
+    state = !state;
+    // ここにFirebase AnalyticsやSharedPreferencesなどの追加ロジックを書くイメージ
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('ExpansionMessage'),
-      ),
-      body: const ExpansionMessage(),
-    );
-  }
-}
-
-class ExpansionMessage extends StatefulWidget {
-  const ExpansionMessage({super.key});
-
-  @override
-  State<ExpansionMessage> createState() => _ExpansionMessageState();
-}
-
-class _ExpansionMessageState extends State<ExpansionMessage> {
-  bool _show = false;
+class ExpansionMessageByRiverpod extends ConsumerWidget {
+  const ExpansionMessageByRiverpod({super.key});
 
   // 引用元: https://news.yahoo.co.jp/articles/ec8a44f6e1851c3b9f35edf4d74988611e25f8c7
   static const _message = '''
@@ -59,7 +30,8 @@ class _ExpansionMessageState extends State<ExpansionMessage> {
 また岸田首相が唱える「新しい資本主義」について、日本維新の会は「おぼろげに聞こえてくる政策の大半は従来の焼き直しで大風呂敷を広げる意味がどこにあるのか疑問」と指摘、予算委員会の質疑で「化けの皮をはがす」と意気込む。''';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final show = ref.watch(_expansionMessageSwitcher);
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: 40),
@@ -72,22 +44,18 @@ class _ExpansionMessageState extends State<ExpansionMessage> {
             color: Colors.amber,
             child: Text(
               _message,
-              maxLines: _show ? null : 3,
+              maxLines: show ? null : 3,
 
               // `maxLines: null`かつ`TextOverflow.ellipsis`指定だと1行分しか表示されないので
               // overflowフィールドもnullにすると上手くいく。
-              overflow: _show ? null : TextOverflow.ellipsis,
+              overflow: show ? null : TextOverflow.ellipsis,
             ),
           ),
           TextButton(
             onPressed: () {
-              setState(
-                () {
-                  _show = !_show;
-                },
-              );
+              ref.read(_expansionMessageSwitcher.notifier).show();
             },
-            child: Text(_show ? '折りたたむ' : 'もっとみる'),
+            child: Text(show ? '折りたたむ' : 'もっとみる'),
           )
         ],
       ),
