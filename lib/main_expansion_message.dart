@@ -32,9 +32,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('ExpansionMessage'),
       ),
-      body: const Center(
-        child: ExpansionMessage(),
-      ),
+      body: const ExpansionMessage(),
     );
   }
 }
