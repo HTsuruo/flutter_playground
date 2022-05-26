@@ -8,7 +8,7 @@
       "name": "flutter_playground",
       "request": "launch",
       "type": "dart",
-      "program": "lib/main_hoge.dart",
+      "program": "lib/main_expansion_message.dart",
       "flutterMode": "debug"
     }
   ]
