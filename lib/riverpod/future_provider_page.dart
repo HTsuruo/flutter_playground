@@ -60,7 +60,7 @@ class FutureProviderPage extends ConsumerWidget {
 final _autoDisposeProvider = FutureProvider.autoDispose<int>(
   (ref) async {
     logger.info('provider: : ${ref.hashCode}');
-    final plusOne = ref.watch(plusOneProvider);
+    final plusOne = ref.watch(_plusOneProvider);
     ref.onDispose(() {
       logger.info('onDispose: ${ref.hashCode}');
     });
@@ -69,6 +69,14 @@ final _autoDisposeProvider = FutureProvider.autoDispose<int>(
   cacheTime: const Duration(seconds: 5),
   // disposeDelay: const Duration(seconds: 5),
 );
+
+final _plusOneProvider = StateProvider.autoDispose<int>((ref) {
+  // `_autoDisposeProvider`がdisposeされると即時破棄される
+  ref.onDispose(() {
+    logger.info('plusOneProvider - onDispose: ${ref.hashCode}');
+  });
+  return 0;
+});
 
 class _AutoDisposePage extends ConsumerWidget {
   const _AutoDisposePage();
@@ -87,12 +95,10 @@ class _AutoDisposePage extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           logger.info('plusOne!!');
-          ref.read(plusOneProvider.notifier).update((state) => state + 1);
+          ref.read(_plusOneProvider.notifier).update((state) => state + 1);
         },
         child: const Icon(Icons.plus_one),
       ),
     );
   }
 }
-
-final plusOneProvider = StateProvider<int>((ref) => 0);
