@@ -84,12 +84,16 @@ class _HighlightTileState extends State<HighlightTile>
     vsync: this,
     duration: const Duration(milliseconds: 500),
   );
-  late final Animation<Decoration> _animation = _animationController.drive(
-    DecorationTween(
-      begin: const BoxDecoration(),
-      end: BoxDecoration(color: widget.highlightColor ?? Colors.amber),
-    ),
-  );
+  late final Animation<Decoration> _animation = _animationController
+      .drive(
+        CurveTween(curve: Curves.easeInOut),
+      )
+      .drive(
+        DecorationTween(
+          begin: const BoxDecoration(),
+          end: BoxDecoration(color: widget.highlightColor ?? Colors.amber),
+        ),
+      );
 
   @override
   void initState() {
@@ -102,7 +106,7 @@ class _HighlightTileState extends State<HighlightTile>
     });
     _animation.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
-        await Future<void>.delayed(const Duration(milliseconds: 200));
+        await Future<void>.delayed(const Duration(milliseconds: 300));
         await _animationController.reverse();
       }
     });
