@@ -33,14 +33,14 @@ class _HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HighlightTile'),
+        title: const Text('SmoothHighlight'),
       ),
       body: ListView.separated(
         itemCount: 10,
         separatorBuilder: (context, _) => const Divider(),
-        itemBuilder: (BuildContext context, int index) {
+        itemBuilder: (context, index) {
           final target = index == 2;
-          return HighlightTile(
+          return SmoothHighlight(
             enabled: target,
             child: ListTile(
               title: Text('index: ${index + 1}'),
@@ -54,8 +54,8 @@ class _HomePage extends StatelessWidget {
   }
 }
 
-class HighlightTile extends StatefulWidget {
-  const HighlightTile({
+class SmoothHighlight extends StatefulWidget {
+  const SmoothHighlight({
     super.key,
     required this.child,
     this.highlightColor,
@@ -67,10 +67,10 @@ class HighlightTile extends StatefulWidget {
   final bool enabled;
 
   @override
-  State<HighlightTile> createState() => _HighlightTileState();
+  State<SmoothHighlight> createState() => _SmoothHighlightState();
 }
 
-class _HighlightTileState extends State<HighlightTile>
+class _SmoothHighlightState extends State<SmoothHighlight>
     with SingleTickerProviderStateMixin {
   late final _animationController = AnimationController(
     vsync: this,
