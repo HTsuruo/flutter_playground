@@ -12,6 +12,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.from(
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF2E5817),
@@ -75,19 +76,11 @@ class _HighlightTileState extends State<HighlightTile>
     vsync: this,
     duration: const Duration(milliseconds: 500),
   );
-  late final Animation<Decoration> _animation = _animationController
-      .drive(
-        CurveTween(curve: Curves.easeInOut),
-      )
-      .drive(
-        DecorationTween(
-          begin: const BoxDecoration(),
-          end: BoxDecoration(color: widget.highlightColor ?? Colors.amber),
-        ),
-      );
+  late final Animation<Decoration> _animation;
 
   @override
-  void initState() {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     if (!widget.enabled) {
       _animationController.dispose();
       return;
@@ -95,13 +88,25 @@ class _HighlightTileState extends State<HighlightTile>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _animationController.forward();
     });
+
+    _animation = _animationController
+        .drive(
+          CurveTween(curve: Curves.easeInOut),
+        )
+        .drive(
+          DecorationTween(
+            begin: const BoxDecoration(),
+            end: BoxDecoration(
+              color: widget.highlightColor ?? Theme.of(context).primaryColor,
+            ),
+          ),
+        );
     _animation.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
         await Future<void>.delayed(const Duration(milliseconds: 200));
         await _animationController.reverse();
       }
     });
-    super.initState();
   }
 
   @override
