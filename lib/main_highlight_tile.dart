@@ -21,7 +21,42 @@ class App extends StatelessWidget {
         useMaterial3: true,
         dividerTheme: const DividerThemeData(space: 0),
       ),
-      home: const _HomePage(),
+      home: const _SamplePage(),
+    );
+  }
+}
+
+class _SamplePage extends StatefulWidget {
+  const _SamplePage();
+
+  @override
+  State<_SamplePage> createState() => _SamplePageState();
+}
+
+class _SamplePageState extends State<_SamplePage> {
+  int _counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('SamplePage'),
+      ),
+      body: Center(
+        child: SmoothHighlight(
+          // MEMO(tsuruoka): 初回のみしかアニメーションは聞かないのでkeyを変えて別インスタンスとして生成する必要がある
+          key: ValueKey(_counter),
+          child: const Text('text'),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _counter++;
+          });
+        },
+        child: const Icon(Icons.refresh),
+      ),
     );
   }
 }
@@ -79,16 +114,16 @@ class _SmoothHighlightState extends State<SmoothHighlight>
   late final Animation<Decoration> _animation;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (!widget.enabled) {
-      _animationController.dispose();
-      return;
-    }
+  void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _animationController.forward();
     });
+  }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _animation = _animationController
         .drive(
           CurveTween(curve: Curves.easeInOut),
