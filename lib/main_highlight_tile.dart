@@ -38,26 +38,17 @@ class _HomePage extends StatelessWidget {
         itemCount: 10,
         separatorBuilder: (context, _) => const Divider(),
         itemBuilder: (BuildContext context, int index) {
+          final target = index == 2;
           return HighlightTile(
-            enabled: index == 2,
-            child: _Tile(label: 'index: ${index + 1}'),
+            enabled: target,
+            child: ListTile(
+              title: Text('index: ${index + 1}'),
+              subtitle: Text(target ? 'highlight tile' : 'normal tile'),
+              onTap: () {},
+            ),
           );
         },
       ),
-    );
-  }
-}
-
-class _Tile extends StatelessWidget {
-  const _Tile({required this.label});
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(label),
-      subtitle: const Text('this is subtitle'),
-      onTap: () {},
     );
   }
 }
@@ -106,7 +97,7 @@ class _HighlightTileState extends State<HighlightTile>
     });
     _animation.addStatusListener((status) async {
       if (status == AnimationStatus.completed) {
-        await Future<void>.delayed(const Duration(milliseconds: 300));
+        await Future<void>.delayed(const Duration(milliseconds: 200));
         await _animationController.reverse();
       }
     });
