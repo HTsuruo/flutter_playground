@@ -20,46 +20,13 @@ class App extends StatelessWidget {
         useMaterial3: true,
         dividerTheme: const DividerThemeData(space: 0),
       ),
-      home: const HomePage(),
+      home: const _HomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  late final _animationController = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 200),
-  );
-  late final Animation<Decoration> _animation = _animationController.drive(
-    DecorationTween(
-      begin: const BoxDecoration(color: Colors.transparent),
-      end: const BoxDecoration(color: Colors.amber),
-    ),
-  );
-
-  @override
-  void initState() {
-    _animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        _animationController.reverse();
-      }
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
+class _HomePage extends StatelessWidget {
+  const _HomePage();
 
   @override
   Widget build(BuildContext context) {
@@ -71,17 +38,11 @@ class _HomePageState extends State<HomePage>
         itemCount: 10,
         separatorBuilder: (context, _) => const Divider(),
         itemBuilder: (BuildContext context, int index) {
-          return index.isEven
-              ? DecoratedBoxTransition(
-                  decoration: _animation,
-                  child: _Tile(label: '${index + 1}'),
-                )
-              : _Tile(label: '${index + 1}');
+          return HighlightTile(
+            enabled: index == 2,
+            child: _Tile(label: 'index: ${index + 1}'),
+          );
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _animationController.forward,
-        child: const Icon(Icons.add),
       ),
     );
   }
@@ -98,5 +59,69 @@ class _Tile extends StatelessWidget {
       subtitle: const Text('this is subtitle'),
       onTap: () {},
     );
+  }
+}
+
+class HighlightTile extends StatefulWidget {
+  const HighlightTile({
+    super.key,
+    required this.child,
+    this.highlightColor,
+    this.enabled = true,
+  });
+
+  final Widget child;
+  final Color? highlightColor;
+  final bool enabled;
+
+  @override
+  State<HighlightTile> createState() => _HighlightTileState();
+}
+
+class _HighlightTileState extends State<HighlightTile>
+    with SingleTickerProviderStateMixin {
+  late final _animationController = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 500),
+  );
+  late final Animation<Decoration> _animation = _animationController.drive(
+    DecorationTween(
+      begin: const BoxDecoration(),
+      end: BoxDecoration(color: widget.highlightColor ?? Colors.amber),
+    ),
+  );
+
+  @override
+  void initState() {
+    if (!widget.enabled) {
+      _animationController.dispose();
+      return;
+    }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _animationController.forward();
+    });
+    _animation.addStatusListener((status) async {
+      if (status == AnimationStatus.completed) {
+        await Future<void>.delayed(const Duration(milliseconds: 200));
+        await _animationController.reverse();
+      }
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return widget.enabled
+        ? DecoratedBoxTransition(
+            decoration: _animation,
+            child: widget.child,
+          )
+        : widget.child;
   }
 }
