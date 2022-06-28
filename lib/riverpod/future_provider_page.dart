@@ -25,6 +25,16 @@ class FutureProviderPage extends ConsumerWidget {
             onPressed: () {
               Navigator.of(context).push<void>(
                 MaterialPageRoute(
+                  builder: (context) => const _PagingSamplePage(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.navigate_next),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push<void>(
+                MaterialPageRoute(
                   builder: (context) => const _AutoDisposePage(),
                 ),
               );
@@ -100,5 +110,85 @@ class _AutoDisposePage extends ConsumerWidget {
         child: const Icon(Icons.plus_one),
       ),
     );
+  }
+}
+
+final _paginatedCountProvider =
+    FutureProvider.family<int, int>((ref, page) async {
+  // page番号ごとにfamilyでインスタンスを作る
+  // familyで指定されたpageをaddする
+  final fetchedPages = ref.watch(_fetchedPages)..add(page);
+
+  // 破棄されたら指定ページをremoveする
+  ref.onDispose(() => fetchedPages.remove(page));
+
+  final res = await Future<int>.delayed(const Duration(seconds: 2), () => 1);
+
+  // 適当にデコード相当のことをしたとする
+  final value = res * 5;
+
+  return value;
+});
+
+// 既に取得したページ番号
+final _fetchedPages = StateProvider((ref) => <int>[]);
+
+class _PagingSamplePage extends ConsumerWidget {
+  const _PagingSamplePage();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    const perPage = 50;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('paging sample'),
+      ),
+      body: RefreshIndicator(
+        onRefresh: () {
+          ref.refresh(_paginatedCountProvider(0));
+          return ref.read(_paginatedCountProvider(0).future);
+        },
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return ProviderScope(
+              overrides: [
+                _currentValue.overrideWithValue(
+                  ref
+                      .watch(_paginatedCountProvider(index ~/ perPage))
+                      .whenData((value) => value),
+                ),
+              ],
+              child: const _ListTile(),
+            );
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.plus_one),
+      ),
+    );
+  }
+}
+
+final _currentValue = Provider<AsyncValue<int>>((ref) {
+  throw UnimplementedError();
+});
+
+class _ListTile extends ConsumerWidget {
+  const _ListTile();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final value = ref.watch(_currentValue);
+    return value.isLoading
+        ? const Center(
+            child: CircularProgressIndicator(),
+          )
+        : ListTile(
+            title: Text(
+              value.toString(),
+            ),
+          );
   }
 }
