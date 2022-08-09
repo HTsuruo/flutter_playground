@@ -6,7 +6,7 @@ import 'package:flutter_playground/riverpod/controller_pattern/consumer_scopoed_
 import 'package:flutter_playground/riverpod/controller_pattern/stateless_page.dart';
 import 'package:flutter_playground/riverpod/count_page.dart';
 import 'package:flutter_playground/riverpod/dispose_pattern/dispose_sample_page.dart';
-import 'package:flutter_playground/riverpod/future_provider_page.dart';
+import 'package:flutter_playground/riverpod/future/future_provider_page.dart';
 import 'package:flutter_playground/riverpod/inherited_widget_page.dart';
 import 'package:flutter_playground/riverpod/provider_page.dart';
 import 'package:flutter_playground/riverpod/set_state_page.dart';
