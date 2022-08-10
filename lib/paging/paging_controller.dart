@@ -21,7 +21,7 @@ class PagingController {
         if (length != _prevLength) {
           _hasMore = true;
         }
-        _page.add(_page.value! + 1);
+        _page.add(_page.value + 1);
         _prevLength = length;
       }
     });
