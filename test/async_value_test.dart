@@ -9,48 +9,100 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('初回読み込み', () {
-    test('成功時', () {
-      const previous = AsyncLoading<int>();
-      expect(previous.hasValue, isFalse);
-      expect(previous.isLoading, isTrue);
-      expect(previous.isRefreshing, isFalse);
-      expect(previous.hasError, isFalse);
-      expect(previous, isA<AsyncLoading<int>>());
+  test('初回読み込み成功時', () {
+    const previous = AsyncLoading<int>();
+    expect(previous.isLoading, isTrue);
+    expect(previous.isRefreshing, isFalse);
+    expect(previous.hasValue, isFalse);
+    expect(previous.hasError, isFalse);
+    expect(previous, isA<AsyncLoading<int>>());
 
-      final value = const AsyncData(1).copyWithPrevious(previous);
-      expect(value.hasValue, isTrue);
-      expect(value.isLoading, isFalse);
-      expect(value.isRefreshing, isFalse);
-      expect(value.hasError, isFalse);
-      expect(previous, isA<AsyncData<int>>());
-    });
+    final value = const AsyncData(1).copyWithPrevious(previous);
+    expect(value.isLoading, isFalse);
+    expect(value.isRefreshing, isFalse);
+    expect(value.hasValue, isTrue);
+    expect(value.hasError, isFalse);
+    expect(value, isA<AsyncData<int>>());
   });
 
-  group('リフレッシュや監視対象の切り替えで再評価される時', () {
-    test('成功時', () {
-      const previous = AsyncData(1);
-      expect(previous.value, 1);
-      expect(previous.hasValue, isTrue);
-      expect(previous.isLoading, isFalse);
-      expect(previous.isRefreshing, isFalse);
-      expect(previous.hasError, isFalse);
-      expect(previous, isA<AsyncData<int>>());
+  test('リフレッシュや監視対象の切り替えで再評価される時', () {
+    const previous = AsyncData(1);
+    expect(previous.isLoading, isFalse);
+    expect(previous.isRefreshing, isFalse);
+    expect(previous.value, 1);
+    expect(previous.hasValue, isTrue);
+    expect(previous.hasError, isFalse);
+    expect(previous, isA<AsyncData<int>>());
 
-      final loading = const AsyncLoading<int>().copyWithPrevious(previous);
-      expect(loading.hasValue, isTrue);
-      expect(loading.isLoading, isTrue);
-      expect(loading.isRefreshing, isTrue);
-      expect(loading.hasError, isFalse);
-      expect(loading, isA<AsyncData<int>>());
+    final loading = const AsyncLoading<int>().copyWithPrevious(previous);
+    expect(loading.isLoading, isTrue);
+    expect(loading.isRefreshing, isTrue);
+    expect(loading.hasValue, isTrue);
+    expect(loading.hasError, isFalse);
+    expect(loading, isA<AsyncData<int>>());
 
-      final value = const AsyncData<int>(2).copyWithPrevious(loading);
-      expect(value.value, 2);
-      expect(value.hasValue, isTrue);
-      expect(value.isLoading, isFalse);
-      expect(value.isRefreshing, isFalse);
-      expect(value.hasError, isFalse);
-      expect(value, isA<AsyncData<int>>());
-    });
+    final value = const AsyncData<int>(2).copyWithPrevious(loading);
+    expect(value.isLoading, isFalse);
+    expect(value.isRefreshing, isFalse);
+    expect(value.value, 2);
+    expect(value.hasValue, isTrue);
+    expect(value.hasError, isFalse);
+    expect(value, isA<AsyncData<int>>());
+  });
+
+  test('初回のデータ取得後にリフレッシュした場合', () {
+    const loading = AsyncLoading<int>();
+    expect(loading.isLoading, isTrue);
+    expect(loading.isRefreshing, isFalse);
+    expect(loading.hasValue, isFalse);
+    expect(loading.hasError, isFalse);
+    expect(loading, isA<AsyncLoading<int>>());
+
+    final initialValue = const AsyncData(1).copyWithPrevious(loading);
+    expect(initialValue.isLoading, isFalse);
+    expect(initialValue.isRefreshing, isFalse);
+    expect(initialValue.hasValue, isTrue);
+    expect(initialValue.hasError, isFalse);
+    expect(initialValue, isA<AsyncData<int>>());
+
+    final refreshing = const AsyncLoading<int>().copyWithPrevious(initialValue);
+    expect(refreshing.isLoading, isTrue);
+    expect(refreshing.isRefreshing, isTrue);
+    expect(refreshing.hasValue, isTrue);
+    expect(refreshing.hasError, isFalse);
+    expect(refreshing, isA<AsyncData<int>>());
+
+    final value = const AsyncData<int>(2).copyWithPrevious(refreshing);
+    expect(value.isLoading, isFalse);
+    expect(value.isRefreshing, isFalse);
+    expect(value.value, 2);
+    expect(value.hasValue, isTrue);
+    expect(value.hasError, isFalse);
+    expect(value, isA<AsyncData<int>>());
+  });
+
+  test('isRefreshing', () {
+    expect(const AsyncLoading<int>().isRefreshing, false);
+    final previousIsLoading = const AsyncLoading<int>().copyWithPrevious(
+      const AsyncLoading(),
+    );
+    expect(previousIsLoading.isRefreshing, false);
+    expect(previousIsLoading, isA<AsyncLoading<int>>());
+
+    // AsyncData
+    expect(const AsyncData<int>(42).isRefreshing, false);
+    final previousIsData = const AsyncLoading<int>().copyWithPrevious(
+      const AsyncData<int>(42),
+    );
+    expect(previousIsData.isRefreshing, true);
+    expect(previousIsData, isA<AsyncData<int>>());
+
+    // AsyncData
+    expect(const AsyncError<int>('err').isRefreshing, false);
+    final previousIsError = const AsyncLoading<int>().copyWithPrevious(
+      const AsyncError<int>('err'),
+    );
+    expect(previousIsError.isRefreshing, true);
+    expect(previousIsError, isA<AsyncError<int>>());
   });
 }
