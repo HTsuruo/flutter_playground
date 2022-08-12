@@ -11,6 +11,7 @@ import 'package:flutter_playground/riverpod/inherited_widget_page.dart';
 import 'package:flutter_playground/riverpod/provider_page.dart';
 import 'package:flutter_playground/riverpod/set_state_page.dart';
 import 'package:flutter_playground/riverpod/state_notifier_page.dart';
+import 'package:flutter_playground/riverpod/transform_provider_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
 
@@ -37,6 +38,7 @@ Map<String, WidgetBuilder> _routes = {
   SetStatePage.routeName: (context) => const SetStatePage(),
   DisposeSamplePage.routeName: (context) => const DisposeSamplePage(),
   CountPage.routeName: (context) => const CountPage(),
+  TransformProviderPage.routeName: (context) => const TransformProviderPage(),
 };
 
 class App extends StatelessWidget {

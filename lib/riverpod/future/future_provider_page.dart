@@ -4,12 +4,16 @@ import 'package:flutter_playground/paging/paging_page.dart';
 import 'package:flutter_playground/riverpod/future/future_auto_dispose_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final _fakeApi = FutureProvider.autoDispose<int>((ref) async {
+final _fakeApi = FutureProvider<int>((ref) async {
   if (ref.watch(_forceErrorProvider)) {
     throw Exception('force error');
   }
   await Future<void>.delayed(const Duration(seconds: 2));
   return Future.value(5);
+});
+
+final _fakeApi2 = Provider<AsyncValue<int>>((ref) {
+  return ref.watch(_fakeApi).whenData((value) => value * 2);
 });
 
 class FutureProviderPage extends ConsumerWidget {
@@ -19,9 +23,11 @@ class FutureProviderPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final fakeAsync = ref.watch(_fakeApi);
+    // final fakeAsync = ref.watch(_fakeApi);
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final fakeAsync = ref.watch(_fakeApi2);
+
     logger
       ..info('fakeAsync: ${fakeAsync.toString()}')
       ..info('isLoading: ${fakeAsync.isLoading}')
@@ -96,7 +102,7 @@ class FutureProviderPage extends ConsumerWidget {
   }
 }
 
-final _forceErrorProvider = StateProvider.autoDispose((ref) => false);
+final _forceErrorProvider = StateProvider((ref) => false);
 
 class _ForceErrorCheckbox extends ConsumerWidget {
   const _ForceErrorCheckbox();

@@ -52,32 +52,33 @@ void main() {
 
   test('初回のデータ取得後にリフレッシュした場合', () {
     const loading = AsyncLoading<int>();
-    expect(loading.isLoading, isTrue);
-    expect(loading.isRefreshing, isFalse);
     expect(loading.hasValue, isFalse);
     expect(loading.hasError, isFalse);
+    expect(loading.isLoading, isTrue);
+    expect(loading.isRefreshing, isFalse, reason: 'previousがないのでfalse');
     expect(loading, isA<AsyncLoading<int>>());
 
     final initialValue = const AsyncData(1).copyWithPrevious(loading);
-    expect(initialValue.isLoading, isFalse);
-    expect(initialValue.isRefreshing, isFalse);
+    expect(initialValue.value, 1);
     expect(initialValue.hasValue, isTrue);
     expect(initialValue.hasError, isFalse);
+    expect(initialValue.isLoading, isFalse);
+    expect(initialValue.isRefreshing, isFalse);
     expect(initialValue, isA<AsyncData<int>>());
 
     final refreshing = const AsyncLoading<int>().copyWithPrevious(initialValue);
-    expect(refreshing.isLoading, isTrue);
-    expect(refreshing.isRefreshing, isTrue);
-    expect(refreshing.hasValue, isTrue);
+    expect(refreshing.hasValue, isTrue, reason: 'initialValueの1があるのでtrue');
     expect(refreshing.hasError, isFalse);
-    expect(refreshing, isA<AsyncData<int>>());
+    expect(refreshing.isLoading, isTrue);
+    expect(refreshing.isRefreshing, isTrue, reason: 'hasValueがtrueなのでtrue');
+    expect(refreshing, isA<AsyncData<int>>(), reason: 'previousがAsyncDataのため');
 
     final value = const AsyncData<int>(2).copyWithPrevious(refreshing);
-    expect(value.isLoading, isFalse);
-    expect(value.isRefreshing, isFalse);
     expect(value.value, 2);
     expect(value.hasValue, isTrue);
     expect(value.hasError, isFalse);
+    expect(value.isLoading, isFalse);
+    expect(value.isRefreshing, isFalse);
     expect(value, isA<AsyncData<int>>());
   });
 
@@ -104,5 +105,38 @@ void main() {
     );
     expect(previousIsError.isRefreshing, true);
     expect(previousIsError, isA<AsyncError<int>>());
+  });
+
+  group('whenData', () {
+    test('preserves isLoading/isRefreshing', () {
+      expect(
+        const AsyncLoading<int>()
+            .copyWithPrevious(const AsyncData(42))
+            .whenData((value) => value * 2),
+        const AsyncLoading<int>().copyWithPrevious(const AsyncData(84)),
+      );
+
+      expect(
+        const AsyncLoading<int>()
+            .copyWithPrevious(const AsyncData(42))
+            .whenData<String>(
+              (value) => Error.throwWithStackTrace(84, StackTrace.empty),
+            ),
+        const AsyncLoading<String>().copyWithPrevious(
+          const AsyncError(84, stackTrace: StackTrace.empty),
+        ),
+      );
+
+      expect(
+        const AsyncLoading<int>()
+            .copyWithPrevious(
+              const AsyncError(84, stackTrace: StackTrace.empty),
+            )
+            .whenData<String>((value) => '$value'),
+        const AsyncLoading<String>().copyWithPrevious(
+          const AsyncError(84, stackTrace: StackTrace.empty),
+        ),
+      );
+    });
   });
 }
