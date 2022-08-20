@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_playground/firebase_options.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:smooth_highlight/smooth_highlight.dart';
 
 import 'user.dart';
 
@@ -31,7 +32,7 @@ class App extends StatelessWidget {
           seedColor: Colors.green,
         ),
       ).copyWith(
-        dividerTheme: const DividerThemeData(thickness: 0),
+        dividerTheme: const DividerThemeData(space: 0),
       ),
       home: const _HomePage(),
     );
@@ -42,7 +43,7 @@ class _HomePage extends ConsumerWidget {
   const _HomePage();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final users = ref.read(_usersProvider).value;
+    final users = ref.watch(_usersProvider).value;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Firestore Sample'),
@@ -54,13 +55,18 @@ class _HomePage extends ConsumerWidget {
               separatorBuilder: (context, _) => const Divider(),
               itemBuilder: (context, index) {
                 final user = users[index].data();
-                final birth = DateFormat.yMd().format(user.birthDay.date!);
-                return ListTile(
-                  title: Text(user.name),
-                  subtitle: Text('blood: ${user.blood}, birth: $birth'),
-                  onTap: () {
-                    print('reference: ${users[index].reference.path}');
-                  },
+                final birth =
+                    DateFormat('yyyy-MM-dd').format(user.birthDay.date!);
+                return ValueChangeHighlight(
+                  value: user,
+                  color: Colors.yellow,
+                  child: ListTile(
+                    title: Text(user.name),
+                    subtitle: Text('blood: ${user.blood}, birth: $birth'),
+                    onTap: () {
+                      print('reference: ${users[index].reference.path}');
+                    },
+                  ),
                 );
               },
             ),

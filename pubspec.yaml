@@ -54,6 +54,7 @@ dependencies:
   shimmer:
   simple_logger:
   sliding_sheet:
+  smooth_highlight: ^0.0.3
   snapping_sheet:
   state_notifier:
   tsuruo_kit:
