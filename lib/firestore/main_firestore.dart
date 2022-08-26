@@ -46,7 +46,7 @@ class _HomePage extends ConsumerWidget {
     final users = ref.watch(_usersProvider).value;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Firestore Sample'),
+        title: const Text('Firestore Highlight Sample'),
       ),
       body: users == null
           ? const Center(child: CircularProgressIndicator())
