@@ -25,6 +25,7 @@ dependencies:
   audioplayers:
   cloud_firestore:
   collection:
+  convenient_test:
   cupertino_icons:
   dartx:
   expandable:
