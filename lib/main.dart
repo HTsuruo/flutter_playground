@@ -13,11 +13,10 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.from(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF2E5817),
-        ),
-      ).copyWith(
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.green,
+        ),
       ),
       home: const HomePage(),
     );
