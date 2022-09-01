@@ -38,16 +38,12 @@ dependencies:
     sdk: flutter
   flutter_markdown:
   flutter_riverpod: '>=2.0.0-dev.9'
-  flutter_test:
-      sdk: flutter
   flutter_web_auth:
   flutterfire_ui:
   freezed_annotation:
   gap:
   go_router:
   html:
-  integration_test:
-    sdk: flutter
   intersperse:
   intl:
   json_converter_helper:
@@ -68,7 +64,11 @@ dependencies:
 
 dev_dependencies:
   build_runner:
+  flutter_test:
+    sdk: flutter
   freezed:
+  integration_test:
+    sdk: flutter
   json_serializable:
   pedantic_mono:
 
