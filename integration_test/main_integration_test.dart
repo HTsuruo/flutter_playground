@@ -39,7 +39,10 @@ void main() {
       // WidgetTesterに操作を要求するWidgetを指定する
       // 指定方法はツールチップがユニークで良さそうな反面tooltipが定義されていないWidgetが大半の場合は結構大変そう。
       // というよりこの機会に漏れがちなtooltipをしっかり用意してアクセシビリティを向上させるというのも良いと思う。
-      final fab = find.byTooltip('Increment');
+      // final fab = find.byTooltip('Increment');
+
+      // 画面に一つしか存在しないのであればKeyやTooltipつけずにWidgetの型指定でも取得できる
+      final fab = find.byType(FloatingActionButton);
 
       // 今回のケースだと以下でも探せる
       // `find`作業はスクレイピングでDOMの中からHTMLタグを探しに行く作業に近い
@@ -53,6 +56,15 @@ void main() {
 
       // Incrementタップに寄って内容が変化したことを確認
       expect(find.text('count: 1'), findsOneWidget);
+
+      const duration = Duration(seconds: 1);
+      for (final _ in List.generate(4, (i) => i).toList()) {
+        await tester.pump(duration);
+        await tester.tap(fab);
+      }
+
+      await tester.pumpAndSettle();
+      expect(find.text('count: 5'), findsOneWidget);
     });
   });
 }
