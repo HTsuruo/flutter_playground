@@ -7,7 +7,7 @@ PODS:
     - AppAuth/Core
   - audioplayers_darwin (0.0.1):
     - Flutter
-  - cloud_firestore (3.4.5):
+  - cloud_firestore (3.4.6):
     - Firebase/Firestore (= 9.4.0)
     - firebase_core
     - Flutter
@@ -33,18 +33,18 @@ PODS:
   - Firebase/Firestore (9.4.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 9.4.0)
-  - firebase_auth (3.6.4):
+  - firebase_auth (3.7.0):
     - Firebase/Auth (= 9.4.0)
     - firebase_core
     - Flutter
-  - firebase_core (1.21.0):
+  - firebase_core (1.21.1):
     - Firebase/CoreOnly (= 9.4.0)
     - Flutter
-  - firebase_database (9.1.2):
+  - firebase_database (9.1.3):
     - Firebase/Database (= 9.4.0)
     - firebase_core
     - Flutter
-  - firebase_dynamic_links (4.3.5):
+  - firebase_dynamic_links (4.3.6):
     - Firebase/DynamicLinks (= 9.4.0)
     - firebase_core
     - Flutter
@@ -111,6 +111,8 @@ PODS:
     - AppAuth/Core (~> 1.4)
     - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.7.2)
+  - integration_test (0.0.1):
+    - Flutter
   - leveldb-library (1.22.1)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
@@ -141,6 +143,7 @@ DEPENDENCIES:
   - flutter_facebook_auth (from `.symlinks/plugins/flutter_facebook_auth/ios`)
   - flutter_web_auth (from `.symlinks/plugins/flutter_web_auth/ios`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/ios`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
   - twitter_login (from `.symlinks/plugins/twitter_login/ios`)
@@ -194,6 +197,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_web_auth/ios"
   google_sign_in_ios:
     :path: ".symlinks/plugins/google_sign_in_ios/ios"
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
   sign_in_with_apple:
@@ -213,16 +218,16 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AppAuth: 80317d99ac7ff2801a2f18ff86b48cd315ed465d
   audioplayers_darwin: 387322cb364026a1782298c982693b1b6aa9fa1b
-  cloud_firestore: af9ba1a016f211cc144de1b12f830efdc7677747
+  cloud_firestore: 6448075c9bac372319e7f025fdfa6f1d382644d7
   FBAEMKit: a899515e45476027f73aef377b5cffadcd56ca3a
   FBSDKCoreKit: 24f8bc8d3b5b2a8c5c656a1329492a12e8efa792
   FBSDKCoreKit_Basics: 6e578c9bdc7aa1365dbbbde633c9ebb536bcaa98
   FBSDKLoginKit: 787de205d524c3a4b17d527916f1d066e4361660
   Firebase: 7703fc4022824b6d6db1bf7bea58d13b8e17ec46
-  firebase_auth: d858056948955e9adb6be1d7e4cbf03ab3a9fc46
-  firebase_core: c1cdfa024dc7f3d1ba8055a2ae323dba3dce4fa1
-  firebase_database: 904f4c1a18316b627c73e7c71b3c14d8f0ab6c4f
-  firebase_dynamic_links: ae041e9651f53a792c4ce2f94ae8fc9ff58a1a5d
+  firebase_auth: 74cfbf7be1e3e7fdaac9e7f117cefd89155251a9
+  firebase_core: 8e500850dd138c269d197c8dfca3ae886fa3b6f2
+  firebase_database: 31aebb8797cd59eb881375aa0debe33eba5a1c2a
+  firebase_dynamic_links: 96a1892d35fcbc04e62dd77b2700dbe74a33110a
   FirebaseAuth: ae5d4402e1516497357d909162b091b3ca2a2e9c
   FirebaseCore: 9a2b10270a854731c4d4d8a97d0aa8380ec3458d
   FirebaseCoreDiagnostics: aaa87098082c4d4bdd1a9557b1186d18ca85ce8c
@@ -230,7 +235,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: e93f5441b549ea4492a8d8a0c7d612ac46c1b12a
   FirebaseDynamicLinks: 311bb05788180e31a502bd0d413215413a4b3357
   FirebaseFirestore: bd910b5844a764695a6e5902a499a661b089bc8f
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_facebook_auth: 361ac7a57263ebf327f26089507ead0d66558ee8
   flutter_web_auth: 09a0abd245f1a07a3ff4dcf1247a048d89ee12a9
   google_sign_in_ios: 4f85eb9f937450765c8573bb85fd8cd6a5af675c
@@ -239,6 +244,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   GTMAppAuth: 4d8f864896f3646f0c33baf38a28362f4c601e15
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
+  integration_test: a1e7d09bd98eca2fc37aefd79d4f41ad37bdbbe5
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02

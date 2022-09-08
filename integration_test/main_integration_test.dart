@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/main_integration.dart' as app;
 import 'package:flutter_test/flutter_test.dart';
@@ -5,6 +8,7 @@ import 'package:integration_test/integration_test.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  final binding = IntegrationTestWidgetsFlutterBinding();
 
   group('counter test', () {
     testWidgets('tap floating action increment button', (tester) async {
@@ -31,6 +35,8 @@ void main() {
       expect(find.text('count: 0'), findsOneWidget);
 
       expect(find.byKey(const Key('countLabel')), findsOneWidget);
+
+      await tester.takeScreenshot(binding, 'screenshot_count_0');
 
       // [追記] これは通らない
       // 上記のfind.textとfind.byWidgetのTextWidget指定は同義ということになる。
@@ -65,6 +71,27 @@ void main() {
 
       await tester.pumpAndSettle();
       expect(find.text('count: 5'), findsOneWidget);
+
+      await tester.takeScreenshot(binding, 'screenshot_count_5');
     });
   });
+}
+
+// Androidの実行では`convertFlutterSurfaceToImage`が必要なのでその分岐をラッピングしたextensionにした
+// ref. https://dev.to/mjablecnik/take-screenshot-during-flutter-integration-tests-435k
+extension on WidgetTester {
+  Future<List<int>> takeScreenshot(
+    IntegrationTestWidgetsFlutterBinding binding,
+    String screenshotName,
+  ) async {
+    await pumpAndSettle();
+    if (kIsWeb) {
+      return binding.takeScreenshot(screenshotName);
+    }
+    if (Platform.isAndroid) {
+      await binding.convertFlutterSurfaceToImage();
+      await pumpAndSettle();
+    }
+    return binding.takeScreenshot(screenshotName);
+  }
 }
