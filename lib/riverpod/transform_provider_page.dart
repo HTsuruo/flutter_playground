@@ -15,7 +15,7 @@ class TransformProviderPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final label = ref.watch(doubleCountLabelProvider);
-    // final value = ref.watch(moreTwiceProvider).value; // -> 8
+    // final value = ref.watch(twiceProvider).value; // -> 8
     return Scaffold(
       appBar: AppBar(title: const Text('TransformProviderPage')),
       body: label.when(
@@ -39,17 +39,10 @@ final twiceAfterSecondProvider = FutureProvider<int>((ref) async {
   });
 });
 
-// Future -> AsyncValue
-final twiceProvider = Provider<AsyncValue<int>>((ref) {
-  final value = ref.watch(twiceAfterSecondProvider);
-  return value.whenData((value) {
+// Future -> Future
+final twiceProvider = FutureProvider<int>((ref) {
+  return ref.watch(twiceAfterSecondProvider.future).then((value) {
     //  2 -> 4
     return value * 2;
   });
-});
-
-// AsyncValue -> Stream
-final moreTwiceProvider = StreamProvider<int>((ref) {
-  //  4 -> 8
-  return ref.watch(twiceProvider.stream).map((e) => e * 2);
 });

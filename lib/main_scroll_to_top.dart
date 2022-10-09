@@ -24,24 +24,24 @@ class App extends StatelessWidget {
 }
 
 final changeNotifierProvider = ChangeNotifierProvider(
-  (ref) => BottomTabController(0, ref.read),
+  (ref) => BottomTabController(0, ref),
 );
 
 class BottomTabController extends ChangeNotifier {
-  BottomTabController(this._selectedIndex, this._read);
+  BottomTabController(this._selectedIndex, this._ref);
   int _selectedIndex;
   int get selectedIndex => _selectedIndex;
 
-  final Reader _read;
+  final Ref _ref;
 
   Future<void> onTap(int value) async {
     /// 同一タブを2回タップ（もしくはタブが選択された状態で再タップ）すると0位置に戻る
     if (_selectedIndex == value) {
-      await _read(scrollController).animateTo(
-        0,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.bounceInOut,
-      );
+      await _ref.read(scrollController).animateTo(
+            0,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.bounceInOut,
+          );
       return;
     }
     _selectedIndex = value;
@@ -133,29 +133,30 @@ class NotificationPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.watch(scrollController);
     return Scaffold(
-        key: const PageStorageKey(routeName),
-        body: CustomScrollView(
-          controller: controller,
-          slivers: [
-            const SliverAppBar(
-              title: Text('お知らせ'),
-              expandedHeight: 200,
-              floating: true,
-            ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) => Column(
-                  children: [
-                    ListTile(
-                      title: Text('${index + 1}'),
-                    ),
-                    const Divider(),
-                  ],
-                ),
-                childCount: 30,
+      key: const PageStorageKey(routeName),
+      body: CustomScrollView(
+        controller: controller,
+        slivers: [
+          const SliverAppBar(
+            title: Text('お知らせ'),
+            expandedHeight: 200,
+            floating: true,
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => Column(
+                children: [
+                  ListTile(
+                    title: Text('${index + 1}'),
+                  ),
+                  const Divider(),
+                ],
               ),
+              childCount: 30,
             ),
-          ],
-        ),);
+          ),
+        ],
+      ),
+    );
   }
 }

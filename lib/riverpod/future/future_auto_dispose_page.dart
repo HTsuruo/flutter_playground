@@ -11,7 +11,7 @@ final _autoDisposeProvider = FutureProvider.autoDispose<int>(
     });
     return Future.value(5 + plusOne);
   },
-  cacheTime: const Duration(seconds: 5),
+  // cacheTime: const Duration(seconds: 5),
   // disposeDelay: const Duration(seconds: 5),
 );
 
