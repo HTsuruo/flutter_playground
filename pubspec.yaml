@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: '>=2.18.0 <3.0.0'
 
 dependencies:
   animations:
@@ -37,7 +37,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_markdown:
-  flutter_riverpod: '>=2.0.0-dev.9'
+  flutter_riverpod:
   flutter_web_auth:
   flutterfire_ui:
   freezed_annotation:
@@ -55,7 +55,7 @@ dependencies:
   shimmer:
   simple_logger:
   sliding_sheet:
-  smooth_highlight: ^0.0.3
+  smooth_highlight:
   snapping_sheet:
   state_notifier:
   tsuruo_kit:
@@ -77,7 +77,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # i18n対応
   # ref. https://flutter.dev/docs/development/accessibility-and-localization/internationalization#adding-your-own-localized-messages
   generate: true
