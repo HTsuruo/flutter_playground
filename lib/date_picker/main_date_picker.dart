@@ -177,7 +177,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _LocalizedDateRangePickerDialog extends StatelessWidget {
-  const _LocalizedDateRangePickerDialog({super.key});
+  const _LocalizedDateRangePickerDialog();
   @override
   Widget build(BuildContext context) {
     // localを指定する場合はshowDateRangePickerの実装を参考に

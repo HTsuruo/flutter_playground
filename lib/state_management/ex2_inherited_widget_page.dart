@@ -19,7 +19,6 @@ class Ex2InheritedWidgetPage extends StatelessWidget {
 
 class _Inherited extends StatelessWidget {
   const _Inherited({
-    super.key,
     required this.child,
   });
 

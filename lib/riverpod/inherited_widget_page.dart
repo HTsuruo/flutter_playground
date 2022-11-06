@@ -43,7 +43,7 @@ class _InheritedWidgetPageState extends State<InheritedWidgetPage> {
 }
 
 class _Text extends StatelessWidget {
-  const _Text({super.key});
+  const _Text();
   @override
   Widget build(BuildContext context) {
     // 引数を渡さずとも上位`Scaffold`を包んだ`_Inherited`にアクセスできる
@@ -58,7 +58,6 @@ class _Text extends StatelessWidget {
 // InheritedWidgetでO(1)アクセスにある
 class _Inherited extends InheritedWidget {
   const _Inherited({
-    super.key,
     required super.child,
     required this.count,
   });

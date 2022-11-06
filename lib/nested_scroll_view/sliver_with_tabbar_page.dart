@@ -71,7 +71,7 @@ class SliverWithTabBarPage extends StatelessWidget {
 
 class _TransparentAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const _TransparentAppBar({super.key});
+  const _TransparentAppBar();
   @override
   Widget build(BuildContext context) {
     return AppBar(

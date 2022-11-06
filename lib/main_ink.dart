@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _BoxNg extends StatelessWidget {
-  const _BoxNg({super.key});
+  const _BoxNg();
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -52,7 +52,7 @@ class _BoxNg extends StatelessWidget {
 }
 
 class _BoxInnerBox extends StatelessWidget {
-  const _BoxInnerBox({super.key});
+  const _BoxInnerBox();
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -70,7 +70,7 @@ class _BoxInnerBox extends StatelessWidget {
 }
 
 class _BoxOk extends StatelessWidget {
-  const _BoxOk({super.key});
+  const _BoxOk();
   @override
   Widget build(BuildContext context) {
     // ColoredBoxなど不透明なWidgetの部分を
@@ -87,7 +87,7 @@ class _BoxOk extends StatelessWidget {
 }
 
 class _BoxMaterialTransparency extends StatelessWidget {
-  const _BoxMaterialTransparency({super.key});
+  const _BoxMaterialTransparency();
   @override
   Widget build(BuildContext context) {
     // 親のMaterialとInkWellの間に不透明なWidgetがあると普通はsplashが隠れてしまう
@@ -105,7 +105,7 @@ class _BoxMaterialTransparency extends StatelessWidget {
 }
 
 class _BoxMaterialColor extends StatelessWidget {
-  const _BoxMaterialColor({super.key});
+  const _BoxMaterialColor();
   @override
   Widget build(BuildContext context) {
     // ベタ塗りのWidgetを親に持っている場合、Inkで包んでも無効化できない
@@ -124,7 +124,7 @@ class _BoxMaterialColor extends StatelessWidget {
 }
 
 class _BoxDecoration extends StatelessWidget {
-  const _BoxDecoration({super.key});
+  const _BoxDecoration();
   @override
   Widget build(BuildContext context) {
     return Ink(
@@ -142,7 +142,7 @@ class _BoxDecoration extends StatelessWidget {
 }
 
 class _BoxImage extends StatelessWidget {
-  const _BoxImage({super.key});
+  const _BoxImage();
   @override
   Widget build(BuildContext context) {
     // 画像の場合はそれ用のコンストラクターがあって便利
@@ -156,7 +156,7 @@ class _BoxImage extends StatelessWidget {
 }
 
 class _BoxColoredBackground extends StatelessWidget {
-  const _BoxColoredBackground({super.key});
+  const _BoxColoredBackground();
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(16);
@@ -175,7 +175,7 @@ class _BoxColoredBackground extends StatelessWidget {
 }
 
 class _BoxCardBackground extends StatelessWidget {
-  const _BoxCardBackground({super.key});
+  const _BoxCardBackground();
   @override
   Widget build(BuildContext context) {
     return Card(

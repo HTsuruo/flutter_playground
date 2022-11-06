@@ -105,7 +105,6 @@ class _HomePageState extends State<HomePage>
 // AnimatedWidgetを継承すれば、リスナーの登録やsetStateの再描画などを意識する必要がなくなる
 class _AnimatedContainer extends AnimatedWidget {
   const _AnimatedContainer({
-    super.key,
     required this.animation,
   }) : super(listenable: animation);
 

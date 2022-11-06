@@ -35,7 +35,7 @@ class StatelessSamplePage extends StatelessWidget {
 }
 
 class _ColorTile extends StatelessWidget {
-  const _ColorTile({super.key, required this.color});
+  const _ColorTile({required this.color});
 
   final Color color;
 

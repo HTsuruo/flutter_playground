@@ -179,7 +179,6 @@ class HomePage extends StatelessWidget {
 
 class _Container extends StatelessWidget {
   const _Container({
-    super.key,
     required this.text,
     required this.color,
   });

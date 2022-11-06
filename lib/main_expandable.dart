@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
 /// 特にアイコンがHeaderの右横に配置されるのは固定ぽい
 /// →Expandable, ExpandableNotifier, and ExpandableButtonを利用してカスタマイズできる
 class _ExpandablePanel extends StatelessWidget {
-  const _ExpandablePanel({super.key});
+  const _ExpandablePanel();
   @override
   Widget build(BuildContext context) {
     return ExpandablePanel(
@@ -65,7 +65,7 @@ class _ExpandablePanel extends StatelessWidget {
 
 /// ExpandableController使うとある程度自由にカスタマイズできる
 class _ExpandableCard extends StatefulWidget {
-  const _ExpandableCard({super.key});
+  const _ExpandableCard();
 
   @override
   __ExpandableCardState createState() => __ExpandableCardState();
@@ -120,7 +120,6 @@ class __ExpandableCardState extends State<_ExpandableCard> {
 /// WidgetをAddするような使い方ではない
 class _CommonWidget extends StatelessWidget {
   const _CommonWidget({
-    super.key,
     required this.expanded,
   });
 

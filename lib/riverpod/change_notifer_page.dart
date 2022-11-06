@@ -61,7 +61,7 @@ class ChangeNotifierPage extends ConsumerWidget {
 }
 
 class _Text extends ConsumerWidget {
-  const _Text({super.key});
+  const _Text();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // `select`指定することで指定のStateのみの変更を伝搬させることができる
@@ -71,7 +71,7 @@ class _Text extends ConsumerWidget {
 }
 
 class _RefreshText extends ConsumerWidget {
-  const _RefreshText({super.key});
+  const _RefreshText();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final refreshed = ref.watch(_counter.select((s) => s.refreshed));

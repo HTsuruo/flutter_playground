@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
 }
 
 class _Box extends StatelessWidget {
-  const _Box({super.key});
+  const _Box();
   @override
   Widget build(BuildContext context) {
     return Container(

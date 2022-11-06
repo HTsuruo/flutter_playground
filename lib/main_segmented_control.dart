@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
 /// ToggleButton Class(Material Library)
 /// https://api.flutter.dev/flutter/material/ToggleButtons-class.html
 class _ToggleButton extends StatefulWidget {
-  const _ToggleButton({super.key});
+  const _ToggleButton();
 
   @override
   _ToggleButtonState createState() => _ToggleButtonState();
@@ -91,7 +91,7 @@ class ToggleController extends ChangeNotifier {
 }
 
 class _CustomizedToggleButton extends ConsumerWidget {
-  const _CustomizedToggleButton({super.key});
+  const _CustomizedToggleButton();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -120,7 +120,7 @@ class _CustomizedToggleButton extends ConsumerWidget {
 }
 
 class _CupertinoSegmentedControl extends StatefulWidget {
-  const _CupertinoSegmentedControl({super.key});
+  const _CupertinoSegmentedControl();
 
   @override
   _CupertinoSegmentedControlState createState() =>

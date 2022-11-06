@@ -124,7 +124,6 @@ class FlChartPieChartPage extends StatelessWidget {
 
 class _Legend extends StatelessWidget {
   const _Legend({
-    super.key,
     required this.color,
     required this.label,
   });
@@ -156,7 +155,7 @@ class _Legend extends StatelessWidget {
 }
 
 class _BadgeWidget extends StatelessWidget {
-  const _BadgeWidget({super.key, required this.label});
+  const _BadgeWidget({required this.label});
 
   final String label;
 

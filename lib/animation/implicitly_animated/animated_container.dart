@@ -7,7 +7,7 @@ class AnimatedContainerPage extends StatefulWidget {
   static const routeName = '/animated_container';
 
   @override
-  _AnimatedContainerPageState createState() => _AnimatedContainerPageState();
+  State<AnimatedContainerPage> createState() => _AnimatedContainerPageState();
 }
 
 class _AnimatedContainerPageState extends State<AnimatedContainerPage> {

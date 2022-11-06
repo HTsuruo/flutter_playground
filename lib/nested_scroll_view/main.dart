@@ -40,7 +40,7 @@ class App extends StatelessWidget {
 }
 
 class _ListPage extends StatelessWidget {
-  const _ListPage({super.key});
+  const _ListPage();
   @override
   Widget build(BuildContext context) {
     List<ListTile> _tiles() {

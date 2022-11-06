@@ -49,7 +49,7 @@ class SelectableDateRangePickerDialog extends ConsumerWidget {
 }
 
 class _DateRangeSelectButtons extends ConsumerWidget {
-  const _DateRangeSelectButtons({super.key});
+  const _DateRangeSelectButtons();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final selector = ref.watch(dateRangeSelector.notifier);
