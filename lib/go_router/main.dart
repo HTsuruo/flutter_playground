@@ -24,7 +24,7 @@ final _router = GoRouter(
       builder: (context, state) => const DetailPage(),
     ),
   ],
-  errorPageBuilder: (context, state) => MaterialPage(
+  errorPageBuilder: (context, state) => MaterialPage<void>(
     key: state.pageKey,
     child: Scaffold(
       body: Center(

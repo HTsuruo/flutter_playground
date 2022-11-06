@@ -10,7 +10,7 @@ class CountPage extends ConsumerStatefulWidget {
   static const routeName = '/count';
 
   @override
-  _CountPageState createState() => _CountPageState();
+  ConsumerState<CountPage> createState() => _CountPageState();
 }
 
 class _CountPageState extends ConsumerState<CountPage> {
@@ -60,7 +60,6 @@ class _CountPageState extends ConsumerState<CountPage> {
 
 class _CountDisplay extends StatelessWidget {
   const _CountDisplay({
-    super.key,
     required this.label,
     required this.value,
   });
@@ -95,7 +94,7 @@ class _CountDisplay extends StatelessWidget {
 final countProvider = StateProvider((ref) => 0);
 
 class _Count extends ConsumerWidget {
-  const _Count({super.key});
+  const _Count();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final count = ref.watch(countProvider);
@@ -116,7 +115,7 @@ final doubleCountProvider = Provider(
 );
 
 class _DoubleCount extends ConsumerWidget {
-  const _DoubleCount({super.key});
+  const _DoubleCount();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final count = ref.watch(doubleCountProvider);
@@ -140,7 +139,7 @@ final thresholdProvider = Provider(
 );
 
 class _CountThreshold extends ConsumerWidget {
-  const _CountThreshold({super.key});
+  const _CountThreshold();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final threshold = ref.watch(thresholdProvider);

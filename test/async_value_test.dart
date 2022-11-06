@@ -98,10 +98,10 @@ void main() {
     expect(previousIsData.isRefreshing, true);
     expect(previousIsData, isA<AsyncData<int>>());
 
-    // AsyncData
-    expect(const AsyncError<int>('err').isRefreshing, false);
+    // AsyncError
+    expect(const AsyncError<int>('err', StackTrace.empty).isRefreshing, false);
     final previousIsError = const AsyncLoading<int>().copyWithPrevious(
-      const AsyncError<int>('err'),
+      const AsyncError<int>('err', StackTrace.empty),
     );
     expect(previousIsError.isRefreshing, true);
     expect(previousIsError, isA<AsyncError<int>>());
@@ -123,18 +123,18 @@ void main() {
               (value) => Error.throwWithStackTrace(84, StackTrace.empty),
             ),
         const AsyncLoading<String>().copyWithPrevious(
-          const AsyncError(84, stackTrace: StackTrace.empty),
+          const AsyncError(84, StackTrace.empty),
         ),
       );
 
       expect(
         const AsyncLoading<int>()
             .copyWithPrevious(
-              const AsyncError(84, stackTrace: StackTrace.empty),
+              const AsyncError(84, StackTrace.empty),
             )
             .whenData<String>((value) => '$value'),
         const AsyncLoading<String>().copyWithPrevious(
-          const AsyncError(84, stackTrace: StackTrace.empty),
+          const AsyncError(84, StackTrace.empty),
         ),
       );
     });
