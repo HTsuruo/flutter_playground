@@ -33,7 +33,8 @@ mixin _$User {
 /// @nodoc
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res>;
+      _$UserCopyWithImpl<$Res, User>;
+  @useResult
   $Res call(
       {String name,
       String blood,
@@ -43,39 +44,43 @@ abstract class $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
+class _$UserCopyWithImpl<$Res, $Val extends User>
+    implements $UserCopyWith<$Res> {
   _$UserCopyWithImpl(this._value, this._then);
 
-  final User _value;
   // ignore: unused_field
-  final $Res Function(User) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? blood = freezed,
-    Object? birthDay = freezed,
+    Object? name = null,
+    Object? blood = null,
+    Object? birthDay = null,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      blood: blood == freezed
+      blood: null == blood
           ? _value.blood
           : blood // ignore: cast_nullable_to_non_nullable
               as String,
-      birthDay: birthDay == freezed
+      birthDay: null == birthDay
           ? _value.birthDay
           : birthDay // ignore: cast_nullable_to_non_nullable
               as UnionTimestamp,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UnionTimestampCopyWith<$Res> get birthDay {
     return $UnionTimestampCopyWith<$Res>(_value.birthDay, (value) {
-      return _then(_value.copyWith(birthDay: value));
+      return _then(_value.copyWith(birthDay: value) as $Val);
     });
   }
 }
@@ -85,6 +90,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
       __$$_UserCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String name,
       String blood,
@@ -95,30 +101,28 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     implements _$$_UserCopyWith<$Res> {
   __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
-      : super(_value, (v) => _then(v as _$_User));
+      : super(_value, _then);
 
-  @override
-  _$_User get _value => super._value as _$_User;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? blood = freezed,
-    Object? birthDay = freezed,
+    Object? name = null,
+    Object? blood = null,
+    Object? birthDay = null,
   }) {
     return _then(_$_User(
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      blood: blood == freezed
+      blood: null == blood
           ? _value.blood
           : blood // ignore: cast_nullable_to_non_nullable
               as String,
-      birthDay: birthDay == freezed
+      birthDay: null == birthDay
           ? _value.birthDay
           : birthDay // ignore: cast_nullable_to_non_nullable
               as UnionTimestamp,
@@ -154,21 +158,19 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.blood, blood) &&
-            const DeepCollectionEquality().equals(other.birthDay, birthDay));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.blood, blood) || other.blood == blood) &&
+            (identical(other.birthDay, birthDay) ||
+                other.birthDay == birthDay));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(blood),
-      const DeepCollectionEquality().hash(birthDay));
+  int get hashCode => Object.hash(runtimeType, name, blood, birthDay);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UserCopyWith<_$_User> get copyWith =>
       __$$_UserCopyWithImpl<_$_User>(this, _$identity);
 
