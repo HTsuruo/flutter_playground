@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
 
-class InheritedWidgetPage extends StatefulWidget {
-  const InheritedWidgetPage({super.key});
+/// Inherited Widgetを使ったカウンター実装
+class Counter00 extends StatefulWidget {
+  const Counter00({super.key});
 
-  static const routeName = '/inherited_widget';
+  static const routeName = '/counter00';
 
   @override
-  _InheritedWidgetPageState createState() => _InheritedWidgetPageState();
+  State<Counter00> createState() => _Counter00State();
 }
 
-class _InheritedWidgetPageState extends State<InheritedWidgetPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _Counter00State extends State<Counter00> {
+  var _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +30,11 @@ class _InheritedWidgetPageState extends State<InheritedWidgetPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          setState(() {
+            _counter++;
+          });
+        },
         child: const Icon(Icons.add),
       ),
     );
