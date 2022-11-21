@@ -59,6 +59,7 @@ dependencies:
   snapping_sheet:
   state_notifier:
   tsuruo_kit:
+      git: https://github.com/HTsuruo/flutter_tsuruo_kit
   url_launcher:
   webview_flutter:
 
