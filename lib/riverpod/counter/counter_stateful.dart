@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 
 /// RiverpodやProviderを全く使わないピュアなStatefulWidgetでのカウンター
 /// 便利なパッケージを使うには元実装の課題を知ることが大事
-class Counter01 extends StatefulWidget {
-  const Counter01({super.key});
+class CounterStateful extends StatefulWidget {
+  const CounterStateful({super.key});
 
-  static const routeName = '/counter01';
+  static const routeName = '/counter/stateful';
 
   @override
-  State<Counter01> createState() => _Counter01State();
+  State<CounterStateful> createState() => _CounterStatefulState();
 }
 
-class _Counter01State extends State<Counter01> {
+class _CounterStatefulState extends State<CounterStateful> {
   var _counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Counter01'),
+        title: const Text('Stateful Widget'),
       ),
       body: Center(
         child: Text('count: $_counter'),

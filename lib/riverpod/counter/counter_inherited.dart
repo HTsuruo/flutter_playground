@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 
 /// Inherited Widgetを使ったカウンター実装
-class Counter00 extends StatefulWidget {
-  const Counter00({super.key});
+class CounterInherited extends StatefulWidget {
+  const CounterInherited({super.key});
 
-  static const routeName = '/counter00';
+  static const routeName = '/counter/inherited';
 
   @override
-  State<Counter00> createState() => _Counter00State();
+  State<CounterInherited> createState() => _CounterInheritedState();
 }
 
-class _Counter00State extends State<Counter00> {
+class _CounterInheritedState extends State<CounterInherited> {
   var _counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('InheritedWidget'),
+        title: const Text('Inherited Widget'),
       ),
       // 仮にここで`const`指定しなかった場合下位ツリーに変更伝搬が流れるため
       // `_Text()`が更新される様子がわかる
       body: Center(
-        // `Scaffold`を包むのでも構わないが本来は変更を伝搬したいスコープ
+        // `Scaffold`を包むのでも構わないåが本来は変更を伝搬したいスコープ
         // つまりこの場合は`_Text()`を包むとベター
         child: _Inherited(
           count: _counter,

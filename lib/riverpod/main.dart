@@ -4,9 +4,10 @@ import 'package:flutter_playground/playground_builder.dart';
 import 'package:flutter_playground/riverpod/change_notifer_page.dart';
 import 'package:flutter_playground/riverpod/controller_pattern/consumer_scopoed_page.dart';
 import 'package:flutter_playground/riverpod/controller_pattern/stateless_page.dart';
-import 'package:flutter_playground/riverpod/counter/counter_00.dart';
-import 'package:flutter_playground/riverpod/counter/counter_02.dart';
-import 'package:flutter_playground/riverpod/counter/counter_04.dart';
+import 'package:flutter_playground/riverpod/counter/counter_async_notifier.dart';
+import 'package:flutter_playground/riverpod/counter/counter_code_generation.dart';
+import 'package:flutter_playground/riverpod/counter/counter_inherited.dart';
+import 'package:flutter_playground/riverpod/counter/counter_provider_chain.dart';
 import 'package:flutter_playground/riverpod/dispose_pattern/dispose_sample_page.dart';
 import 'package:flutter_playground/riverpod/future/future_provider_page.dart';
 import 'package:flutter_playground/riverpod/state_notifier_page.dart';
@@ -14,7 +15,8 @@ import 'package:flutter_playground/riverpod/transform_provider_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:simple_logger/simple_logger.dart';
 
-import 'counter/counter_01.dart';
+import 'counter/counter_notifier.dart';
+import 'counter/counter_stateful.dart';
 
 void main() {
   logger.setLevel(Level.INFO, includeCallerInfo: true);
@@ -27,15 +29,18 @@ void main() {
 String _title = 'Riverpod Example';
 Map<String, WidgetBuilder> _routes = {
   // routeName: (context) => Page Class
-  Counter01.routeName: (context) => const Counter01(),
-  Counter02.routeName: (context) => const Counter02(),
-  Counter04.routeName: (context) => const Counter04(),
+  CounterInherited.routeName: (context) => const CounterInherited(),
+  CounterStateful.routeName: (context) => const CounterStateful(),
+  CounterCodeGeneration.routeName: (context) => const CounterCodeGeneration(),
+  CounterNotifierPage.routeName: (context) => const CounterNotifierPage(),
+  CounterAsyncNotifierPage.routeName: (context) =>
+      const CounterAsyncNotifierPage(),
+  CounterProviderChain.routeName: (context) => const CounterProviderChain(),
   StateNotifierPage.routeName: (context) => const StateNotifierPage(),
   ChangeNotifierPage.routeName: (context) => const ChangeNotifierPage(),
   StatelessPage.routeName: (context) => const StatelessPage(),
   FutureProviderPage.routeName: (context) => const FutureProviderPage(),
   ConsumerScopedPage.routeName: (context) => const ConsumerScopedPage(),
-  Counter00.routeName: (context) => const Counter00(),
   DisposeSamplePage.routeName: (context) => const DisposeSamplePage(),
   TransformProviderPage.routeName: (context) => const TransformProviderPage(),
 };

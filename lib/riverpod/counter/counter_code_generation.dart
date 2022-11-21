@@ -3,7 +3,7 @@ import 'package:flutter_playground/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'counter_02.g.dart';
+part 'counter_code_generation.g.dart';
 
 /// Notifierのcode generateサンプル
 /// デフォルトではAutoDisposeなProviderで生成される
@@ -21,16 +21,16 @@ class Counter extends _$Counter {
   }
 }
 
-class Counter02 extends ConsumerWidget {
-  const Counter02({super.key});
+class CounterCodeGeneration extends ConsumerWidget {
+  const CounterCodeGeneration({super.key});
 
-  static const routeName = '/counter02';
+  static const routeName = '/counter/code_generation';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Counter02'),
+        title: const Text('Code generation'),
       ),
       body: Center(child: Text('count: ${ref.watch(counterProvider)}')),
       floatingActionButton: FloatingActionButton(

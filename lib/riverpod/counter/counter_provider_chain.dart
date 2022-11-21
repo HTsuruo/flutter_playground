@@ -35,17 +35,17 @@ final thresholdProvider = Provider(
   },
 );
 
-class Counter04 extends ConsumerWidget {
-  const Counter04({super.key});
+class CounterProviderChain extends ConsumerWidget {
+  const CounterProviderChain({super.key});
 
-  static const routeName = '/counter04';
+  static const routeName = '/counter/provider_chain';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Counter04'),
+        title: const Text('Counter Chain'),
         actions: [
           TextButton(
             onPressed: () {

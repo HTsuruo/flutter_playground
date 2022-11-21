@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'counter_02.dart';
+part of 'counter_code_generation.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -31,8 +31,9 @@ class _SystemHash {
 
 String $CounterHash() => r'3f50cbf91494229677dc7d464f0c7c817b27398e';
 
-/// Notifierクラスのサンプル
-/// ref. https://github.com/rrousselGit/riverpod/blob/master/packages/riverpod/lib/src/notifier/base.dart
+/// Notifierのcode generateサンプル
+/// デフォルトではAutoDisposeなProviderで生成される
+/// ref. https://github.com/rrousselGit/riverpod/tree/master/packages/riverpod_generator
 ///
 /// Copied from [Counter].
 final counterProvider = AutoDisposeNotifierProvider<Counter, int>(
