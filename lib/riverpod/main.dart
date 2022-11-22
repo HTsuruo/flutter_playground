@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/logger.dart';
 import 'package:flutter_playground/playground_builder.dart';
+import 'package:flutter_playground/riverpod/async_value_when_property.dart';
 import 'package:flutter_playground/riverpod/change_notifer_page.dart';
 import 'package:flutter_playground/riverpod/controller_pattern/consumer_scopoed_page.dart';
 import 'package:flutter_playground/riverpod/controller_pattern/stateless_page.dart';
@@ -36,6 +37,7 @@ Map<String, WidgetBuilder> _routes = {
   CounterAsyncNotifierPage.routeName: (context) =>
       const CounterAsyncNotifierPage(),
   CounterProviderChain.routeName: (context) => const CounterProviderChain(),
+  AsyncValueWhenProperty.routeName: (context) => const AsyncValueWhenProperty(),
   StateNotifierPage.routeName: (context) => const StateNotifierPage(),
   ChangeNotifierPage.routeName: (context) => const ChangeNotifierPage(),
   StatelessPage.routeName: (context) => const StatelessPage(),
