@@ -33,15 +33,15 @@ class Tabs {
 
 // ListViewではない形（Container）ではSliver系でも理想の動きになるのか検証用
 final containerTabs = {
-  Tabs(
-    const Tab(text: 'First'),
-    Container(
+  const Tabs(
+    Tab(text: 'First'),
+    ColoredBox(
       color: Colors.blue,
     ),
   ),
-  Tabs(
-    const Tab(text: 'Second'),
-    Container(
+  const Tabs(
+    Tab(text: 'Second'),
+    ColoredBox(
       color: Colors.redAccent,
     ),
   ),

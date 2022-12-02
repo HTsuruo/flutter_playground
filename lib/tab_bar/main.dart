@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/tab_bar/customized_tab_bar_page.dart';
 import 'package:flutter_playground/tab_bar/default_tab_controller_page.dart';
 import 'package:flutter_playground/tab_bar/scrolling_tab_bar_page.dart';
 import 'package:flutter_playground/tab_bar/tab_controller_page.dart';
@@ -27,6 +28,8 @@ class App extends StatelessWidget {
         DefaultTabControllerPage.routeName: (context) =>
             const DefaultTabControllerPage(),
         ScrollingTabBarPage.routeName: (context) => const ScrollingTabBarPage(),
+        CustomizedTabBarPage.routeName: (context) =>
+            const CustomizedTabBarPage(),
       },
     );
   }
@@ -36,7 +39,7 @@ class _ListPage extends StatelessWidget {
   const _ListPage();
   @override
   Widget build(BuildContext context) {
-    List<ListTile> _tiles() {
+    List<ListTile> tiles() {
       return [
         // DefaultTabControllerを使ったパターン
         ListTile(
@@ -57,6 +60,11 @@ class _ListPage extends StatelessWidget {
           onTap: () =>
               Navigator.of(context).pushNamed(ScrollingTabBarPage.routeName),
         ),
+        ListTile(
+          title: const Text(CustomizedTabBarPage.routeName),
+          onTap: () =>
+              Navigator.of(context).pushNamed(CustomizedTabBarPage.routeName),
+        ),
       ];
     }
 
@@ -65,9 +73,9 @@ class _ListPage extends StatelessWidget {
         title: const Text('TabBar Sampler'),
       ),
       body: ListView.separated(
-        itemBuilder: (context, index) => _tiles()[index],
+        itemBuilder: (context, index) => tiles()[index],
         separatorBuilder: (context, index) => const Divider(),
-        itemCount: _tiles().length,
+        itemCount: tiles().length,
       ),
     );
   }

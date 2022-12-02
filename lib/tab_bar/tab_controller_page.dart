@@ -8,7 +8,7 @@ class TabControllerPage extends StatefulWidget {
   static const routeName = '/tab_controller_page';
 
   @override
-  _TabControllerPageState createState() => _TabControllerPageState();
+  State<TabControllerPage> createState() => _TabControllerPageState();
 }
 
 class _TabControllerPageState extends State<TabControllerPage>
@@ -30,14 +30,15 @@ class _TabControllerPageState extends State<TabControllerPage>
         final currentIndex = _tabController.index;
         // True while we're animating from previousIndex to index
         // as a consequence of calling animateTo
-        // アニメーション中にはtrueを返すものだが「TabBar押下時」のみtrueになるため
         // TabBar押下かスワイプによる変更か判断することができる
+        // 直接押下時のみindexIsChangingがtrueとなる
         if (_tabController.indexIsChanging) {
+          logger.info('Changing tab index: $previousIndex → $currentIndex');
           return;
         }
         // indexの変更が完了したタイミング（アニメーション終了後）に行いたい処理
         // ...
-        logger.info('Changed Tab Index: $previousIndex → $currentIndex');
+        logger.info('Changed tab index: $previousIndex → $currentIndex');
       },
     );
   }
