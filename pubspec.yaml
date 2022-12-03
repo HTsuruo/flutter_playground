@@ -99,6 +99,11 @@ flutter:
     - assets/sounds/
     - assets/fruits/
 
+  fonts:
+    - family: Fruits
+      fonts:
+        - asset: fonts/Fruits.ttf
+
 flutter_gen:
   integrations:
     flutter_svg: true

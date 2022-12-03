@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_playground/gen/assets.gen.dart';
-import 'package:flutter_playground/logger.dart';
+import 'package:flutter_playground/fruits_icons.dart';
 import 'package:gap/gap.dart';
 
 ///　TabBarの見た目を色々いじる画面
@@ -25,7 +24,8 @@ class _CustomizedTabBarPageState extends State<CustomizedTabBarPage>
   void initState() {
     super.initState();
     _animation.addListener(() {
-      logger.info('animation value: ${_animation.value}');
+      // スワイプ時の途中経過もanimationプロパティのaddListenierで逐一取得することも可能
+      // logger.info('animation value: ${_animation.value}');
     });
   }
 
@@ -61,7 +61,11 @@ class _CustomizedTabBarPageState extends State<CustomizedTabBarPage>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      tab.svgGenImage.svg(height: 20),
+                      // 選択中のindexを取得してsvgのカラー分岐をするのでも悪くはなさそうだが、
+                      // スワイプ移動時にColorのleapが表現できず不自然になる。
+                      // 一報、`IconData`として用意すればTab Widget 側でよしなに解釈してくれるので
+                      // そうするのが良さそう。
+                      Icon(tab.iconData, size: 16),
                       const Gap(4),
                       Text(tab.name.toUpperCase())
                     ],
@@ -85,21 +89,24 @@ class _CustomizedTabBarPageState extends State<CustomizedTabBarPage>
 }
 
 enum _Fruit {
-  apple,
-  grape,
-  pear,
+  apple(iconData: Fruits.apple),
+  grape(iconData: Fruits.grape),
+  pear(iconData: Fruits.pear),
   ;
+
+  const _Fruit({required this.iconData});
+  final IconData iconData;
 }
 
 extension on _Fruit {
-  SvgGenImage get svgGenImage {
-    switch (this) {
-      case _Fruit.apple:
-        return Assets.fruits.apple;
-      case _Fruit.grape:
-        return Assets.fruits.grape;
-      case _Fruit.pear:
-        return Assets.fruits.pear;
-    }
-  }
+  // SvgGenImage get svgGenImage {
+  //   switch (this) {
+  //     case _Fruit.apple:
+  //       return Assets.fruits.apple;
+  //     case _Fruit.grape:
+  //       return Assets.fruits.grape;
+  //     case _Fruit.pear:
+  //       return Assets.fruits.pear;
+  //   }
+  // }
 }
