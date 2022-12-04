@@ -1,5 +1,7 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/fruits_icons.dart';
+import 'package:flutter_playground/gen/assets.gen.dart';
 import 'package:gap/gap.dart';
 
 ///　TabBarの見た目を色々いじる画面
@@ -19,6 +21,7 @@ class _CustomizedTabBarPageState extends State<CustomizedTabBarPage>
     vsync: this,
   );
   late final _animation = _tabController.animation!;
+  late var _activeIndex = fruits.first.index;
 
   @override
   void initState() {
@@ -26,6 +29,14 @@ class _CustomizedTabBarPageState extends State<CustomizedTabBarPage>
     _animation.addListener(() {
       // スワイプ時の途中経過もanimationプロパティのaddListenierで逐一取得することも可能
       // logger.info('animation value: ${_animation.value}');
+    });
+    _tabController.addListener(() {
+      if (_tabController.indexIsChanging) {
+        return;
+      }
+      setState(() {
+        _activeIndex = _tabController.index;
+      });
     });
   }
 
@@ -56,8 +67,8 @@ class _CustomizedTabBarPageState extends State<CustomizedTabBarPage>
             color: Colors.white,
           ),
           tabs: fruits
-              .map(
-                (tab) => Tab(
+              .mapIndexed(
+                (index, tab) => Tab(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -66,6 +77,12 @@ class _CustomizedTabBarPageState extends State<CustomizedTabBarPage>
                       // 一報、`IconData`として用意すればTab Widget 側でよしなに解釈してくれるので
                       // そうするのが良さそう。
                       Icon(tab.iconData, size: 16),
+                      // tab.svgGenImage.svg(
+                      //   height: 16,
+                      //   color: _activeIndex == index
+                      //       ? colorScheme.primary
+                      //       : Colors.white,
+                      // ),
                       const Gap(4),
                       Text(tab.name.toUpperCase())
                     ],
@@ -99,14 +116,14 @@ enum _Fruit {
 }
 
 extension on _Fruit {
-  // SvgGenImage get svgGenImage {
-  //   switch (this) {
-  //     case _Fruit.apple:
-  //       return Assets.fruits.apple;
-  //     case _Fruit.grape:
-  //       return Assets.fruits.grape;
-  //     case _Fruit.pear:
-  //       return Assets.fruits.pear;
-  //   }
-  // }
+  SvgGenImage get svgGenImage {
+    switch (this) {
+      case _Fruit.apple:
+        return Assets.fruits.apple;
+      case _Fruit.grape:
+        return Assets.fruits.grape;
+      case _Fruit.pear:
+        return Assets.fruits.pear;
+    }
+  }
 }
