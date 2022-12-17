@@ -34,10 +34,9 @@ class App extends StatelessWidget {
       // colorSchemeをTheme算出より前に指定する使い方ができる。
       // 両者でDividerのカラーが異なる
       theme: ThemeData.from(
+        useMaterial3: true,
         colorScheme: lightScheme,
         // colorScheme: darkScheme,
-      ).copyWith(
-        useMaterial3: true,
       ),
       home: const HomePage(),
     );
