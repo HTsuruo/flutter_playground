@@ -5,8 +5,6 @@ import 'package:intersperse/intersperse.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import 'logger.dart';
-
 void main() => runApp(const App());
 
 /// `webview_flutter`と`url_launcher`のサンプル
@@ -113,26 +111,27 @@ class HomePage extends StatelessWidget {
               foregroundColor: colorScheme.onSurface,
               iconTheme: IconThemeData(color: colorScheme.onSurface),
             ),
-            body: WebView(
-              initialUrl: url,
-              javascriptMode: JavascriptMode.unrestricted,
-              onWebViewCreated: controller.complete,
-              navigationDelegate: (NavigationRequest request) {
-                if (request.url.startsWith('https://flutter.dev/docs')) {
-                  // final resURL = request.url;
-                  Navigator.pop(context);
-//                  Navigator.pop(context, request.url);
-                  return NavigationDecision.prevent;
-                }
-                logger.info('allowing navigation to $request');
-                return NavigationDecision.navigate;
-              },
-              onPageStarted: (String url) {
-                logger.info('Page started loading: $url');
-              },
-              onPageFinished: (String url) {
-                logger.info('Page finished loading: $url');
-              },
+            body: WebViewWidget(
+              controller: WebViewController(),
+//               initialUrl: url,
+//               javascriptMode: JavascriptMode.unrestricted,
+//               onWebViewCreated: controller.complete,
+//               navigationDelegate: (NavigationRequest request) {
+//                 if (request.url.startsWith('https://flutter.dev/docs')) {
+//                   // final resURL = request.url;
+//                   Navigator.pop(context);
+// //                  Navigator.pop(context, request.url);
+//                   return NavigationDecision.prevent;
+//                 }
+//                 logger.info('allowing navigation to $request');
+//                 return NavigationDecision.navigate;
+//               },
+//               onPageStarted: (String url) {
+//                 logger.info('Page started loading: $url');
+//               },
+//               onPageFinished: (String url) {
+//                 logger.info('Page finished loading: $url');
+//               },
             ),
           );
         },
