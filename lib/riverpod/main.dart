@@ -11,6 +11,7 @@ import 'package:flutter_playground/riverpod/counter/counter_inherited.dart';
 import 'package:flutter_playground/riverpod/counter/counter_provider_chain.dart';
 import 'package:flutter_playground/riverpod/dispose_pattern/dispose_sample_page.dart';
 import 'package:flutter_playground/riverpod/future/future_provider_page.dart';
+import 'package:flutter_playground/riverpod/invalidate_page.dart';
 import 'package:flutter_playground/riverpod/state_notifier_page.dart';
 import 'package:flutter_playground/riverpod/transform_provider_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,6 +31,7 @@ void main() {
 String _title = 'Riverpod Example';
 Map<String, WidgetBuilder> _routes = {
   // routeName: (context) => Page Class
+  InvalidatePage.routeName: (context) => const InvalidatePage(),
   CounterInherited.routeName: (context) => const CounterInherited(),
   CounterStateful.routeName: (context) => const CounterStateful(),
   CounterCodeGeneration.routeName: (context) => const CounterCodeGeneration(),
