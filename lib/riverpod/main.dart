@@ -31,7 +31,6 @@ void main() {
 String _title = 'Riverpod Example';
 Map<String, WidgetBuilder> _routes = {
   // routeName: (context) => Page Class
-  InvalidatePage.routeName: (context) => const InvalidatePage(),
   CounterInherited.routeName: (context) => const CounterInherited(),
   CounterStateful.routeName: (context) => const CounterStateful(),
   CounterCodeGeneration.routeName: (context) => const CounterCodeGeneration(),
@@ -47,6 +46,7 @@ Map<String, WidgetBuilder> _routes = {
   ConsumerScopedPage.routeName: (context) => const ConsumerScopedPage(),
   DisposeSamplePage.routeName: (context) => const DisposeSamplePage(),
   TransformProviderPage.routeName: (context) => const TransformProviderPage(),
+  InvalidatePage.routeName: (context) => const InvalidatePage(),
 };
 
 class App extends StatelessWidget {
