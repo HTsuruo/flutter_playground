@@ -30,7 +30,7 @@ class SliverWithTabBarPage extends StatelessWidget {
                   sliver: SliverAppBar(
                     title: Text(
                       runtimeType.toString(),
-                      style: theme.textTheme.bodyText1!.copyWith(
+                      style: theme.textTheme.bodyLarge!.copyWith(
                         fontWeight: FontWeight.bold,
                         color: colorScheme.surface,
                       ),

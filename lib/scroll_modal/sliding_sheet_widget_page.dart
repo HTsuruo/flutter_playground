@@ -8,7 +8,7 @@ class SlidingSheetWidgetPage extends StatelessWidget {
   const SlidingSheetWidgetPage({super.key});
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context).textTheme.bodyText1!;
+    final textStyle = Theme.of(context).textTheme.bodyLarge!;
 
     return Scaffold(
       appBar: AppBar(),

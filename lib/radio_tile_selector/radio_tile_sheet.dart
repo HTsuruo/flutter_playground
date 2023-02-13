@@ -31,7 +31,7 @@ class RadioTileSheet extends ConsumerWidget {
               (value) => RadioListTile<SampleType>(
                 title: Text(
                   value.label,
-                  style: theme.textTheme.bodyText2!.copyWith(
+                  style: theme.textTheme.bodyMedium!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -95,7 +95,7 @@ class _RadioTileSheet2State<T> extends State<RadioTileSheet2<T>> {
               (value) => RadioListTile<T>(
                 title: Text(
                   value.title,
-                  style: theme.textTheme.bodyText2!.copyWith(
+                  style: theme.textTheme.bodyMedium!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
                 ),

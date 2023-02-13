@@ -19,7 +19,7 @@ class FruitTabType extends ConsumerWidget {
             type,
             Text(
               type.label,
-              style: theme.textTheme.bodyText2!.copyWith(
+              style: theme.textTheme.bodyMedium!.copyWith(
                 fontWeight: isSelected ? FontWeight.bold : null,
                 color: isSelected ? colorScheme.onPrimary : null,
               ),

@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                           'あああああああああああああああああああああああああ'
                           'あああああああああああああああああああああああああ'
                           'あああああああああああああああああああああああああ',
-                          style: Theme.of(context).textTheme.headline4,
+                          style: Theme.of(context).textTheme.headlineMedium,
                         ),
                       );
                     },

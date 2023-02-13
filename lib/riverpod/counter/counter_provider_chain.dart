@@ -133,7 +133,7 @@ class _CountDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final textStyle = theme.textTheme.bodyText1;
+    final textStyle = theme.textTheme.bodyLarge;
     return Column(
       children: [
         Text(

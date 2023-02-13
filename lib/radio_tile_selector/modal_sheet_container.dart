@@ -47,7 +47,7 @@ class ModalSheetContainer extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: theme.textTheme.bodyText2!.copyWith(
+                      style: theme.textTheme.bodyMedium!.copyWith(
                         fontWeight: FontWeight.bold,
                         color: theme.colorScheme.surface,
                       ),
@@ -55,7 +55,7 @@ class ModalSheetContainer extends StatelessWidget {
                     if (subTitle != null)
                       Text(
                         subTitle!,
-                        style: theme.textTheme.caption!.copyWith(
+                        style: theme.textTheme.bodySmall!.copyWith(
                           color: theme.colorScheme.surface,
                         ),
                       ),

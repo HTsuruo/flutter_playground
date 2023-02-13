@@ -144,9 +144,9 @@ class _Legend extends StatelessWidget {
         const Gap(2),
         Text(
           label,
-          style: theme.textTheme.caption!.copyWith(
+          style: theme.textTheme.bodySmall!.copyWith(
             fontWeight: FontWeight.bold,
-            color: theme.textTheme.bodyText1!.color,
+            color: theme.textTheme.bodyLarge!.color,
           ),
         ),
       ],
@@ -165,7 +165,7 @@ class _BadgeWidget extends StatelessWidget {
     final colorScheme = theme.colorScheme;
     return Text(
       label,
-      style: theme.textTheme.caption!.copyWith(
+      style: theme.textTheme.bodySmall!.copyWith(
         color: colorScheme.surface,
         fontWeight: FontWeight.bold,
       ),

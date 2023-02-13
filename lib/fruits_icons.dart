@@ -21,7 +21,7 @@ class Fruits {
   static const _kFontFam = 'Fruits';
   static const String? _kFontPkg = null;
 
-  static const IconData pear = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData grape = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData apple = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pear = IconData(0xe800, fontFamily: _kFontFam);
+  static const IconData grape = IconData(0xe801, fontFamily: _kFontFam);
+  static const IconData apple = IconData(0xe802, fontFamily: _kFontFam);
 }

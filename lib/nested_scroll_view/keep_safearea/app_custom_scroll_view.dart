@@ -18,7 +18,7 @@ class AppCustomScrollView extends StatelessWidget {
         SliverAppBar(
           title: Text(
             title,
-            style: theme.textTheme.bodyText1!.copyWith(
+            style: theme.textTheme.bodyLarge!.copyWith(
               fontWeight: FontWeight.bold,
               color: colorScheme.surface,
             ),
