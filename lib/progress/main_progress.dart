@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_playground/progress/progress_controller.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 void main() => runApp(
       const ProviderScope(
