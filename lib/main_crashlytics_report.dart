@@ -71,12 +71,69 @@ class HomePage extends StatelessWidget {
             ),
             OutlinedButton(
               onPressed: () {
-                logger.severe('This is Non-Fatal error');
+                logger.severe('This is Non-Fatal error2');
               },
               child: const Text('logger - Non-Fatal error'),
             ),
+            OutlinedButton(
+              onPressed: () {
+                throw UnsupportedError('This is Non-Fatal error');
+              },
+              child: const Text('UnsupportedError - Non-Fatal error'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                logger.severe('ElevatedButton Error');
+              },
+              child: const Text('logger - Non-Fatal error'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                throw UnimplementedError();
+              },
+              child: const Text('ElevatedButton logger - Non-Fatal error'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (context) => const _Page2(),
+                  ),
+                );
+              },
+              child: const Text('Navigate page'),
+            ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _Page2 extends StatelessWidget {
+  const _Page2();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(''),
+      ),
+      body: Column(
+        children: [
+          OutlinedButton(
+            onPressed: () {
+              throw UnsupportedError('This is Non-Fatal error');
+            },
+            child: const Text('UnsupportedError - Non-Fatal error'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              logger.severe('ElevatedButton Error');
+            },
+            child: const Text('logger - Non-Fatal error'),
+          ),
+        ],
       ),
     );
   }
