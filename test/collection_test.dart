@@ -13,6 +13,11 @@ void main() {
   final group = groupBy<User, bool>(users, (u) => u.pass);
   final grouped = users.groupedBy((u) => u.pass);
 
+  final foo = users.groupFoldBy<bool, User?>(
+    (u) => u.pass,
+    (prevSum, next) => prevSum == null ? next : prevSum + next,
+  );
+
   test('length test', () {
     expect(group.length, 2);
     expect(grouped.length, 2);
@@ -24,6 +29,12 @@ class User {
   String name;
   int score;
   bool pass;
+
+  User operator +(User other) => User(
+        score: score + other.score,
+        name: name,
+        pass: pass,
+      );
 }
 
 extension CollectionX<E extends Object> on Iterable<E> {
