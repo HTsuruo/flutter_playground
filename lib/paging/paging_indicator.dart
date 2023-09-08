@@ -4,9 +4,9 @@ class PagingIndicator extends StatelessWidget {
   const PagingIndicator({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisSize: MainAxisSize.min,
-      children: const [
+      children: [
         Padding(
           padding: EdgeInsets.only(top: 8, bottom: 16),
           child: SizedBox(

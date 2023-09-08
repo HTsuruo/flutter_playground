@@ -165,8 +165,8 @@ class HomePage extends ConsumerWidget {
                         SnackBar(
                           duration: const Duration(seconds: 5),
                           backgroundColor: Colors.black,
-                          content: Row(
-                            children: const [
+                          content: const Row(
+                            children: [
                               Padding(
                                 padding: EdgeInsets.only(right: 16),
                                 child: Icon(
@@ -193,7 +193,7 @@ class HomePage extends ConsumerWidget {
                       );
               logger.info(await featureController.closed);
             },
-          )
+          ),
         ],
       ),
     );

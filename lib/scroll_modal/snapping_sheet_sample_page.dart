@@ -39,7 +39,7 @@ class GrabSection extends StatelessWidget {
           BoxShadow(
             blurRadius: .5,
             color: Colors.black.withOpacity(0.2),
-          )
+          ),
         ],
         borderRadius: const BorderRadius.only(
           topLeft: borderRadius,
@@ -59,7 +59,7 @@ class GrabSection extends StatelessWidget {
                 Radius.circular(5),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

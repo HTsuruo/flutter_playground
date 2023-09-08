@@ -61,8 +61,8 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _listTileWithDivider() {
-    return Column(
-      children: const [
+    return const Column(
+      children: [
         ListTile(
           title: Hero(
             tag: 'hero',

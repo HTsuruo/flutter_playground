@@ -29,7 +29,7 @@ class FutureProviderPage extends ConsumerWidget {
     final fakeAsync = ref.watch(_fakeApi2);
 
     logger
-      ..info('fakeAsync: ${fakeAsync.toString()}')
+      ..info('fakeAsync: $fakeAsync')
       ..info('isLoading: ${fakeAsync.isLoading}')
       ..info('isRefreshing: ${fakeAsync.isRefreshing}')
       ..info('hasValue: ${fakeAsync.hasValue}')
@@ -60,7 +60,7 @@ class FutureProviderPage extends ConsumerWidget {
               );
             },
             icon: const Icon(Icons.navigate_next),
-          )
+          ),
         ],
       ),
       body: Column(

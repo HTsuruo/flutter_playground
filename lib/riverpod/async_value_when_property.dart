@@ -60,7 +60,7 @@ class AsyncValueWhenProperty extends ConsumerWidget {
                   onPressed: () => ref.refresh(someProvider),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

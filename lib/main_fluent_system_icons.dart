@@ -24,10 +24,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: const [
+          children: [
             Text('text_bullet_list_24_regular'),
             Gap(16),
             // アップデートにより変更前の命名は期待通りエラーがでるようになった

@@ -84,7 +84,7 @@ class _CustomizedTabBarPageState extends State<CustomizedTabBarPage>
                       //       : Colors.white,
                       // ),
                       const Gap(4),
-                      Text(tab.name.toUpperCase())
+                      Text(tab.name.toUpperCase()),
                     ],
                   ),
                 ),
@@ -98,7 +98,7 @@ class _CustomizedTabBarPageState extends State<CustomizedTabBarPage>
           for (final tab in fruits)
             Center(
               child: Text(tab.name.toUpperCase()),
-            )
+            ),
         ],
       ),
     );

@@ -26,8 +26,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Stack(
-        children: const [
+      body: const Stack(
+        children: [
           Positioned(
             child: _Box(),
           ),

@@ -31,10 +31,10 @@ class HomePage extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: Center(
+                child: const Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text('RoundedRectangleBorder'),
                       Text('R（16）'),
                     ],
@@ -49,10 +49,10 @@ class HomePage extends StatelessWidget {
                 shape: ContinuousRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: Center(
+                child: const Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text('ContinuousRectangleBorder'),
                       Text('R（16）'),
                     ],
@@ -67,10 +67,10 @@ class HomePage extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: Center(
+                child: const Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text('RoundedRectangleBorder'),
                       Text('R（50）'),
                     ],
@@ -85,10 +85,10 @@ class HomePage extends StatelessWidget {
                 shape: ContinuousRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: Center(
+                child: const Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text('ContinuousRectangleBorder'),
                       Text('R（50）'),
                     ],

@@ -30,10 +30,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
+      body: const Padding(
+        padding: EdgeInsets.all(16),
         child: Column(
-          children: const [
+          children: [
             _ExpandablePanel(),
             Divider(),
             _ExpandableCard(),

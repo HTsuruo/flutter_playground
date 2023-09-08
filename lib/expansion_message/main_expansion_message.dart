@@ -93,7 +93,7 @@ class _ExpansionMessageState extends State<_ExpansionMessage> {
               );
             },
             child: Text(_show ? '折りたたむ' : 'もっとみる'),
-          )
+          ),
         ],
       ),
     );

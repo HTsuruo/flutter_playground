@@ -10,7 +10,7 @@ void main() {
   final hoge = Hoge('hoge');
   final hoge2 = hoge;
   logger
-    ..fine('hoge.toString(): ${hoge.toString()}')
+    ..fine('hoge.toString(): $hoge')
     ..fine('hoge hashcode: ${hoge.hashCode}')
     // 同一インスタンスであればhashcodeが一緒
     ..fine('hoge2 hashcode: ${hoge2.hashCode}')
@@ -28,7 +28,7 @@ void main() {
 
   final foo = Hoge('foo');
   logger
-    ..fine('foo.toString(): ${foo.toString()}')
+    ..fine('foo.toString(): $foo')
     // 通常Objectはインスタンスごとにhashcodeが代わる. これは真っ当な挙動
     ..fine('foo hashcode: ${foo.hashCode}')
     // 当然別インスタンスかつ`name`が異なれば別のObjectを意図しているはずなので`false`となる

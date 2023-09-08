@@ -23,7 +23,7 @@ class CircularProgressIndicatorPage extends ConsumerWidget {
               children: [
                 ListTile(
                   title: Text(value),
-                )
+                ),
               ],
             ),
     );

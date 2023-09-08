@@ -25,7 +25,7 @@ class Sample3 extends StatelessWidget {
                 expandedHeight: 200,
                 forceElevated: innerBoxIsScrolled,
               ),
-            )
+            ),
           ];
         },
         body: Builder(

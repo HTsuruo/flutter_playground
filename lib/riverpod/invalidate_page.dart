@@ -26,7 +26,7 @@ class InvalidatePage extends ConsumerWidget {
         child: ref.watch(_fakeProvider).when(
               skipLoadingOnRefresh: false,
               loading: CircularProgressIndicator.new,
-              error: (error, stackTrace) => Text('error: ${error.toString()}'),
+              error: (error, stackTrace) => Text('error: $error'),
               data: (date) {
                 return Column(
                   mainAxisSize: MainAxisSize.min,
@@ -45,7 +45,7 @@ class InvalidatePage extends ConsumerWidget {
                         ref.invalidate(_fooProvider);
                       },
                       child: const Text('invalidate fooProvider'),
-                    )
+                    ),
                   ],
                 );
               },

@@ -39,13 +39,13 @@ class ChangeNotifierPage extends ConsumerWidget {
           IconButton(
             onPressed: notifier.refresh,
             icon: const Icon(Icons.refresh),
-          )
+          ),
         ],
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: const [
+          children: [
             _Text(),
             _RefreshText(),
           ],

@@ -20,8 +20,8 @@ class StatelessSamplePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(runtimeType.toString()),
       ),
-      body: Row(
-        children: const [
+      body: const Row(
+        children: [
           _ColorTile(color: Colors.blueAccent),
           _ColorTile(color: Colors.orange),
         ],

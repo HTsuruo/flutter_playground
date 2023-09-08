@@ -56,7 +56,7 @@ class ExpansionMessageByRiverpod extends ConsumerWidget {
               ref.read(_expansionMessageSwitcher.notifier).show();
             },
             child: Text(show ? '折りたたむ' : 'もっとみる'),
-          )
+          ),
         ],
       ),
     );

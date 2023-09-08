@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                     const Gap(16),
                     Text('code: $code'),
                   ],
-                )
+                ),
             ],
           ),
         ),

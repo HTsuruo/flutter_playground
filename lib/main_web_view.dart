@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     const trailingIcon = Icon(Icons.navigate_next);
     const url = 'https://flutter.dev/';
-    final uri = Uri.https('flutter.dev', '');
+    final uri = Uri.https('flutter.dev');
     final universalLinkUri = Uri.https('twitter.com', 'h_tsuruo');
     return Scaffold(
       appBar: AppBar(

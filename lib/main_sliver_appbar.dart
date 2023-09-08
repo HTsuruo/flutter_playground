@@ -124,8 +124,8 @@ class _SliverWithTab extends StatelessWidget {
         length: 2,
         child: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              title: const TabBar(
+            const SliverAppBar(
+              title: TabBar(
                 tabs: [
                   Tab(text: 'AAA'),
                   Tab(text: 'BBB'),
@@ -135,7 +135,7 @@ class _SliverWithTab extends StatelessWidget {
                 child: FlexibleSpaceBar(
                   background: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Text('ほげ'),
                       Text('ほげ'),
                       Text('ほげ'),
