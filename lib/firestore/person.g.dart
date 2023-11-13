@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'person.dart';
 
 // **************************************************************************
 // CollectionGenerator
@@ -19,81 +19,81 @@ const _sentinel = _Sentinel();
 /// A collection reference object can be used for adding documents,
 /// getting document references, and querying for documents
 /// (using the methods inherited from Query).
-abstract class UserCollectionReference
+abstract class PersonCollectionReference
     implements
-        UserQuery,
-        FirestoreCollectionReference<User, UserQuerySnapshot> {
-  factory UserCollectionReference([
+        PersonQuery,
+        FirestoreCollectionReference<Person, PersonQuerySnapshot> {
+  factory PersonCollectionReference([
     FirebaseFirestore? firestore,
-  ]) = _$UserCollectionReference;
+  ]) = _$PersonCollectionReference;
 
-  static User fromFirestore(
+  static Person fromFirestore(
     DocumentSnapshot<Map<String, Object?>> snapshot,
     SnapshotOptions? options,
   ) {
-    return User.fromJson(snapshot.data()!);
+    return Person.fromJson(snapshot.data()!);
   }
 
   static Map<String, Object?> toFirestore(
-    User value,
+    Person value,
     SetOptions? options,
   ) {
     return value.toJson();
   }
 
   @override
-  CollectionReference<User> get reference;
+  CollectionReference<Person> get reference;
 
   @override
-  UserDocumentReference doc([String? id]);
+  PersonDocumentReference doc([String? id]);
 
   /// Add a new document to this collection with the specified data,
   /// assigning it a document ID automatically.
-  Future<UserDocumentReference> add(User value);
+  Future<PersonDocumentReference> add(Person value);
 }
 
-class _$UserCollectionReference extends _$UserQuery
-    implements UserCollectionReference {
-  factory _$UserCollectionReference([FirebaseFirestore? firestore]) {
+class _$PersonCollectionReference extends _$PersonQuery
+    implements PersonCollectionReference {
+  factory _$PersonCollectionReference([FirebaseFirestore? firestore]) {
     firestore ??= FirebaseFirestore.instance;
 
-    return _$UserCollectionReference._(
-      firestore.collection('users').withConverter(
-            fromFirestore: UserCollectionReference.fromFirestore,
-            toFirestore: UserCollectionReference.toFirestore,
+    return _$PersonCollectionReference._(
+      firestore.collection('persons').withConverter(
+            fromFirestore: PersonCollectionReference.fromFirestore,
+            toFirestore: PersonCollectionReference.toFirestore,
           ),
     );
   }
 
-  _$UserCollectionReference._(
-    CollectionReference<User> reference,
+  _$PersonCollectionReference._(
+    CollectionReference<Person> reference,
   ) : super(reference, $referenceWithoutCursor: reference);
 
   String get path => reference.path;
 
   @override
-  CollectionReference<User> get reference =>
-      super.reference as CollectionReference<User>;
+  CollectionReference<Person> get reference =>
+      super.reference as CollectionReference<Person>;
 
   @override
-  UserDocumentReference doc([String? id]) {
+  PersonDocumentReference doc([String? id]) {
     assert(
       id == null || id.split('/').length == 1,
       'The document ID cannot be from a different collection',
     );
-    return UserDocumentReference(
+    return PersonDocumentReference(
       reference.doc(id),
     );
   }
 
   @override
-  Future<UserDocumentReference> add(User value) {
-    return reference.add(value).then((ref) => UserDocumentReference(ref));
+  Future<PersonDocumentReference> add(Person value) {
+    return reference.add(value).then((ref) => PersonDocumentReference(ref));
   }
 
   @override
   bool operator ==(Object other) {
-    return other is _$UserCollectionReference &&
+    return other is _$PersonCollectionReference &&
         other.runtimeType == runtimeType &&
         other.reference == reference;
   }
@@ -102,23 +102,23 @@ class _$UserCollectionReference extends _$UserQuery
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
-abstract class UserDocumentReference
-    extends FirestoreDocumentReference<User, UserDocumentSnapshot> {
-  factory UserDocumentReference(DocumentReference<User> reference) =
-      _$UserDocumentReference;
+abstract class PersonDocumentReference
+    extends FirestoreDocumentReference<Person, PersonDocumentSnapshot> {
+  factory PersonDocumentReference(DocumentReference<Person> reference) =
+      _$PersonDocumentReference;
 
-  DocumentReference<User> get reference;
+  DocumentReference<Person> get reference;
 
-  /// A reference to the [UserCollectionReference] containing this document.
-  UserCollectionReference get parent {
-    return _$UserCollectionReference(reference.firestore);
+  /// A reference to the [PersonCollectionReference] containing this document.
+  PersonCollectionReference get parent {
+    return _$PersonCollectionReference(reference.firestore);
   }
 
   @override
-  Stream<UserDocumentSnapshot> snapshots();
+  Stream<PersonDocumentSnapshot> snapshots();
 
   @override
-  Future<UserDocumentSnapshot> get([GetOptions? options]);
+  Future<PersonDocumentSnapshot> get([GetOptions? options]);
 
   @override
   Future<void> delete();
@@ -128,12 +128,12 @@ abstract class UserDocumentReference
   ///
   /// If no document exists yet, the update will fail.
   Future<void> update({
-    String name,
-    FieldValue nameFieldValue,
-    String blood,
-    FieldValue bloodFieldValue,
-    UnionTimestamp birthDay,
-    FieldValue birthDayFieldValue,
+    String firstName,
+    FieldValue firstNameFieldValue,
+    String lastName,
+    FieldValue lastNameFieldValue,
+    DateTime? dateOfBirth,
+    FieldValue dateOfBirthFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -141,78 +141,79 @@ abstract class UserDocumentReference
   /// The update will fail if applied to a document that does not exist.
   void transactionUpdate(
     Transaction transaction, {
-    String name,
-    FieldValue nameFieldValue,
-    String blood,
-    FieldValue bloodFieldValue,
-    UnionTimestamp birthDay,
-    FieldValue birthDayFieldValue,
+    String firstName,
+    FieldValue firstNameFieldValue,
+    String lastName,
+    FieldValue lastNameFieldValue,
+    DateTime? dateOfBirth,
+    FieldValue dateOfBirthFieldValue,
   });
 }
 
-class _$UserDocumentReference
-    extends FirestoreDocumentReference<User, UserDocumentSnapshot>
-    implements UserDocumentReference {
-  _$UserDocumentReference(this.reference);
+class _$PersonDocumentReference
+    extends FirestoreDocumentReference<Person, PersonDocumentSnapshot>
+    implements PersonDocumentReference {
+  _$PersonDocumentReference(this.reference);
 
   @override
-  final DocumentReference<User> reference;
+  final DocumentReference<Person> reference;
 
-  /// A reference to the [UserCollectionReference] containing this document.
-  UserCollectionReference get parent {
-    return _$UserCollectionReference(reference.firestore);
+  /// A reference to the [PersonCollectionReference] containing this document.
+  PersonCollectionReference get parent {
+    return _$PersonCollectionReference(reference.firestore);
   }
 
   @override
-  Stream<UserDocumentSnapshot> snapshots() {
-    return reference.snapshots().map(UserDocumentSnapshot._);
+  Stream<PersonDocumentSnapshot> snapshots() {
+    return reference.snapshots().map(PersonDocumentSnapshot._);
   }
 
   @override
-  Future<UserDocumentSnapshot> get([GetOptions? options]) {
-    return reference.get(options).then(UserDocumentSnapshot._);
+  Future<PersonDocumentSnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(PersonDocumentSnapshot._);
   }
 
   @override
-  Future<UserDocumentSnapshot> transactionGet(Transaction transaction) {
-    return transaction.get(reference).then(UserDocumentSnapshot._);
+  Future<PersonDocumentSnapshot> transactionGet(Transaction transaction) {
+    return transaction.get(reference).then(PersonDocumentSnapshot._);
   }
 
   Future<void> update({
-    Object? name = _sentinel,
-    FieldValue? nameFieldValue,
-    Object? blood = _sentinel,
-    FieldValue? bloodFieldValue,
-    Object? birthDay = _sentinel,
-    FieldValue? birthDayFieldValue,
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
+    Object? dateOfBirth = _sentinel,
+    FieldValue? dateOfBirthFieldValue,
   }) async {
     assert(
-      name == _sentinel || nameFieldValue == null,
-      "Cannot specify both name and nameFieldValue",
+      firstName == _sentinel || firstNameFieldValue == null,
+      "Cannot specify both firstName and firstNameFieldValue",
     );
     assert(
-      blood == _sentinel || bloodFieldValue == null,
-      "Cannot specify both blood and bloodFieldValue",
+      lastName == _sentinel || lastNameFieldValue == null,
+      "Cannot specify both lastName and lastNameFieldValue",
     );
     assert(
-      birthDay == _sentinel || birthDayFieldValue == null,
-      "Cannot specify both birthDay and birthDayFieldValue",
+      dateOfBirth == _sentinel || dateOfBirthFieldValue == null,
+      "Cannot specify both dateOfBirth and dateOfBirthFieldValue",
     );
     final json = {
-      if (name != _sentinel)
-        _$$UserImplFieldMap['name']!:
-            _$$UserImplPerFieldToJson.name(name as String),
-      if (nameFieldValue != null) _$$UserImplFieldMap['name']!: nameFieldValue,
-      if (blood != _sentinel)
-        _$$UserImplFieldMap['blood']!:
-            _$$UserImplPerFieldToJson.blood(blood as String),
-      if (bloodFieldValue != null)
-        _$$UserImplFieldMap['blood']!: bloodFieldValue,
-      if (birthDay != _sentinel)
-        _$$UserImplFieldMap['birthDay']!:
-            _$$UserImplPerFieldToJson.birthDay(birthDay as UnionTimestamp),
-      if (birthDayFieldValue != null)
-        _$$UserImplFieldMap['birthDay']!: birthDayFieldValue,
+      if (firstName != _sentinel)
+        _$PersonFieldMap['firstName']!:
+            _$PersonPerFieldToJson.firstName(firstName as String),
+      if (firstNameFieldValue != null)
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastName != _sentinel)
+        _$PersonFieldMap['lastName']!:
+            _$PersonPerFieldToJson.lastName(lastName as String),
+      if (lastNameFieldValue != null)
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
+      if (dateOfBirth != _sentinel)
+        _$PersonFieldMap['dateOfBirth']!:
+            _$PersonPerFieldToJson.dateOfBirth(dateOfBirth as DateTime?),
+      if (dateOfBirthFieldValue != null)
+        _$PersonFieldMap['dateOfBirth']!: dateOfBirthFieldValue,
     };
 
     return reference.update(json);
@@ -220,40 +221,41 @@ class _$UserDocumentReference
 
   void transactionUpdate(
     Transaction transaction, {
-    Object? name = _sentinel,
-    FieldValue? nameFieldValue,
-    Object? blood = _sentinel,
-    FieldValue? bloodFieldValue,
-    Object? birthDay = _sentinel,
-    FieldValue? birthDayFieldValue,
+    Object? firstName = _sentinel,
+    FieldValue? firstNameFieldValue,
+    Object? lastName = _sentinel,
+    FieldValue? lastNameFieldValue,
+    Object? dateOfBirth = _sentinel,
+    FieldValue? dateOfBirthFieldValue,
   }) {
     assert(
-      name == _sentinel || nameFieldValue == null,
-      "Cannot specify both name and nameFieldValue",
+      firstName == _sentinel || firstNameFieldValue == null,
+      "Cannot specify both firstName and firstNameFieldValue",
     );
     assert(
-      blood == _sentinel || bloodFieldValue == null,
-      "Cannot specify both blood and bloodFieldValue",
+      lastName == _sentinel || lastNameFieldValue == null,
+      "Cannot specify both lastName and lastNameFieldValue",
     );
     assert(
-      birthDay == _sentinel || birthDayFieldValue == null,
-      "Cannot specify both birthDay and birthDayFieldValue",
+      dateOfBirth == _sentinel || dateOfBirthFieldValue == null,
+      "Cannot specify both dateOfBirth and dateOfBirthFieldValue",
     );
     final json = {
-      if (name != _sentinel)
-        _$$UserImplFieldMap['name']!:
-            _$$UserImplPerFieldToJson.name(name as String),
-      if (nameFieldValue != null) _$$UserImplFieldMap['name']!: nameFieldValue,
-      if (blood != _sentinel)
-        _$$UserImplFieldMap['blood']!:
-            _$$UserImplPerFieldToJson.blood(blood as String),
-      if (bloodFieldValue != null)
-        _$$UserImplFieldMap['blood']!: bloodFieldValue,
-      if (birthDay != _sentinel)
-        _$$UserImplFieldMap['birthDay']!:
-            _$$UserImplPerFieldToJson.birthDay(birthDay as UnionTimestamp),
-      if (birthDayFieldValue != null)
-        _$$UserImplFieldMap['birthDay']!: birthDayFieldValue,
+      if (firstName != _sentinel)
+        _$PersonFieldMap['firstName']!:
+            _$PersonPerFieldToJson.firstName(firstName as String),
+      if (firstNameFieldValue != null)
+        _$PersonFieldMap['firstName']!: firstNameFieldValue,
+      if (lastName != _sentinel)
+        _$PersonFieldMap['lastName']!:
+            _$PersonPerFieldToJson.lastName(lastName as String),
+      if (lastNameFieldValue != null)
+        _$PersonFieldMap['lastName']!: lastNameFieldValue,
+      if (dateOfBirth != _sentinel)
+        _$PersonFieldMap['dateOfBirth']!:
+            _$PersonPerFieldToJson.dateOfBirth(dateOfBirth as DateTime?),
+      if (dateOfBirthFieldValue != null)
+        _$PersonFieldMap['dateOfBirth']!: dateOfBirthFieldValue,
     };
 
     transaction.update(reference, json);
@@ -261,7 +263,7 @@ class _$UserDocumentReference
 
   @override
   bool operator ==(Object other) {
-    return other is UserDocumentReference &&
+    return other is PersonDocumentReference &&
         other.runtimeType == runtimeType &&
         other.parent == parent &&
         other.id == id;
@@ -271,12 +273,13 @@ class _$UserDocumentReference
   int get hashCode => Object.hash(runtimeType, parent, id);
 }
 
-abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
+abstract class PersonQuery
+    implements QueryReference<Person, PersonQuerySnapshot> {
   @override
-  UserQuery limit(int limit);
+  PersonQuery limit(int limit);
 
   @override
-  UserQuery limitToLast(int limit);
+  PersonQuery limitToLast(int limit);
 
   /// Perform an order query based on a [FieldPath].
   ///
@@ -298,17 +301,17 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
   /// ```dart
   /// collection.orderByTitle(startAt: 'title');
   /// ```
-  UserQuery orderByFieldPath(
+  PersonQuery orderByFieldPath(
     FieldPath fieldPath, {
     bool descending = false,
     Object? startAt,
     Object? startAfter,
     Object? endAt,
     Object? endBefore,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
   });
 
   /// Perform a where query based on a [FieldPath].
@@ -328,7 +331,7 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
   /// ```dart
   /// collection.whereTitle(isEqualTo: 'title');
   /// ```
-  UserQuery whereFieldPath(
+  PersonQuery whereFieldPath(
     FieldPath fieldPath, {
     Object? isEqualTo,
     Object? isNotEqualTo,
@@ -343,7 +346,7 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
     bool? isNull,
   });
 
-  UserQuery whereDocumentId({
+  PersonQuery whereDocumentId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -354,7 +357,7 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  UserQuery whereName({
+  PersonQuery whereFirstName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -365,7 +368,7 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  UserQuery whereBlood({
+  PersonQuery whereLastName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -376,72 +379,72 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
     List<String>? whereIn,
     List<String>? whereNotIn,
   });
-  UserQuery whereBirthDay({
-    UnionTimestamp? isEqualTo,
-    UnionTimestamp? isNotEqualTo,
-    UnionTimestamp? isLessThan,
-    UnionTimestamp? isLessThanOrEqualTo,
-    UnionTimestamp? isGreaterThan,
-    UnionTimestamp? isGreaterThanOrEqualTo,
+  PersonQuery whereDateOfBirth({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
     bool? isNull,
-    List<UnionTimestamp>? whereIn,
-    List<UnionTimestamp>? whereNotIn,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
   });
 
-  UserQuery orderByDocumentId({
+  PersonQuery orderByDocumentId({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
   });
 
-  UserQuery orderByName({
+  PersonQuery orderByFirstName({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
   });
 
-  UserQuery orderByBlood({
+  PersonQuery orderByLastName({
     bool descending = false,
     String startAt,
     String startAfter,
     String endAt,
     String endBefore,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
   });
 
-  UserQuery orderByBirthDay({
+  PersonQuery orderByDateOfBirth({
     bool descending = false,
-    UnionTimestamp startAt,
-    UnionTimestamp startAfter,
-    UnionTimestamp endAt,
-    UnionTimestamp endBefore,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
+    DateTime? startAt,
+    DateTime? startAfter,
+    DateTime? endAt,
+    DateTime? endBefore,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
   });
 }
 
-class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
-    implements UserQuery {
-  _$UserQuery(
+class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
+    implements PersonQuery {
+  _$PersonQuery(
     this._collection, {
-    required Query<User> $referenceWithoutCursor,
+    required Query<Person> $referenceWithoutCursor,
     $QueryCursor $queryCursor = const $QueryCursor(),
   }) : super(
           $referenceWithoutCursor: $referenceWithoutCursor,
@@ -451,18 +454,18 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
   final CollectionReference<Object?> _collection;
 
   @override
-  Stream<UserQuerySnapshot> snapshots([SnapshotOptions? options]) {
-    return reference.snapshots().map(UserQuerySnapshot._fromQuerySnapshot);
+  Stream<PersonQuerySnapshot> snapshots([SnapshotOptions? options]) {
+    return reference.snapshots().map(PersonQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
-  Future<UserQuerySnapshot> get([GetOptions? options]) {
-    return reference.get(options).then(UserQuerySnapshot._fromQuerySnapshot);
+  Future<PersonQuerySnapshot> get([GetOptions? options]) {
+    return reference.get(options).then(PersonQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
-  UserQuery limit(int limit) {
-    return _$UserQuery(
+  PersonQuery limit(int limit) {
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.limit(limit),
       $queryCursor: $queryCursor,
@@ -470,25 +473,25 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
   }
 
   @override
-  UserQuery limitToLast(int limit) {
-    return _$UserQuery(
+  PersonQuery limitToLast(int limit) {
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.limitToLast(limit),
       $queryCursor: $queryCursor,
     );
   }
 
-  UserQuery orderByFieldPath(
+  PersonQuery orderByFieldPath(
     FieldPath fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
   }) {
     final query =
         $referenceWithoutCursor.orderBy(fieldPath, descending: descending);
@@ -543,14 +546,14 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
         endBeforeDocumentSnapshot: null,
       );
     }
-    return _$UserQuery(
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
     );
   }
 
-  UserQuery whereFieldPath(
+  PersonQuery whereFieldPath(
     FieldPath fieldPath, {
     Object? isEqualTo,
     Object? isNotEqualTo,
@@ -564,7 +567,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     List<Object?>? whereNotIn,
     bool? isNull,
   }) {
-    return _$UserQuery(
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         fieldPath,
@@ -584,7 +587,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     );
   }
 
-  UserQuery whereDocumentId({
+  PersonQuery whereDocumentId({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -595,7 +598,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     List<String>? whereIn,
     List<String>? whereNotIn,
   }) {
-    return _$UserQuery(
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         FieldPath.documentId,
@@ -613,7 +616,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     );
   }
 
-  UserQuery whereName({
+  PersonQuery whereFirstName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -624,37 +627,37 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     List<String>? whereIn,
     List<String>? whereNotIn,
   }) {
-    return _$UserQuery(
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$UserImplFieldMap['name']!,
+        _$PersonFieldMap['firstName']!,
         isEqualTo: isEqualTo != null
-            ? _$$UserImplPerFieldToJson.name(isEqualTo)
+            ? _$PersonPerFieldToJson.firstName(isEqualTo)
             : null,
         isNotEqualTo: isNotEqualTo != null
-            ? _$$UserImplPerFieldToJson.name(isNotEqualTo)
+            ? _$PersonPerFieldToJson.firstName(isNotEqualTo)
             : null,
         isLessThan: isLessThan != null
-            ? _$$UserImplPerFieldToJson.name(isLessThan)
+            ? _$PersonPerFieldToJson.firstName(isLessThan)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.name(isLessThanOrEqualTo)
+            ? _$PersonPerFieldToJson.firstName(isLessThanOrEqualTo)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$$UserImplPerFieldToJson.name(isGreaterThan)
+            ? _$PersonPerFieldToJson.firstName(isGreaterThan)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.name(isGreaterThanOrEqualTo)
+            ? _$PersonPerFieldToJson.firstName(isGreaterThanOrEqualTo)
             : null,
         isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.name(e)),
-        whereNotIn: whereNotIn?.map((e) => _$$UserImplPerFieldToJson.name(e)),
+        whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.firstName(e)),
+        whereNotIn: whereNotIn?.map((e) => _$PersonPerFieldToJson.firstName(e)),
       ),
       $queryCursor: $queryCursor,
     );
   }
 
-  UserQuery whereBlood({
+  PersonQuery whereLastName({
     String? isEqualTo,
     String? isNotEqualTo,
     String? isLessThan,
@@ -665,88 +668,88 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     List<String>? whereIn,
     List<String>? whereNotIn,
   }) {
-    return _$UserQuery(
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$UserImplFieldMap['blood']!,
+        _$PersonFieldMap['lastName']!,
         isEqualTo: isEqualTo != null
-            ? _$$UserImplPerFieldToJson.blood(isEqualTo)
+            ? _$PersonPerFieldToJson.lastName(isEqualTo)
             : null,
         isNotEqualTo: isNotEqualTo != null
-            ? _$$UserImplPerFieldToJson.blood(isNotEqualTo)
+            ? _$PersonPerFieldToJson.lastName(isNotEqualTo)
             : null,
         isLessThan: isLessThan != null
-            ? _$$UserImplPerFieldToJson.blood(isLessThan)
+            ? _$PersonPerFieldToJson.lastName(isLessThan)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.blood(isLessThanOrEqualTo)
+            ? _$PersonPerFieldToJson.lastName(isLessThanOrEqualTo)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$$UserImplPerFieldToJson.blood(isGreaterThan)
+            ? _$PersonPerFieldToJson.lastName(isGreaterThan)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.blood(isGreaterThanOrEqualTo)
+            ? _$PersonPerFieldToJson.lastName(isGreaterThanOrEqualTo)
             : null,
         isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.blood(e)),
-        whereNotIn: whereNotIn?.map((e) => _$$UserImplPerFieldToJson.blood(e)),
+        whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.lastName(e)),
+        whereNotIn: whereNotIn?.map((e) => _$PersonPerFieldToJson.lastName(e)),
       ),
       $queryCursor: $queryCursor,
     );
   }
 
-  UserQuery whereBirthDay({
-    UnionTimestamp? isEqualTo,
-    UnionTimestamp? isNotEqualTo,
-    UnionTimestamp? isLessThan,
-    UnionTimestamp? isLessThanOrEqualTo,
-    UnionTimestamp? isGreaterThan,
-    UnionTimestamp? isGreaterThanOrEqualTo,
+  PersonQuery whereDateOfBirth({
+    DateTime? isEqualTo,
+    DateTime? isNotEqualTo,
+    DateTime? isLessThan,
+    DateTime? isLessThanOrEqualTo,
+    DateTime? isGreaterThan,
+    DateTime? isGreaterThanOrEqualTo,
     bool? isNull,
-    List<UnionTimestamp>? whereIn,
-    List<UnionTimestamp>? whereNotIn,
+    List<DateTime?>? whereIn,
+    List<DateTime?>? whereNotIn,
   }) {
-    return _$UserQuery(
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$UserImplFieldMap['birthDay']!,
+        _$PersonFieldMap['dateOfBirth']!,
         isEqualTo: isEqualTo != null
-            ? _$$UserImplPerFieldToJson.birthDay(isEqualTo)
+            ? _$PersonPerFieldToJson.dateOfBirth(isEqualTo)
             : null,
         isNotEqualTo: isNotEqualTo != null
-            ? _$$UserImplPerFieldToJson.birthDay(isNotEqualTo)
+            ? _$PersonPerFieldToJson.dateOfBirth(isNotEqualTo)
             : null,
         isLessThan: isLessThan != null
-            ? _$$UserImplPerFieldToJson.birthDay(isLessThan)
+            ? _$PersonPerFieldToJson.dateOfBirth(isLessThan)
             : null,
         isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.birthDay(isLessThanOrEqualTo)
+            ? _$PersonPerFieldToJson.dateOfBirth(isLessThanOrEqualTo)
             : null,
         isGreaterThan: isGreaterThan != null
-            ? _$$UserImplPerFieldToJson.birthDay(isGreaterThan)
+            ? _$PersonPerFieldToJson.dateOfBirth(isGreaterThan)
             : null,
         isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.birthDay(isGreaterThanOrEqualTo)
+            ? _$PersonPerFieldToJson.dateOfBirth(isGreaterThanOrEqualTo)
             : null,
         isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.birthDay(e)),
+        whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.dateOfBirth(e)),
         whereNotIn:
-            whereNotIn?.map((e) => _$$UserImplPerFieldToJson.birthDay(e)),
+            whereNotIn?.map((e) => _$PersonPerFieldToJson.dateOfBirth(e)),
       ),
       $queryCursor: $queryCursor,
     );
   }
 
-  UserQuery orderByDocumentId({
+  PersonQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor.orderBy(FieldPath.documentId,
         descending: descending);
@@ -802,170 +805,26 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
       );
     }
 
-    return _$UserQuery(
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
     );
   }
 
-  UserQuery orderByName({
+  PersonQuery orderByFirstName({
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
     Object? endAt = _sentinel,
     Object? endBefore = _sentinel,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$$UserImplFieldMap['name']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$UserQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  UserQuery orderByBlood({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor.orderBy(_$$UserImplFieldMap['blood']!,
-        descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$UserQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
-  UserQuery orderByBirthDay({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    UserDocumentSnapshot? startAtDocument,
-    UserDocumentSnapshot? endAtDocument,
-    UserDocumentSnapshot? endBeforeDocument,
-    UserDocumentSnapshot? startAfterDocument,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
   }) {
     final query = $referenceWithoutCursor
-        .orderBy(_$$UserImplFieldMap['birthDay']!, descending: descending);
+        .orderBy(_$PersonFieldMap['firstName']!, descending: descending);
     var queryCursor = $queryCursor;
 
     if (startAtDocument != null) {
@@ -1018,7 +877,151 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
       );
     }
 
-    return _$UserQuery(
+    return _$PersonQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  PersonQuery orderByLastName({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor.orderBy(_$PersonFieldMap['lastName']!,
+        descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$PersonQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
+  PersonQuery orderByDateOfBirth({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    PersonDocumentSnapshot? startAtDocument,
+    PersonDocumentSnapshot? endAtDocument,
+    PersonDocumentSnapshot? endBeforeDocument,
+    PersonDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$PersonFieldMap['dateOfBirth']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$PersonQuery(
       _collection,
       $referenceWithoutCursor: query,
       $queryCursor: queryCursor,
@@ -1027,7 +1030,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
 
   @override
   bool operator ==(Object other) {
-    return other is _$UserQuery &&
+    return other is _$PersonQuery &&
         other.runtimeType == runtimeType &&
         other.reference == reference;
   }
@@ -1036,55 +1039,56 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
-class UserDocumentSnapshot extends FirestoreDocumentSnapshot<User> {
-  UserDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+class PersonDocumentSnapshot extends FirestoreDocumentSnapshot<Person> {
+  PersonDocumentSnapshot._(this.snapshot) : data = snapshot.data();
 
   @override
-  final DocumentSnapshot<User> snapshot;
+  final DocumentSnapshot<Person> snapshot;
 
   @override
-  UserDocumentReference get reference {
-    return UserDocumentReference(
+  PersonDocumentReference get reference {
+    return PersonDocumentReference(
       snapshot.reference,
     );
   }
 
   @override
-  final User? data;
+  final Person? data;
 }
 
-class UserQuerySnapshot
-    extends FirestoreQuerySnapshot<User, UserQueryDocumentSnapshot> {
-  UserQuerySnapshot._(
+class PersonQuerySnapshot
+    extends FirestoreQuerySnapshot<Person, PersonQueryDocumentSnapshot> {
+  PersonQuerySnapshot._(
     this.snapshot,
     this.docs,
     this.docChanges,
   );
 
-  factory UserQuerySnapshot._fromQuerySnapshot(
-    QuerySnapshot<User> snapshot,
+  factory PersonQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<Person> snapshot,
   ) {
-    final docs = snapshot.docs.map(UserQueryDocumentSnapshot._).toList();
+    final docs = snapshot.docs.map(PersonQueryDocumentSnapshot._).toList();
 
     final docChanges = snapshot.docChanges.map((change) {
       return _decodeDocumentChange(
         change,
-        UserDocumentSnapshot._,
+        PersonDocumentSnapshot._,
       );
     }).toList();
 
-    return UserQuerySnapshot._(
+    return PersonQuerySnapshot._(
       snapshot,
       docs,
       docChanges,
     );
   }
 
-  static FirestoreDocumentChange<UserDocumentSnapshot> _decodeDocumentChange<T>(
+  static FirestoreDocumentChange<PersonDocumentSnapshot>
+      _decodeDocumentChange<T>(
     DocumentChange<T> docChange,
-    UserDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+    PersonDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
   ) {
-    return FirestoreDocumentChange<UserDocumentSnapshot>(
+    return FirestoreDocumentChange<PersonDocumentSnapshot>(
       type: docChange.type,
       oldIndex: docChange.oldIndex,
       newIndex: docChange.newIndex,
@@ -1092,28 +1096,28 @@ class UserQuerySnapshot
     );
   }
 
-  final QuerySnapshot<User> snapshot;
+  final QuerySnapshot<Person> snapshot;
 
   @override
-  final List<UserQueryDocumentSnapshot> docs;
+  final List<PersonQueryDocumentSnapshot> docs;
 
   @override
-  final List<FirestoreDocumentChange<UserDocumentSnapshot>> docChanges;
+  final List<FirestoreDocumentChange<PersonDocumentSnapshot>> docChanges;
 }
 
-class UserQueryDocumentSnapshot extends FirestoreQueryDocumentSnapshot<User>
-    implements UserDocumentSnapshot {
-  UserQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+class PersonQueryDocumentSnapshot extends FirestoreQueryDocumentSnapshot<Person>
+    implements PersonDocumentSnapshot {
+  PersonQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
 
   @override
-  final QueryDocumentSnapshot<User> snapshot;
+  final QueryDocumentSnapshot<Person> snapshot;
 
   @override
-  final User data;
+  final Person data;
 
   @override
-  UserDocumentReference get reference {
-    return UserDocumentReference(snapshot.reference);
+  PersonDocumentReference get reference {
+    return PersonDocumentReference(snapshot.reference);
   }
 }
 
@@ -1121,31 +1125,28 @@ class UserQueryDocumentSnapshot extends FirestoreQueryDocumentSnapshot<User>
 // JsonSerializableGenerator
 // **************************************************************************
 
-User _$UserFromJson(Map<String, dynamic> json) => User(
-      name: json['name'] as String,
-      blood: json['blood'] as String,
-      birthDay:
-          const UnionTimestampConverter().fromJson(json['birthDay'] as Object),
+Person _$PersonFromJson(Map<String, dynamic> json) => Person(
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      dateOfBirth: _$JsonConverterFromJson<Timestamp, DateTime>(
+          json['dateOfBirth'], const FirestoreDateTimeConverter().fromJson),
     );
 
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-      'name': instance.name,
-      'blood': instance.blood,
-      'birthDay': const UnionTimestampConverter().toJson(instance.birthDay),
+Map<String, dynamic> _$PersonToJson(Person instance) => <String, dynamic>{
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'dateOfBirth': _$JsonConverterToJson<Timestamp, DateTime>(
+          instance.dateOfBirth, const FirestoreDateTimeConverter().toJson),
     };
 
-_$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
-      name: json['name'] as String,
-      blood: json['blood'] as String,
-      birthDay: json['birthDay'] == null
-          ? const UnionTimestamp.serverTimestamp()
-          : const UnionTimestampConverter()
-              .fromJson(json['birthDay'] as Object),
-    );
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'blood': instance.blood,
-      'birthDay': const UnionTimestampConverter().toJson(instance.birthDay),
-    };
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);
