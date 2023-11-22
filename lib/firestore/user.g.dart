@@ -9,6 +9,7 @@ part of 'user.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, require_trailing_commas, prefer_single_quotes, prefer_double_quotes, use_super_parameters, duplicate_ignore
 // ignore_for_file: type=lint
+// ignore_for_file: invalid_use_of_internal_member
 
 class _Sentinel {
   const _Sentinel();
@@ -552,13 +553,13 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
 
   UserQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
+    Object? arrayContains = notSetQueryParam,
     List<Object?>? arrayContainsAny,
     List<Object?>? whereIn,
     List<Object?>? whereNotIn,
@@ -585,12 +586,12 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
   }
 
   UserQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -614,12 +615,12 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
   }
 
   UserQuery whereName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -628,24 +629,24 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$$UserImplFieldMap['name']!,
-        isEqualTo: isEqualTo != null
-            ? _$$UserImplPerFieldToJson.name(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$$UserImplPerFieldToJson.name(isNotEqualTo)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$$UserImplPerFieldToJson.name(isLessThan)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.name(isLessThanOrEqualTo)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$UserImplPerFieldToJson.name(isGreaterThan)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.name(isGreaterThanOrEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.name(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.name(isNotEqualTo as String)
+            : notSetQueryParam,
+        isLessThan: isLessThan != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.name(isLessThan as String)
+            : notSetQueryParam,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.name(isLessThanOrEqualTo as String)
+            : notSetQueryParam,
+        isGreaterThan: isGreaterThan != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.name(isGreaterThan as String)
+            : notSetQueryParam,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.name(isGreaterThanOrEqualTo as String)
+            : notSetQueryParam,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.name(e)),
         whereNotIn: whereNotIn?.map((e) => _$$UserImplPerFieldToJson.name(e)),
@@ -655,12 +656,12 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
   }
 
   UserQuery whereBlood({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -669,24 +670,24 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$$UserImplFieldMap['blood']!,
-        isEqualTo: isEqualTo != null
-            ? _$$UserImplPerFieldToJson.blood(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$$UserImplPerFieldToJson.blood(isNotEqualTo)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$$UserImplPerFieldToJson.blood(isLessThan)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.blood(isLessThanOrEqualTo)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$UserImplPerFieldToJson.blood(isGreaterThan)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.blood(isGreaterThanOrEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.blood(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.blood(isNotEqualTo as String)
+            : notSetQueryParam,
+        isLessThan: isLessThan != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.blood(isLessThan as String)
+            : notSetQueryParam,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.blood(isLessThanOrEqualTo as String)
+            : notSetQueryParam,
+        isGreaterThan: isGreaterThan != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.blood(isGreaterThan as String)
+            : notSetQueryParam,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.blood(isGreaterThanOrEqualTo as String)
+            : notSetQueryParam,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.blood(e)),
         whereNotIn: whereNotIn?.map((e) => _$$UserImplPerFieldToJson.blood(e)),
@@ -696,12 +697,12 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
   }
 
   UserQuery whereBirthDay({
-    UnionTimestamp? isEqualTo,
-    UnionTimestamp? isNotEqualTo,
-    UnionTimestamp? isLessThan,
-    UnionTimestamp? isLessThanOrEqualTo,
-    UnionTimestamp? isGreaterThan,
-    UnionTimestamp? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
     bool? isNull,
     List<UnionTimestamp>? whereIn,
     List<UnionTimestamp>? whereNotIn,
@@ -710,24 +711,27 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$$UserImplFieldMap['birthDay']!,
-        isEqualTo: isEqualTo != null
-            ? _$$UserImplPerFieldToJson.birthDay(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$$UserImplPerFieldToJson.birthDay(isNotEqualTo)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$$UserImplPerFieldToJson.birthDay(isLessThan)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.birthDay(isLessThanOrEqualTo)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$$UserImplPerFieldToJson.birthDay(isGreaterThan)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$$UserImplPerFieldToJson.birthDay(isGreaterThanOrEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.birthDay(isEqualTo as UnionTimestamp)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.birthDay(isNotEqualTo as UnionTimestamp)
+            : notSetQueryParam,
+        isLessThan: isLessThan != notSetQueryParam
+            ? _$$UserImplPerFieldToJson.birthDay(isLessThan as UnionTimestamp)
+            : notSetQueryParam,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson
+                .birthDay(isLessThanOrEqualTo as UnionTimestamp)
+            : notSetQueryParam,
+        isGreaterThan: isGreaterThan != notSetQueryParam
+            ? _$$UserImplPerFieldToJson
+                .birthDay(isGreaterThan as UnionTimestamp)
+            : notSetQueryParam,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != notSetQueryParam
+            ? _$$UserImplPerFieldToJson
+                .birthDay(isGreaterThanOrEqualTo as UnionTimestamp)
+            : notSetQueryParam,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.birthDay(e)),
         whereNotIn:

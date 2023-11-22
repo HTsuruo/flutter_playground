@@ -9,6 +9,7 @@ part of 'person.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, require_trailing_commas, prefer_single_quotes, prefer_double_quotes, use_super_parameters, duplicate_ignore
 // ignore_for_file: type=lint
+// ignore_for_file: invalid_use_of_internal_member
 
 class _Sentinel {
   const _Sentinel();
@@ -555,13 +556,13 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
 
   PersonQuery whereFieldPath(
     FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
+    Object? arrayContains = notSetQueryParam,
     List<Object?>? arrayContainsAny,
     List<Object?>? whereIn,
     List<Object?>? whereNotIn,
@@ -588,12 +589,12 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
   }
 
   PersonQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -617,12 +618,12 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
   }
 
   PersonQuery whereFirstName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -631,24 +632,24 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$PersonFieldMap['firstName']!,
-        isEqualTo: isEqualTo != null
-            ? _$PersonPerFieldToJson.firstName(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$PersonPerFieldToJson.firstName(isNotEqualTo)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$PersonPerFieldToJson.firstName(isLessThan)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$PersonPerFieldToJson.firstName(isLessThanOrEqualTo)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$PersonPerFieldToJson.firstName(isGreaterThan)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$PersonPerFieldToJson.firstName(isGreaterThanOrEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.firstName(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.firstName(isNotEqualTo as String)
+            : notSetQueryParam,
+        isLessThan: isLessThan != notSetQueryParam
+            ? _$PersonPerFieldToJson.firstName(isLessThan as String)
+            : notSetQueryParam,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.firstName(isLessThanOrEqualTo as String)
+            : notSetQueryParam,
+        isGreaterThan: isGreaterThan != notSetQueryParam
+            ? _$PersonPerFieldToJson.firstName(isGreaterThan as String)
+            : notSetQueryParam,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.firstName(isGreaterThanOrEqualTo as String)
+            : notSetQueryParam,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.firstName(e)),
         whereNotIn: whereNotIn?.map((e) => _$PersonPerFieldToJson.firstName(e)),
@@ -658,12 +659,12 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
   }
 
   PersonQuery whereLastName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
     bool? isNull,
     List<String>? whereIn,
     List<String>? whereNotIn,
@@ -672,24 +673,24 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$PersonFieldMap['lastName']!,
-        isEqualTo: isEqualTo != null
-            ? _$PersonPerFieldToJson.lastName(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$PersonPerFieldToJson.lastName(isNotEqualTo)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$PersonPerFieldToJson.lastName(isLessThan)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$PersonPerFieldToJson.lastName(isLessThanOrEqualTo)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$PersonPerFieldToJson.lastName(isGreaterThan)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$PersonPerFieldToJson.lastName(isGreaterThanOrEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.lastName(isEqualTo as String)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.lastName(isNotEqualTo as String)
+            : notSetQueryParam,
+        isLessThan: isLessThan != notSetQueryParam
+            ? _$PersonPerFieldToJson.lastName(isLessThan as String)
+            : notSetQueryParam,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.lastName(isLessThanOrEqualTo as String)
+            : notSetQueryParam,
+        isGreaterThan: isGreaterThan != notSetQueryParam
+            ? _$PersonPerFieldToJson.lastName(isGreaterThan as String)
+            : notSetQueryParam,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.lastName(isGreaterThanOrEqualTo as String)
+            : notSetQueryParam,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.lastName(e)),
         whereNotIn: whereNotIn?.map((e) => _$PersonPerFieldToJson.lastName(e)),
@@ -699,12 +700,12 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
   }
 
   PersonQuery whereDateOfBirth({
-    DateTime? isEqualTo,
-    DateTime? isNotEqualTo,
-    DateTime? isLessThan,
-    DateTime? isLessThanOrEqualTo,
-    DateTime? isGreaterThan,
-    DateTime? isGreaterThanOrEqualTo,
+    Object? isEqualTo = notSetQueryParam,
+    Object? isNotEqualTo = notSetQueryParam,
+    Object? isLessThan = notSetQueryParam,
+    Object? isLessThanOrEqualTo = notSetQueryParam,
+    Object? isGreaterThan = notSetQueryParam,
+    Object? isGreaterThanOrEqualTo = notSetQueryParam,
     bool? isNull,
     List<DateTime?>? whereIn,
     List<DateTime?>? whereNotIn,
@@ -713,24 +714,26 @@ class _$PersonQuery extends QueryReference<Person, PersonQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$PersonFieldMap['dateOfBirth']!,
-        isEqualTo: isEqualTo != null
-            ? _$PersonPerFieldToJson.dateOfBirth(isEqualTo)
-            : null,
-        isNotEqualTo: isNotEqualTo != null
-            ? _$PersonPerFieldToJson.dateOfBirth(isNotEqualTo)
-            : null,
-        isLessThan: isLessThan != null
-            ? _$PersonPerFieldToJson.dateOfBirth(isLessThan)
-            : null,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != null
-            ? _$PersonPerFieldToJson.dateOfBirth(isLessThanOrEqualTo)
-            : null,
-        isGreaterThan: isGreaterThan != null
-            ? _$PersonPerFieldToJson.dateOfBirth(isGreaterThan)
-            : null,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
-            ? _$PersonPerFieldToJson.dateOfBirth(isGreaterThanOrEqualTo)
-            : null,
+        isEqualTo: isEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.dateOfBirth(isEqualTo as DateTime?)
+            : notSetQueryParam,
+        isNotEqualTo: isNotEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson.dateOfBirth(isNotEqualTo as DateTime?)
+            : notSetQueryParam,
+        isLessThan: isLessThan != notSetQueryParam
+            ? _$PersonPerFieldToJson.dateOfBirth(isLessThan as DateTime?)
+            : notSetQueryParam,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson
+                .dateOfBirth(isLessThanOrEqualTo as DateTime?)
+            : notSetQueryParam,
+        isGreaterThan: isGreaterThan != notSetQueryParam
+            ? _$PersonPerFieldToJson.dateOfBirth(isGreaterThan as DateTime?)
+            : notSetQueryParam,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != notSetQueryParam
+            ? _$PersonPerFieldToJson
+                .dateOfBirth(isGreaterThanOrEqualTo as DateTime?)
+            : notSetQueryParam,
         isNull: isNull,
         whereIn: whereIn?.map((e) => _$PersonPerFieldToJson.dateOfBirth(e)),
         whereNotIn:
