@@ -34,7 +34,7 @@ GoRouter router(RouterRef ref) {
       ),
       GoRoute(
         path: '/signin',
-        // TODO(htsuruo): サインアウト時"のみ"逆のトランジションアニメーションにしたい
+        // TODO(htsuruo): サインアウト時"のみ"BackwardTransitionPageを適用したい
         pageBuilder: (context, state) => const BackwardTransitionPage(
           child: SigninPage(),
         ),
