@@ -30,22 +30,32 @@ GoRouter router(RouterRef ref) {
     routes: [
       GoRoute(
         path: '/',
-        builder: (_, __) => const SigninPage(),
+        builder: (context, _) => const HomePage(),
       ),
       GoRoute(
-        path: '/home',
-        builder: (_, __) => const HomePage(),
+        path: '/signin',
+        // TODO(htsuruo): サインアウト時には逆のトランジションアニメーションにしたい
+        builder: (context, state) => const SigninPage(),
+      ),
+      GoRoute(
+        path: '/splash',
+        pageBuilder: (context, _) => const NoTransitionPage(
+          child: SplashPage(),
+        ),
       ),
     ],
     redirect: (context, state) {
-      final isSignedIn = ref.read(authenticatorProvider).value ?? false;
+      if (isAuth.value.isLoading || !isAuth.value.hasValue) {
+        return '/splash';
+      }
+      final isSignedIn = isAuth.value.requireValue;
       final location = state.uri.toString();
-      final isSigninLocation = location == '/';
+      final isSigninLocation = location == '/signin';
       if (!isSignedIn) {
-        return isSigninLocation ? null : '/';
+        return isSigninLocation ? null : '/signin';
       }
       if (isSigninLocation) {
-        return '/home';
+        return '/';
       }
       return null;
     },

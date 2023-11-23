@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:tsuruo_kit/tsuruo_kit.dart';
 
 part 'authenticator.g.dart';
 
@@ -13,14 +14,16 @@ class Authenticator extends _$Authenticator {
   Future<void> get _delayed => Future<void>.delayed(const Duration(seconds: 3));
 
   Future<void> signIn() async {
-    state = const AsyncLoading();
-    await _delayed;
+    await ref
+        .read(progressController.notifier)
+        .executeWithProgress<void>(() => _delayed);
     state = const AsyncData(true);
   }
 
   Future<void> signOut() async {
-    state = const AsyncLoading();
-    await _delayed;
+    await ref
+        .read(progressController.notifier)
+        .executeWithProgress<void>(() => _delayed);
     state = const AsyncData(false);
   }
 }
