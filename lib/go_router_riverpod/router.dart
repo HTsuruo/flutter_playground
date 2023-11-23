@@ -34,8 +34,10 @@ GoRouter router(RouterRef ref) {
       ),
       GoRoute(
         path: '/signin',
-        // TODO(htsuruo): サインアウト時には逆のトランジションアニメーションにしたい
-        builder: (context, state) => const SigninPage(),
+        // TODO(htsuruo): サインアウト時"のみ"逆のトランジションアニメーションにしたい
+        pageBuilder: (context, state) => const BackwardTransitionPage(
+          child: SigninPage(),
+        ),
       ),
       GoRoute(
         path: '/splash',
@@ -60,4 +62,32 @@ GoRouter router(RouterRef ref) {
       return null;
     },
   );
+}
+
+class BackwardTransitionPage<T> extends CustomTransitionPage<T> {
+  const BackwardTransitionPage({
+    required super.child,
+    super.name,
+    super.arguments,
+    super.restorationId,
+    super.key,
+  }) : super(transitionsBuilder: _transitionsBuilder);
+
+  static Widget _transitionsBuilder(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    // ref. https://docs.flutter.dev/cookbook/animation/page-route-animation
+    const begin = Offset(-1, 0);
+    const end = Offset.zero;
+    final tween = Tween(begin: begin, end: end).chain(
+      CurveTween(curve: Curves.easeInOut),
+    );
+    return SlideTransition(
+      position: animation.drive(tween),
+      child: child,
+    );
+  }
 }
