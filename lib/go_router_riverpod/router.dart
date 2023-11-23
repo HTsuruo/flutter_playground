@@ -37,8 +37,8 @@ GoRouter router(RouterRef ref) {
         builder: (_, __) => const HomePage(),
       ),
     ],
-    redirect: (context, state) async {
-      final isSignedIn = await ref.read(authenticatorProvider.future);
+    redirect: (context, state) {
+      final isSignedIn = ref.read(authenticatorProvider).value ?? false;
       final location = state.uri.toString();
       final isSigninLocation = location == '/';
       if (!isSignedIn) {

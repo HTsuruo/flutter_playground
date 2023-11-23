@@ -10,21 +10,17 @@ class Authenticator extends _$Authenticator {
     return false;
   }
 
-  final _delayed = Future<void>.delayed(const Duration(seconds: 3));
+  Future<void> get _delayed => Future<void>.delayed(const Duration(seconds: 3));
 
   Future<void> signIn() async {
-    // AsyncLoadingを挟むとうまくいく
-    // TODO(htsuruo): うまく変更は流れるが3秒ディレイが効かずに即時に画面が切り替わってしまう。
-    // state = const AsyncLoading();
+    state = const AsyncLoading();
     await _delayed;
     state = const AsyncData(true);
   }
 
   Future<void> signOut() async {
-    // AsyncLoadingを挟むとうまくいく
-    // state = const AsyncLoading();
+    state = const AsyncLoading();
     await _delayed;
-    // TODO(htsuruo): これでStateを更新しても`.future`で取得しても最新値(false)は取得できない
     state = const AsyncData(false);
   }
 }
