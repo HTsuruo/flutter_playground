@@ -11,9 +11,10 @@
 ///      fonts:
 ///       - asset: fonts/Fruits.ttf
 ///
-/// 
+///
 ///
 library;
+
 import 'package:flutter/widgets.dart';
 
 class Fruits {
