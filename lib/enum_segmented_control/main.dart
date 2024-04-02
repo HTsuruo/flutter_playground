@@ -24,7 +24,7 @@ class App extends StatelessWidget {
           seedColor: const Color(0xFF2E5817),
         ),
       ).copyWith(
-        useMaterial3: true,
+        
       ),
       home: const HomePage(),
     );

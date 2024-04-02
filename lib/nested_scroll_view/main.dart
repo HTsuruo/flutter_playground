@@ -43,7 +43,7 @@ class _ListPage extends StatelessWidget {
   const _ListPage();
   @override
   Widget build(BuildContext context) {
-    List<ListTile> _tiles() {
+    List<ListTile> tiles() {
       return [
         ListTile(
           title: const Text(Sample1.routeName),
@@ -85,9 +85,9 @@ class _ListPage extends StatelessWidget {
         title: const Text('NestedScrollView Sampler'),
       ),
       body: ListView.separated(
-        itemBuilder: (context, index) => _tiles()[index],
+        itemBuilder: (context, index) => tiles()[index],
         separatorBuilder: (context, index) => const Divider(),
-        itemCount: _tiles().length,
+        itemCount: tiles().length,
       ),
     );
   }

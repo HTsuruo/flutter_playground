@@ -29,7 +29,7 @@ class App extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF2E5817),
         ),
-      ).copyWith(useMaterial3: true),
+      ).copyWith(),
       home: PlaygroundBuilder(
         title: 'Animation',
         routes: routes,

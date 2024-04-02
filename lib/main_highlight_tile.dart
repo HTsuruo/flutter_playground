@@ -18,7 +18,6 @@ class App extends StatelessWidget {
           seedColor: const Color(0xFF2E5817),
         ),
       ).copyWith(
-        useMaterial3: true,
         dividerTheme: const DividerThemeData(space: 0),
       ),
       home: const _SamplePage(),
