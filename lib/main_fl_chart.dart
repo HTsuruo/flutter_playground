@@ -74,7 +74,6 @@ class HomePage extends StatelessWidget {
                         fontStyle: FontStyle.italic,
                         color: Colors.black54,
                       ),
-                      alignment: Alignment.topLeft,
                       labelResolver: (line) =>
                           'AVG: ${NumberFormat('#,###').format(avg)}',
                     ),
@@ -121,7 +120,7 @@ class HomePage extends StatelessWidget {
               ),
               lineTouchData: LineTouchData(
                 touchTooltipData: LineTouchTooltipData(
-                  tooltipBgColor: const Color(0xFFE0E2E4),
+                  getTooltipColor: (group) => const Color(0xFFE0E2E4),
                   getTooltipItems: (touchedSpots) => [
                     for (final spot in touchedSpots)
                       LineTooltipItem(
