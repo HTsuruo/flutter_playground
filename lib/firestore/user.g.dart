@@ -279,6 +279,86 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
   @override
   UserQuery limitToLast(int limit);
 
+  /// Perform a where query based on a [FieldPath].
+  ///
+  /// This method is considered unsafe as it does check that the field path
+  /// maps to a valid property or that parameters such as [isEqualTo] receive
+  /// a value of the correct type.
+  ///
+  /// If possible, instead use the more explicit variant of where queries:
+  ///
+  /// **AVOID**:
+  /// ```dart
+  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
+  /// ```
+  ///
+  /// **PREFER**:
+  /// ```dart
+  /// collection.whereTitle(isEqualTo: 'title');
+  /// ```
+  UserQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo,
+    Object? isNotEqualTo,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  });
+
+  UserQuery whereDocumentId({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  UserQuery whereName({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  UserQuery whereBlood({
+    String? isEqualTo,
+    String? isNotEqualTo,
+    String? isLessThan,
+    String? isLessThanOrEqualTo,
+    String? isGreaterThan,
+    String? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  });
+
+  UserQuery whereBirthDay({
+    UnionTimestamp? isEqualTo,
+    UnionTimestamp? isNotEqualTo,
+    UnionTimestamp? isLessThan,
+    UnionTimestamp? isLessThanOrEqualTo,
+    UnionTimestamp? isGreaterThan,
+    UnionTimestamp? isGreaterThanOrEqualTo,
+    List<UnionTimestamp>? whereIn,
+    List<UnionTimestamp>? whereNotIn,
+    bool? isNull,
+  });
+
   /// Perform an order query based on a [FieldPath].
   ///
   /// This method is considered unsafe as it does check that the field path
@@ -300,93 +380,16 @@ abstract class UserQuery implements QueryReference<User, UserQuerySnapshot> {
   /// collection.orderByTitle(startAt: 'title');
   /// ```
   UserQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
-    Object? startAt,
-    Object? startAfter,
-    Object? endAt,
-    Object? endBefore,
+    Object startAt,
+    Object startAfter,
+    Object endAt,
+    Object endBefore,
     UserDocumentSnapshot? startAtDocument,
     UserDocumentSnapshot? endAtDocument,
     UserDocumentSnapshot? endBeforeDocument,
     UserDocumentSnapshot? startAfterDocument,
-  });
-
-  /// Perform a where query based on a [FieldPath].
-  ///
-  /// This method is considered unsafe as it does check that the field path
-  /// maps to a valid property or that parameters such as [isEqualTo] receive
-  /// a value of the correct type.
-  ///
-  /// If possible, instead use the more explicit variant of where queries:
-  ///
-  /// **AVOID**:
-  /// ```dart
-  /// collection.whereFieldPath(FieldPath.fromString('title'), isEqualTo: 'title');
-  /// ```
-  ///
-  /// **PREFER**:
-  /// ```dart
-  /// collection.whereTitle(isEqualTo: 'title');
-  /// ```
-  UserQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo,
-    Object? isNotEqualTo,
-    Object? isLessThan,
-    Object? isLessThanOrEqualTo,
-    Object? isGreaterThan,
-    Object? isGreaterThanOrEqualTo,
-    Object? arrayContains,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  });
-
-  UserQuery whereDocumentId({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  UserQuery whereName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  UserQuery whereBlood({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  });
-  UserQuery whereBirthDay({
-    UnionTimestamp? isEqualTo,
-    UnionTimestamp? isNotEqualTo,
-    UnionTimestamp? isLessThan,
-    UnionTimestamp? isLessThanOrEqualTo,
-    UnionTimestamp? isGreaterThan,
-    UnionTimestamp? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<UnionTimestamp>? whereIn,
-    List<UnionTimestamp>? whereNotIn,
   });
 
   UserQuery orderByDocumentId({
@@ -479,8 +482,214 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     );
   }
 
+  @override
+  UserQuery whereFieldPath(
+    Object fieldPath, {
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    Object? arrayContains,
+    List<Object?>? arrayContainsAny,
+    List<Object?>? whereIn,
+    List<Object?>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$UserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        fieldPath,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  UserQuery whereDocumentId({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$UserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        FieldPath.documentId,
+        isEqualTo: isEqualTo != _sentinel ? isEqualTo : null,
+        isNotEqualTo: isNotEqualTo != _sentinel ? isNotEqualTo : null,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        whereIn: whereIn,
+        whereNotIn: whereNotIn,
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  UserQuery whereName({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$UserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$UserImplFieldMap['name']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$UserImplPerFieldToJson.name(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$UserImplPerFieldToJson.name(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$UserImplPerFieldToJson.name(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$UserImplPerFieldToJson.name(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$UserImplPerFieldToJson.name(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$UserImplPerFieldToJson.name(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.name(e)),
+        whereNotIn: whereNotIn?.map((e) => _$$UserImplPerFieldToJson.name(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  UserQuery whereBlood({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<String>? whereIn,
+    List<String>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$UserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$UserImplFieldMap['blood']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$UserImplPerFieldToJson.blood(isEqualTo as String)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$UserImplPerFieldToJson.blood(isNotEqualTo as String)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$UserImplPerFieldToJson.blood(isLessThan as String)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$UserImplPerFieldToJson.blood(isLessThanOrEqualTo as String)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$UserImplPerFieldToJson.blood(isGreaterThan as String)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$UserImplPerFieldToJson.blood(isGreaterThanOrEqualTo as String)
+            : null,
+        whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.blood(e)),
+        whereNotIn: whereNotIn?.map((e) => _$$UserImplPerFieldToJson.blood(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
+  UserQuery whereBirthDay({
+    Object? isEqualTo = _sentinel,
+    Object? isNotEqualTo = _sentinel,
+    Object? isLessThan,
+    Object? isLessThanOrEqualTo,
+    Object? isGreaterThan,
+    Object? isGreaterThanOrEqualTo,
+    List<UnionTimestamp>? whereIn,
+    List<UnionTimestamp>? whereNotIn,
+    bool? isNull,
+  }) {
+    return _$UserQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$$UserImplFieldMap['birthDay']!,
+        isEqualTo: isEqualTo != _sentinel
+            ? _$$UserImplPerFieldToJson.birthDay(isEqualTo as UnionTimestamp)
+            : null,
+        isNotEqualTo: isNotEqualTo != _sentinel
+            ? _$$UserImplPerFieldToJson.birthDay(isNotEqualTo as UnionTimestamp)
+            : null,
+        isLessThan: isLessThan != null
+            ? _$$UserImplPerFieldToJson.birthDay(isLessThan as UnionTimestamp)
+            : null,
+        isLessThanOrEqualTo: isLessThanOrEqualTo != null
+            ? _$$UserImplPerFieldToJson
+                .birthDay(isLessThanOrEqualTo as UnionTimestamp)
+            : null,
+        isGreaterThan: isGreaterThan != null
+            ? _$$UserImplPerFieldToJson
+                .birthDay(isGreaterThan as UnionTimestamp)
+            : null,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != null
+            ? _$$UserImplPerFieldToJson
+                .birthDay(isGreaterThanOrEqualTo as UnionTimestamp)
+            : null,
+        whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.birthDay(e)),
+        whereNotIn:
+            whereNotIn?.map((e) => _$$UserImplPerFieldToJson.birthDay(e)),
+        isNull: isNull ??
+            (isEqualTo == null ? false : null) ??
+            (isNotEqualTo == null ? true : null),
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  @override
   UserQuery orderByFieldPath(
-    FieldPath fieldPath, {
+    Object fieldPath, {
     bool descending = false,
     Object? startAt = _sentinel,
     Object? startAfter = _sentinel,
@@ -544,6 +753,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
         endBeforeDocumentSnapshot: null,
       );
     }
+
     return _$UserQuery(
       _collection,
       $referenceWithoutCursor: query,
@@ -551,196 +761,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     );
   }
 
-  UserQuery whereFieldPath(
-    FieldPath fieldPath, {
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = notSetQueryParam,
-    Object? isLessThanOrEqualTo = notSetQueryParam,
-    Object? isGreaterThan = notSetQueryParam,
-    Object? isGreaterThanOrEqualTo = notSetQueryParam,
-    Object? arrayContains = notSetQueryParam,
-    List<Object?>? arrayContainsAny,
-    List<Object?>? whereIn,
-    List<Object?>? whereNotIn,
-    bool? isNull,
-  }) {
-    return _$UserQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        fieldPath,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        arrayContains: arrayContains,
-        arrayContainsAny: arrayContainsAny,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-        isNull: isNull,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  UserQuery whereDocumentId({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = notSetQueryParam,
-    Object? isLessThanOrEqualTo = notSetQueryParam,
-    Object? isGreaterThan = notSetQueryParam,
-    Object? isGreaterThanOrEqualTo = notSetQueryParam,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$UserQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        FieldPath.documentId,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  UserQuery whereName({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = notSetQueryParam,
-    Object? isLessThanOrEqualTo = notSetQueryParam,
-    Object? isGreaterThan = notSetQueryParam,
-    Object? isGreaterThanOrEqualTo = notSetQueryParam,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$UserQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$UserImplFieldMap['name']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.name(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.name(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.name(isLessThan as String)
-            : notSetQueryParam,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.name(isLessThanOrEqualTo as String)
-            : notSetQueryParam,
-        isGreaterThan: isGreaterThan != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.name(isGreaterThan as String)
-            : notSetQueryParam,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.name(isGreaterThanOrEqualTo as String)
-            : notSetQueryParam,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.name(e)),
-        whereNotIn: whereNotIn?.map((e) => _$$UserImplPerFieldToJson.name(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  UserQuery whereBlood({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = notSetQueryParam,
-    Object? isLessThanOrEqualTo = notSetQueryParam,
-    Object? isGreaterThan = notSetQueryParam,
-    Object? isGreaterThanOrEqualTo = notSetQueryParam,
-    bool? isNull,
-    List<String>? whereIn,
-    List<String>? whereNotIn,
-  }) {
-    return _$UserQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$UserImplFieldMap['blood']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.blood(isEqualTo as String)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.blood(isNotEqualTo as String)
-            : notSetQueryParam,
-        isLessThan: isLessThan != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.blood(isLessThan as String)
-            : notSetQueryParam,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.blood(isLessThanOrEqualTo as String)
-            : notSetQueryParam,
-        isGreaterThan: isGreaterThan != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.blood(isGreaterThan as String)
-            : notSetQueryParam,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.blood(isGreaterThanOrEqualTo as String)
-            : notSetQueryParam,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.blood(e)),
-        whereNotIn: whereNotIn?.map((e) => _$$UserImplPerFieldToJson.blood(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  UserQuery whereBirthDay({
-    Object? isEqualTo = notSetQueryParam,
-    Object? isNotEqualTo = notSetQueryParam,
-    Object? isLessThan = notSetQueryParam,
-    Object? isLessThanOrEqualTo = notSetQueryParam,
-    Object? isGreaterThan = notSetQueryParam,
-    Object? isGreaterThanOrEqualTo = notSetQueryParam,
-    bool? isNull,
-    List<UnionTimestamp>? whereIn,
-    List<UnionTimestamp>? whereNotIn,
-  }) {
-    return _$UserQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$$UserImplFieldMap['birthDay']!,
-        isEqualTo: isEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.birthDay(isEqualTo as UnionTimestamp)
-            : notSetQueryParam,
-        isNotEqualTo: isNotEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.birthDay(isNotEqualTo as UnionTimestamp)
-            : notSetQueryParam,
-        isLessThan: isLessThan != notSetQueryParam
-            ? _$$UserImplPerFieldToJson.birthDay(isLessThan as UnionTimestamp)
-            : notSetQueryParam,
-        isLessThanOrEqualTo: isLessThanOrEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson
-                .birthDay(isLessThanOrEqualTo as UnionTimestamp)
-            : notSetQueryParam,
-        isGreaterThan: isGreaterThan != notSetQueryParam
-            ? _$$UserImplPerFieldToJson
-                .birthDay(isGreaterThan as UnionTimestamp)
-            : notSetQueryParam,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo != notSetQueryParam
-            ? _$$UserImplPerFieldToJson
-                .birthDay(isGreaterThanOrEqualTo as UnionTimestamp)
-            : notSetQueryParam,
-        isNull: isNull,
-        whereIn: whereIn?.map((e) => _$$UserImplPerFieldToJson.birthDay(e)),
-        whereNotIn:
-            whereNotIn?.map((e) => _$$UserImplPerFieldToJson.birthDay(e)),
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
+  @override
   UserQuery orderByDocumentId({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -813,6 +834,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     );
   }
 
+  @override
   UserQuery orderByName({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -885,6 +907,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     );
   }
 
+  @override
   UserQuery orderByBlood({
     bool descending = false,
     Object? startAt = _sentinel,
@@ -957,6 +980,7 @@ class _$UserQuery extends QueryReference<User, UserQuerySnapshot>
     );
   }
 
+  @override
   UserQuery orderByBirthDay({
     bool descending = false,
     Object? startAt = _sentinel,

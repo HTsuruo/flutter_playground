@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
             builder: (context) => ListTile(
               title: const Text('showBottomSheet'),
               onTap: () {
-                showBottomSheet<void>(
+                showBottomSheet(
                   context: context,
                   builder: (context) => const ListViewContent(),
                 );

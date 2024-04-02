@@ -4,24 +4,25 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.2.0
+  sdk: ^3.3.0
 
 dependencies:
   animations:
   audioplayers:
   cloud_firestore:
   cloud_firestore_odm:
+  cloud_firestore_web:
   collection:
   convenient_test:
   cupertino_icons:
   dartx:
   expandable:
   firebase_core:
+  firebase_core_web:
   firebase_crashlytics:
-  fl_chart:
-  fluentui_system_icons:
   flutter:
     sdk: flutter
+  flutter_gen:
   flutter_localizations:
     sdk: flutter
   flutter_markdown:
@@ -29,6 +30,8 @@ dependencies:
   flutter_svg:
   flutter_web_auth:
   flutterfire_ui:
+  fl_chart:
+  fluentui_system_icons:
   freezed_annotation:
   gap:
   go_router:
@@ -48,18 +51,14 @@ dependencies:
   sliding_sheet:
   smooth_highlight:
   snapping_sheet:
+  stack_trace:
   state_notifier:
   tsuruo_kit:
     git: https://github.com/HTsuruo/flutter_tsuruo_kit
   url_launcher:
+  url_launcher_web:
   webview_flutter:
 
-  stack_trace: any
-  cloud_firestore_web: any
-  firebase_core_web: any
-  flutter_web_plugins: any
-  url_launcher_web: any
-  flutter_gen: any
 dev_dependencies:
   build_runner:
   cloud_firestore_odm_generator: ^1.0.0-dev.75
@@ -74,25 +73,14 @@ dev_dependencies:
   riverpod_generator:
   riverpod_lint:
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
   # i18n対応
   # ref. https://flutter.dev/docs/development/accessibility-and-localization/internationalization#adding-your-own-localized-messages
   generate: true
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
     - assets/sounds/
     - assets/fruits/
-
   fonts:
     - family: Fruits
       fonts:
